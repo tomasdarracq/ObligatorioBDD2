@@ -7,4 +7,6 @@ import java.util.List;
 
 @Repository
 public interface PartidoRepository extends JpaRepository  <Partido,Long> {
+    @Query("SELECT p FROM Partido p")
+    List<Partido> findAllPartidos();
 }

@@ -1,63 +1,88 @@
 package com.obligatorioPenca.obligatorioPenca.partido;
 
+import com.obligatorioPenca.obligatorioPenca.seleccion.Seleccion;
+import jakarta.persistence.*;
+
+import java.time.LocalDate;
 import java.util.Date;
 
+@Entity
 public class Partido {
-    private long id;
-    private long idseleccionlocal;
-    private long idseleccionvisitante;
-    private int goles_local;
-    private Date fecha;
-    private int goles_vistante;
 
-    public Date getFecha() {
-        return fecha;
-    }
+    @EmbeddedId
+    private PartidocompositeKey id;
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
+    @ManyToOne
+    @MapsId("seleccionlocalId")
+    @JoinColumn(name = "seleccionlocal_id")
+    private Seleccion seleccionlocal;
+
+    @ManyToOne
+    @MapsId("seleccionvisitanteId")
+    @JoinColumn(name = "seleccionvisitante_id")
+    private Seleccion seleccionvisitante;
+
+
+    @Column(name = "goles_local")
+    private int golesLocal;
+
+    @Column(name = "goles_visitante")
+    private int golesVisitante;
+
+    // Constructors, getters, setters
+
+
 
     public Partido() {
     }
 
-    public long getId() {
+    public Partido(Seleccion seleccionlocal, Seleccion seleccionvisitante, Date fecha, int golesLocal, int golesVisitante) {
+        this.seleccionlocal = seleccionlocal;
+        this.seleccionvisitante = seleccionvisitante;
+        this.golesLocal = golesLocal;
+        this.golesVisitante = golesVisitante;
+        //this.id = new PartidocompositeKey(seleccionlocal.getId(), seleccionvisitante.getId());
+    }
+
+    public PartidocompositeKey getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(PartidocompositeKey id) {
         this.id = id;
     }
 
-    public long getIdseleccionlocal() {
-        return idseleccionlocal;
+    public Seleccion getSeleccionlocal() {
+        return seleccionlocal;
     }
 
-    public void setIdseleccionlocal(long idseleccionlocal) {
-        this.idseleccionlocal = idseleccionlocal;
+    public void setSeleccionlocal(Seleccion seleccionlocal) {
+        this.seleccionlocal = seleccionlocal;
     }
 
-    public long getIdseleccionvisitante() {
-        return idseleccionvisitante;
+    public Seleccion getSeleccionvisitante() {
+        return seleccionvisitante;
     }
 
-    public void setIdseleccionvisitante(long idseleccionvisitante) {
-        this.idseleccionvisitante = idseleccionvisitante;
+    public void setSeleccionvisitante(Seleccion seleccionvisitante) {
+        this.seleccionvisitante = seleccionvisitante;
     }
 
-    public int getGoles_local() {
-        return goles_local;
+    public int getGolesLocal() {
+        return golesLocal;
     }
 
-    public void setGoles_local(int goles_local) {
-        this.goles_local = goles_local;
+    public void setGolesLocal(int golesLocal) {
+        this.golesLocal = golesLocal;
     }
 
-    public int getGoles_vistante() {
-        return goles_vistante;
+    public int getGolesVisitante() {
+        return golesVisitante;
     }
 
-    public void setGoles_vistante(int goles_vistante) {
-        this.goles_vistante = goles_vistante;
+    public void setGolesVisitante(int golesVisitante) {
+        this.golesVisitante = golesVisitante;
     }
+
+
 }
