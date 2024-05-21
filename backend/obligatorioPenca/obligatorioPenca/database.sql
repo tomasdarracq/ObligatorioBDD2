@@ -1,66 +1,78 @@
-DROP DATABASE PencaUCU;
+DROP DATABASE IF EXISTS PencaUCU;
 CREATE DATABASE PencaUCU;
 USE PencaUCU;
 
+-- Crear tabla Estudiante
 CREATE TABLE Estudiante (
     idUsuario INT NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR(50) NOT NULL ,
+    nombre VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     contrasena VARCHAR(50) NOT NULL,
     carrera VARCHAR(50) NOT NULL,
     PRIMARY KEY (idUsuario)
 );
 
+-- Crear tabla Administrador
 CREATE TABLE Administrador (
     idAdmin INT NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR(50) NOT NULL ,
+    nombre VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     contrasena VARCHAR(50) NOT NULL,
     PRIMARY KEY (idAdmin)
 );
 
-CREATE TABLE Seleccion(
-                          nombre VARCHAR(50) NOT NULL,
-                          PRIMARY KEY (nombre)
+-- Crear tabla Seleccion
+CREATE TABLE Seleccion (
+    nombre VARCHAR(50) NOT NULL,
+    PRIMARY KEY (nombre)
 );
 
-CREATE TABLE Partido(
-                        nombreSeleccionLocal varchar(50) NOT NULL ,
-                        nombreSeleccionVisitante varchar(50) NOT NULL ,
-                        fecha DATETIME,
-                        golLocal INT,
-                        golVisitante INT,
-                        PRIMARY KEY (nombreSeleccionLocal,nombreSeleccionVisitante, fecha),
-                        FOREIGN KEY (nombreSeleccionLocal) REFERENCES Seleccion(nombre),
-                        FOREIGN KEY (nombreSeleccionVisitante) REFERENCES Seleccion(nombre)
-);
-
-CREATE TABLE Estudiante_Realiza_Prediccion(
-    idUsuario INT,
-    idPrediccion INT,
-    nombreSeleccionLocal varchar(50) NOT NULL ,
-    nombreSeleccionVisitante varchar(50) NOT NULL ,
+-- Crear tabla Partido
+CREATE TABLE Partido (
+    nombreSeleccionLocal VARCHAR(50) NOT NULL,
+    nombreSeleccionVisitante VARCHAR(50) NOT NULL,
+    fecha DATETIME NOT NULL,
     golLocal INT,
     golVisitante INT,
-    PRIMARY KEY (idUsuario,idPrediccion),
-    FOREIGN KEY (idUsuario ) REFERENCES Estudiante(idUsuario),
-    FOREIGN KEY (nombreSeleccionLocal, nombreSeleccionVisitante) REFERENCES Partido(nombreSeleccionLocal, nombreSeleccionVisitante)
+    PRIMARY KEY (nombreSeleccionLocal, nombreSeleccionVisitante, fecha),
+    FOREIGN KEY (nombreSeleccionLocal) REFERENCES Seleccion(nombre),
+    FOREIGN KEY (nombreSeleccionVisitante) REFERENCES Seleccion(nombre)
 );
 
-CREATE TABLE Estudiante_Elige_Seleccion(
-                                           idUsuario INT NOT NULL,
-                                           nombreSeleccion varchar(50) NOT NULL,
-                                           campeon ENUM ('Campeón', 'Subcampeón') NOT NULL,
-                                           PRIMARY KEY (idUsuario, nombreSeleccion),
-                                           FOREIGN KEY (idUsuario) REFERENCES Estudiante(idUsuario),
-                                           FOREIGN KEY (nombreSeleccion) REFERENCES Seleccion(nombre)
+-- Crear tabla Estudiante_Realiza_Prediccion
+CREATE TABLE Estudiante_Realiza_Prediccion (
+    idUsuario INT,
+    idPrediccion INT,
+    nombreSeleccionLocal VARCHAR(50) NOT NULL,
+    nombreSeleccionVisitante VARCHAR(50) NOT NULL,
+    fecha DATETIME NOT NULL,
+    golLocal INT,
+    golVisitante INT,
+    PRIMARY KEY (idUsuario, idPrediccion),
+    FOREIGN KEY (idUsuario) REFERENCES Estudiante(idUsuario),
+    FOREIGN KEY (nombreSeleccionLocal, nombreSeleccionVisitante, fecha) REFERENCES Partido(nombreSeleccionLocal, nombreSeleccionVisitante, fecha)
 );
 
-INSERT INTO Estudiante (idUsuario, nombre, email, contrasena, carrera) VALUE (1,'Maria','maria@madas.com','1234','Ingeniería en Informática');
+-- Crear tabla Estudiante_Elige_Seleccion
+CREATE TABLE Estudiante_Elige_Seleccion (
+    idUsuario INT NOT NULL,
+    nombreSeleccion VARCHAR(50) NOT NULL,
+    campeon ENUM ('Campeón', 'Subcampeón') NOT NULL,
+    PRIMARY KEY (idUsuario, nombreSeleccion),
+    FOREIGN KEY (idUsuario) REFERENCES Estudiante(idUsuario),
+    FOREIGN KEY (nombreSeleccion) REFERENCES Seleccion(nombre)
+);
 
-INSERT INTO Administrador (idAdmin, nombre, email, contrasena) VALUE (0,'Administrador','admin@gmail.com','4321');
+-- Insertar datos en la tabla Estudiante
+INSERT INTO Estudiante (idUsuario, nombre, email, contrasena, carrera) VALUES
+(1, 'Maria', 'maria@madas.com', '1234', 'Ingeniería en Informática');
 
-INSERT INTO Seleccion(nombre) VALUES
+-- Insertar datos en la tabla Administrador
+INSERT INTO Administrador (idAdmin, nombre, email, contrasena) VALUES
+(1, 'Administrador', 'admin@gmail.com', '4321');
+
+-- Insertar datos en la tabla Seleccion
+INSERT INTO Seleccion (nombre) VALUES
 ('Argentina'),
 ('Bolivia'),
 ('Brasil'),
@@ -78,36 +90,38 @@ INSERT INTO Seleccion(nombre) VALUES
 ('Uruguay'),
 ('Venezuela');
 
+-- Insertar datos en la tabla Partido
 INSERT INTO Partido (nombreSeleccionLocal, nombreSeleccionVisitante, fecha, golLocal, golVisitante) VALUES
-('Argentina', 'Canadá', '2024-06-20', NULL, NULL),
-('Peru', 'Chile', '2024-06-21', NULL, NULL),
-('Ecuador', 'Venezuela', '2024-06-22', NULL, NULL),
-('México', 'Jamaica', '2024-06-22', NULL, NULL),
-('United States', 'Bolivia', '2024-06-23', NULL, NULL),
-('Uruguay', 'Panamá', '2024-06-23', NULL, NULL),
-('Colombia', 'Paraguay', '2024-06-24', NULL, NULL),
-('Brasil', 'Costa Rica', '2024-06-24', NULL, NULL),
-('Peru', 'Canadá', '2024-06-25', NULL, NULL),
-('Chile', 'Argentina', '2024-06-25', NULL, NULL),
-('Ecuador', 'Jamaica', '2024-06-26', NULL, NULL),
-('Venezuela', 'México', '2024-06-26', NULL, NULL),
-('Panamá', 'United States', '2024-06-27', NULL, NULL),
-('Uruguay', 'Bolivia', '2024-06-27', NULL, NULL),
-('Colombia', 'Costa Rica', '2024-06-28', NULL, NULL),
-('Paraguay', 'Brasil', '2024-06-28', NULL, NULL),
-('Argentina', 'Peru', '2024-06-29', NULL, NULL),
-('Canadá', 'Chile', '2024-06-29', NULL, NULL),
-('Jamaica', 'Venezuela', '2024-06-30', NULL, NULL),
-('México', 'Ecuador', '2024-06-30', NULL, NULL),
-('United States', 'Uruguay', '2024-07-01', NULL, NULL),
-('Bolivia', 'Panamá', '2024-07-01', NULL, NULL),
-('Brasil', 'Colombia', '2024-07-02', NULL, NULL),
-('Costa Rica', 'Paraguay', '2024-07-02', NULL, NULL);
+('Argentina', 'Canadá', '2024-06-20 21:00:00', NULL, NULL),
+('Peru', 'Chile', '2024-06-21 21:00:00', NULL, NULL),
+('Ecuador', 'Venezuela', '2024-06-22 19:00:00', NULL, NULL),
+('México', 'Jamaica', '2024-06-22 22:00:00', NULL, NULL),
+('United States', 'Bolivia', '2024-06-23 19:00:00', NULL, NULL),
+('Uruguay', 'Panamá', '2024-06-23 22:00:00', NULL, NULL),
+('Colombia', 'Paraguay', '2024-06-24 19:00:00', NULL, NULL),
+('Brasil', 'Costa Rica', '2024-06-24 22:00:00', NULL, NULL),
+('Peru', 'Canadá', '2024-06-25 19:00:00', NULL, NULL),
+('Chile', 'Argentina', '2024-06-25 22:00:00', NULL, NULL),
+('Ecuador', 'Jamaica', '2024-06-26 19:00:00', NULL, NULL),
+('Venezuela', 'México', '2024-06-26 22:00:00', NULL, NULL),
+('Panamá', 'United States', '2024-06-27 19:00:00', NULL, NULL),
+('Uruguay', 'Bolivia', '2024-06-27 22:00:00', NULL, NULL),
+('Colombia', 'Costa Rica', '2024-06-28 19:00:00', NULL, NULL),
+('Paraguay', 'Brasil', '2024-06-28 22:00:00', NULL, NULL),
+('Argentina', 'Peru', '2024-06-29 21:00:00', NULL, NULL),
+('Canadá', 'Chile', '2024-06-29 21:00:00', NULL, NULL),
+('Jamaica', 'Venezuela', '2024-06-30 21:00:00', NULL, NULL),
+('México', 'Ecuador', '2024-06-30 21:00:00', NULL, NULL),
+('United States', 'Uruguay', '2024-07-01 22:00:00', NULL, NULL),
+('Bolivia', 'Panamá', '2024-07-01 22:00:00', NULL, NULL),
+('Brasil', 'Colombia', '2024-07-02 22:00:00', NULL, NULL),
+('Costa Rica', 'Paraguay', '2024-07-02 22:00:00', NULL, NULL);
 
-INSERT INTO Estudiante_Realiza_Prediccion(idUsuario, idPrediccion, nombreSeleccionLocal, nombreSeleccionVisitante, golLocal, golVisitante) VALUE (1, 1, 'Argentina', 'Canadá', 0, 3);
+-- Insertar datos en la tabla Estudiante_Realiza_Prediccion
+INSERT INTO Estudiante_Realiza_Prediccion (idUsuario, idPrediccion, nombreSeleccionLocal, nombreSeleccionVisitante, fecha, golLocal, golVisitante) VALUES
+(1, 1, 'Argentina', 'Canadá', '2024-06-20 21:00:00', 0, 3);
 
-INSERT INTO Estudiante_Elige_Seleccion(idUsuario, nombreSeleccion, campeon) VALUE (1,'Argentina','Campeón');
-
-INSERT INTO Estudiante_Elige_Seleccion(idUsuario, nombreSeleccion, campeon) VALUE (1,'Brasil','Subcampeón');
-
-
+-- Insertar datos en la tabla Estudiante_Elige_Seleccion
+INSERT INTO Estudiante_Elige_Seleccion (idUsuario, nombreSeleccion, campeon) VALUES
+(1, 'Argentina', 'Campeón'),
+(1, 'Brasil', 'Subcampeón');
