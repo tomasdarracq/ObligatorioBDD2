@@ -13,29 +13,29 @@ public class PartidoService {
         this.partidoRepository = partidoRepository;
     }
 
-    public List<Partido> getpartidos(){
+    public List<Partido> getpartidos() {
         return partidoRepository.findAllPartidos();
     }
 
-    public void createpartido(Partido partido){
+    public void createpartido(Partido partido) {
         partidoRepository.save(partido);
     }
+
     public List<PartidoDTO> getPartidosDTO() {
-        List<Partido> partidos = partidoRepository.findAll();
+        List<Partido> partidos = partidoRepository.findAllPartidos();
         List<PartidoDTO> partidosDTO = new ArrayList<>();
 
         for (Partido partido : partidos) {
-            PartidoDTO partidoDTO = new PartidoDTO();
-            partidoDTO.setSeleccionLocalNombre(partido.getSeleccionlocal().getNombre());
-            partidoDTO.setSeleccionVisitanteNombre(partido.getSeleccionvisitante().getNombre());
-            partidoDTO.setGolesLocal(partido.getGolesLocal());
-            partidoDTO.setGolesVisitante(partido.getGolesVisitante());
-            partidoDTO.setFecha(partido.getId().getFecha());
+            PartidoDTO partidoDTO = new PartidoDTO(
+                    partido.getSeleccionlocal().getNombre(),
+                    partido.getSeleccionvisitante().getNombre(),
+                    partido.getGolLocal(),
+                    partido.getGolVisitante(),
+                    partido.getId().getFecha()
+            );
             partidosDTO.add(partidoDTO);
         }
-
         return partidosDTO;
     }
-
-
 }
+

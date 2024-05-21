@@ -1,6 +1,7 @@
 package com.obligatorioPenca.obligatorioPenca.partido;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class PartidoDTO {
@@ -8,15 +9,24 @@ public class PartidoDTO {
     private String seleccionVisitanteNombre;
     private int golesLocal;
     private int golesVisitante;
-    private LocalDate fecha;
+    private LocalDateTime fecha;
 
-    public LocalDate getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public PartidoDTO(String seleccionLocalNombre, String seleccionVisitanteNombre, int golesLocal, int golesVisitante, LocalDateTime fecha) {
+        this.seleccionLocalNombre = seleccionLocalNombre;
+        this.seleccionVisitanteNombre = seleccionVisitanteNombre;
+        this.golesLocal = golesLocal;
+        this.golesVisitante = golesVisitante;
         this.fecha = fecha;
     }
+
+    public void setFecha(LocalDateTime fecha) {
+        this.fecha = fecha;
+    }
+// Getters y Setters
 
     public String getSeleccionLocalNombre() {
         return seleccionLocalNombre;

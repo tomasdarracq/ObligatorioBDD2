@@ -4,44 +4,42 @@ import com.obligatorioPenca.obligatorioPenca.seleccion.Seleccion;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
+@Table(name = "Partido")
 public class Partido {
-
     @EmbeddedId
     private PartidocompositeKey id;
 
     @ManyToOne
-    @MapsId("seleccionlocalId")
-    @JoinColumn(name = "seleccionlocal_id")
+    @MapsId("nombreSeleccionLocal")
+    @JoinColumn(name = "nombreSeleccionLocal", referencedColumnName = "nombre")
     private Seleccion seleccionlocal;
 
     @ManyToOne
-    @MapsId("seleccionvisitanteId")
-    @JoinColumn(name = "seleccionvisitante_id")
+    @MapsId("nombreSeleccionVisitante")
+    @JoinColumn(name = "nombreSeleccionVisitante", referencedColumnName = "nombre")
     private Seleccion seleccionvisitante;
 
+    @Column(name = "golLocal")
+    private Integer golLocal;
 
-    @Column(name = "goles_local")
-    private int golesLocal;
-
-    @Column(name = "goles_visitante")
-    private int golesVisitante;
+    @Column(name = "golVisitante")
+    private Integer golVisitante;
 
     // Constructors, getters, setters
 
+    public Partido() {}
 
-
-    public Partido() {
-    }
-
-    public Partido(Seleccion seleccionlocal, Seleccion seleccionvisitante, Date fecha, int golesLocal, int golesVisitante) {
+    public Partido(Seleccion seleccionlocal, Seleccion seleccionvisitante, LocalDateTime fecha, Integer golLocal, Integer golVisitante) {
         this.seleccionlocal = seleccionlocal;
         this.seleccionvisitante = seleccionvisitante;
-        this.golesLocal = golesLocal;
-        this.golesVisitante = golesVisitante;
-        //this.id = new PartidocompositeKey(seleccionlocal.getId(), seleccionvisitante.getId());
+        this.golLocal = golLocal;
+        this.golVisitante = golVisitante;
+        this.id = new PartidocompositeKey(seleccionlocal.getNombre(), seleccionvisitante.getNombre(), fecha);
     }
 
     public PartidocompositeKey getId() {
@@ -68,21 +66,32 @@ public class Partido {
         this.seleccionvisitante = seleccionvisitante;
     }
 
-    public int getGolesLocal() {
-        return golesLocal;
+    public Integer getGolLocal() {
+        return golLocal;
     }
 
-    public void setGolesLocal(int golesLocal) {
-        this.golesLocal = golesLocal;
+    public void setGolLocal(Integer golLocal) {
+        this.golLocal = golLocal;
     }
 
-    public int getGolesVisitante() {
-        return golesVisitante;
+    public Integer getGolVisitante() {
+        return golVisitante;
     }
 
-    public void setGolesVisitante(int golesVisitante) {
-        this.golesVisitante = golesVisitante;
+    public void setGolVisitante(Integer golVisitante) {
+        this.golVisitante = golVisitante;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Partido partido = (Partido) o;
+        return Objects.equals(id, partido.id);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

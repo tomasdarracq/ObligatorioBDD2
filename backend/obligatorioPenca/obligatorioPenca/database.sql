@@ -20,12 +20,12 @@ CREATE TABLE Estudiante_Realiza_Prediccion(
                                               foreign key (idUsuario ) references Usuario( idUsuario),
                                               foreign key (idPrediccion ) references Prediccion( idPrediccion)
 );
-CREATE TABLE Seleccion(
-                          idSeleccion int NOT NULL AUTO_INCREMENT,
+CREATE TABLE seleccion(
+                          idseleccion int NOT NULL AUTO_INCREMENT,
                           nombre varchar(50) not null,
-                          primary key (idSeleccion)
+                          primary key (idseleccion)
 );
-CREATE TABLE Partido(
+CREATE TABLE partido(
                         idSeleccionLocal int NOT NULL ,
                         idSeleccionVisitante int NOT NULL ,
                         fecha date ,

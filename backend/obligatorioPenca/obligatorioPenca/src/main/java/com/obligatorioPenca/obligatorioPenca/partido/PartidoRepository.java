@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PartidoRepository extends JpaRepository  <Partido,Long> {
+public interface PartidoRepository extends JpaRepository  <Partido,PartidocompositeKey> {
     @Query("SELECT p FROM Partido p")
     List<Partido> findAllPartidos();
 }
