@@ -1,14 +1,11 @@
 package com.obligatorioPenca.obligatorioPenca.seleccion;
 
-import com.obligatorioPenca.obligatorioPenca.partido.Partido;
 import jakarta.persistence.*;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "Seleccion")
 public class Seleccion {
+
 
     @Id
     @Column(name = "Nombre", nullable = false)
@@ -22,6 +19,9 @@ public class Seleccion {
     }
 
 
+
+
+
     public String getNombre() {
         return nombre;
     }
@@ -29,5 +29,4 @@ public class Seleccion {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
 }
