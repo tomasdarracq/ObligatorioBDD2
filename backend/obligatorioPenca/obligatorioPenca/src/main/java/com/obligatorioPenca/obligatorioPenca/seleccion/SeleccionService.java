@@ -15,13 +15,14 @@ public class SeleccionService {
     }
 
     public List<Seleccion> getSelecciones() {
+        //List<Seleccion> selecciones = seleccionRepository.findAll();
         List<Seleccion> selecciones = seleccionRepository.getSelecciones();
         System.out.println("Selecciones: " + selecciones);
         return selecciones;
     }
 
-    public Seleccion getSeleccionById(int idSeleccion) {
-        Seleccion seleccion = seleccionRepository.getSeleccionById(idSeleccion);
+    public Seleccion getSeleccionByNombre(String nombre) {
+        Seleccion seleccion = seleccionRepository.getSeleccionByNombre(nombre);
         System.out.println("Seleccion: " + seleccion);
         return seleccion;
     }

@@ -7,11 +7,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface SeleccionRepository extends JpaRepository<Seleccion, Integer> {
+public interface SeleccionRepository extends JpaRepository<Seleccion, String> {
 
-    @Query("SELECT s FROM Seleccion s")
+    @Query("SELECT s FROM  Seleccion s")
     List<Seleccion> getSelecciones();
 
-    @Query("SELECT s FROM Seleccion s WHERE s.idSeleccion = ?1")
-    Seleccion getSeleccionById(int idSeleccion);
+    @Query("SELECT s FROM Seleccion s WHERE s.nombre = ?1")
+    Seleccion getSeleccionByNombre(String nombre);
 }

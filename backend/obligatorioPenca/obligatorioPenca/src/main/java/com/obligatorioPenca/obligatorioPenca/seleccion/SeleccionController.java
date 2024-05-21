@@ -25,8 +25,8 @@ public class SeleccionController {
         return seleccionService.getSelecciones();
     }
 
-    @GetMapping("/id/{idSeleccion}")
-    public Seleccion getSeleccionById(@PathVariable int idSeleccion) {
-        return seleccionService.getSeleccionById(idSeleccion);
+    @GetMapping("/{nombre}")
+    public Seleccion getSeleccionByNombre(@PathVariable String nombre) {
+        return seleccionService.getSeleccionByNombre(nombre);
     }
 }

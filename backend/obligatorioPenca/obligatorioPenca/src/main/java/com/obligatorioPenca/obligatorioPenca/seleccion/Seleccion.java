@@ -6,12 +6,9 @@ import jakarta.persistence.*;
 @Table(name = "Seleccion")
 public class Seleccion {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idSeleccion")
-    private int idSeleccion;
 
-    @Column(name = "nombre", nullable = false)
+    @Id
+    @Column(name = "Nombre", nullable = false)
     private String nombre;
 
     public Seleccion() {
@@ -21,13 +18,9 @@ public class Seleccion {
         this.nombre = nombre;
     }
 
-    public int getIdSeleccion() {
-        return idSeleccion;
-    }
 
-    public void setIdSeleccion(int idSeleccion) {
-        this.idSeleccion = idSeleccion;
-    }
+
+
 
     public String getNombre() {
         return nombre;

@@ -1,4 +1,4 @@
-Create table Usuario(
+Create table usuario(
                         idUsuario int NOT NULL AUTO_INCREMENT,
                         nombre varchar(50) not null ,
                         email varchar(50) not null,
@@ -6,12 +6,12 @@ Create table Usuario(
                         tipo varchar(50) not null,
                         PRIMARY KEY (idUsuario)
 );
-CREATE TABLE Prediccion(
+CREATE TABLE prediccion(
                            idPrediccion int NOT NULL AUTO_INCREMENT,
                            primary key (idPrediccion)
 
 );
-CREATE TABLE Estudiante_Realiza_Prediccion(
+CREATE TABLE estudiante_Realiza_Prediccion(
                                               idUsuario int,
                                               idPrediccion int,
                                               goles_local int,
@@ -20,12 +20,12 @@ CREATE TABLE Estudiante_Realiza_Prediccion(
                                               foreign key (idUsuario ) references Usuario( idUsuario),
                                               foreign key (idPrediccion ) references Prediccion( idPrediccion)
 );
-CREATE TABLE Seleccion(
-                          idSeleccion int NOT NULL AUTO_INCREMENT,
+CREATE TABLE seleccion(
+                          idseleccion int NOT NULL AUTO_INCREMENT,
                           nombre varchar(50) not null,
                           primary key (idSeleccion)
 );
-CREATE TABLE Partido(
+CREATE TABLE partido(
                         idSeleccionLocal int NOT NULL ,
                         idSeleccionVisitante int NOT NULL ,
                         fecha date ,
@@ -35,8 +35,8 @@ CREATE TABLE Partido(
                         foreign key (idSeleccionLocal) references Seleccion(idSeleccion),
                         foreign key (idSeleccionVisitante) references Seleccion(idSeleccion)
 );
-CREATE TABLE Selecciones_Tiene_Prediccion (
-                                              idPrediccion int NOT NULL,
+CREATE TABLE selecciones_Tiene_Prediccion (
+                                              idprediccion int NOT NULL,
                                               idSeleccion1 int NOT NULL,
                                               idSeleccion2 int NOT NULL,
                                               fecha date NOT NULL,
