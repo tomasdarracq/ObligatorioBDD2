@@ -1,66 +1,113 @@
-Create table Usuario(
-                        idUsuario int NOT NULL AUTO_INCREMENT,
-                        nombre varchar(50) not null ,
-                        email varchar(50) not null,
-                        contrasena varchar(50) not null,
-                        tipo varchar(50) not null,
-                        PRIMARY KEY (idUsuario)
-);
-CREATE TABLE Prediccion(
-                           idPrediccion int NOT NULL AUTO_INCREMENT,
-                           primary key (idPrediccion)
+DROP DATABASE PencaUCU;
+CREATE DATABASE PencaUCU;
+USE PencaUCU;
 
+CREATE TABLE Estudiante (
+    idUsuario INT NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL ,
+    email VARCHAR(50) NOT NULL,
+    contrasena VARCHAR(50) NOT NULL,
+    carrera VARCHAR(50) NOT NULL,
+    PRIMARY KEY (idUsuario)
 );
-CREATE TABLE Estudiante_Realiza_Prediccion(
-                                              idUsuario int,
-                                              idPrediccion int,
-                                              goles_local int,
-                                              goles_visitante int,
-                                              primary key (idUsuario,idPrediccion),
-                                              foreign key (idUsuario ) references Usuario( idUsuario),
-                                              foreign key (idPrediccion ) references Prediccion( idPrediccion)
+
+CREATE TABLE Administrador (
+    idAdmin INT NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL ,
+    email VARCHAR(50) NOT NULL,
+    contrasena VARCHAR(50) NOT NULL,
+    PRIMARY KEY (idAdmin)
 );
+
 CREATE TABLE Seleccion(
-                          idSeleccion int NOT NULL AUTO_INCREMENT,
-                          nombre varchar(50) not null,
-                          primary key (idSeleccion)
-);
-CREATE TABLE Partido(
-                        idSeleccionLocal int NOT NULL ,
-                        idSeleccionVisitante int NOT NULL ,
-                        fecha date ,
-                        golLocal varchar(50),
-                        golVisitante varchar(50),
-                        primary key (idSeleccionLocal,idSeleccionVisitante, fecha),
-                        foreign key (idSeleccionLocal) references Seleccion(idSeleccion),
-                        foreign key (idSeleccionVisitante) references Seleccion(idSeleccion)
-);
-CREATE TABLE Selecciones_Tiene_Prediccion (
-                                              idPrediccion int NOT NULL,
-                                              idSeleccion1 int NOT NULL,
-                                              idSeleccion2 int NOT NULL,
-                                              fecha date NOT NULL,
-                                              PRIMARY KEY (idPrediccion, idSeleccion1, idSeleccion2, fecha),
-                                              FOREIGN KEY (idSeleccion1, idSeleccion2, fecha) REFERENCES Partido(idSeleccionLocal, idSeleccionVisitante, fecha),
-                                              FOREIGN KEY (idPrediccion) REFERENCES Prediccion(idPrediccion)
-);
-CREATE TABLE Estudiante_Elige_Seleccion(
-                                           idUsuario int NOT NULL,
-                                           idSeleccion int NOT NULL,
-                                           tipo varchar(50),
-                                           PRIMARY KEY (idUsuario, idSeleccion),
-                                           foreign key (idUsuario) references Usuario(idUsuario),
-                                           foreign key (idSeleccion) references Seleccion(idSeleccion)
+                          nombre VARCHAR(50) NOT NULL,
+                          PRIMARY KEY (nombre)
 );
 
-INSERT INTO Usuario (idUsuario, nombre, email, contrasena, tipo) VALUE (1,'Maria','maria@madas.com','1234','Administrador');
-INSERT INTO Prediccion(idPrediccion) value (1);
-INSERT INTO Estudiante_Realiza_Prediccion(idUsuario, idPrediccion, goles_local, goles_visitante) VALUE (1,1,0,3);
-INSERT INTO Seleccion(idSeleccion, nombre) VALUE (1,'Uruguay');
-INSERT INTO Seleccion(idSeleccion, nombre) VALUE (2,'Argentina');
-INSERT INTO Partido (idSeleccionLocal, idSeleccionVisitante, fecha, golLocal, golVisitante) VALUE (1,2,'2024-06-01',2,1);
-INSERT INTO Selecciones_Tiene_Prediccion(idPrediccion, idSeleccion1, idSeleccion2, fecha) VALUE (1,1,2,'2024-06-01');
-INSERT INTO Estudiante_Elige_Seleccion(idUsuario, idSeleccion, tipo) VALUE (1,1,'Campeon');
-INSERT INTO Estudiante_Elige_Seleccion(idUsuario, idSeleccion, tipo) VALUE (1,2,'Subcampeon');
+CREATE TABLE Partido(
+                        nombreSeleccionLocal varchar(50) NOT NULL ,
+                        nombreSeleccionVisitante varchar(50) NOT NULL ,
+                        fecha DATETIME,
+                        golLocal INT,
+                        golVisitante INT,
+                        PRIMARY KEY (nombreSeleccionLocal,nombreSeleccionVisitante, fecha),
+                        FOREIGN KEY (nombreSeleccionLocal) REFERENCES Seleccion(nombre),
+                        FOREIGN KEY (nombreSeleccionVisitante) REFERENCES Seleccion(nombre)
+);
+
+CREATE TABLE Estudiante_Realiza_Prediccion(
+    idUsuario INT,
+    idPrediccion INT,
+    nombreSeleccionLocal varchar(50) NOT NULL ,
+    nombreSeleccionVisitante varchar(50) NOT NULL ,
+    golLocal INT,
+    golVisitante INT,
+    PRIMARY KEY (idUsuario,idPrediccion),
+    FOREIGN KEY (idUsuario ) REFERENCES Estudiante(idUsuario),
+    FOREIGN KEY (nombreSeleccionLocal, nombreSeleccionVisitante) REFERENCES Partido(nombreSeleccionLocal, nombreSeleccionVisitante)
+);
+
+CREATE TABLE Estudiante_Elige_Seleccion(
+                                           idUsuario INT NOT NULL,
+                                           nombreSeleccion varchar(50) NOT NULL,
+                                           campeon ENUM ('Campeón', 'Subcampeón') NOT NULL,
+                                           PRIMARY KEY (idUsuario, nombreSeleccion),
+                                           FOREIGN KEY (idUsuario) REFERENCES Estudiante(idUsuario),
+                                           FOREIGN KEY (nombreSeleccion) REFERENCES Seleccion(nombre)
+);
+
+INSERT INTO Estudiante (idUsuario, nombre, email, contrasena, carrera) VALUE (1,'Maria','maria@madas.com','1234','Ingeniería en Informática');
+
+INSERT INTO Administrador (idAdmin, nombre, email, contrasena) VALUE (0,'Administrador','admin@gmail.com','4321');
+
+INSERT INTO Seleccion(nombre) VALUES
+('Argentina'),
+('Bolivia'),
+('Brasil'),
+('Canadá'),
+('Chile'),
+('Colombia'),
+('Costa Rica'),
+('Ecuador'),
+('Jamaica'),
+('México'),
+('Panamá'),
+('Paraguay'),
+('Peru'),
+('United States'),
+('Uruguay'),
+('Venezuela');
+
+INSERT INTO Partido (nombreSeleccionLocal, nombreSeleccionVisitante, fecha, golLocal, golVisitante) VALUES
+('Argentina', 'Canadá', '2024-06-20', NULL, NULL),
+('Peru', 'Chile', '2024-06-21', NULL, NULL),
+('Ecuador', 'Venezuela', '2024-06-22', NULL, NULL),
+('México', 'Jamaica', '2024-06-22', NULL, NULL),
+('United States', 'Bolivia', '2024-06-23', NULL, NULL),
+('Uruguay', 'Panamá', '2024-06-23', NULL, NULL),
+('Colombia', 'Paraguay', '2024-06-24', NULL, NULL),
+('Brasil', 'Costa Rica', '2024-06-24', NULL, NULL),
+('Peru', 'Canadá', '2024-06-25', NULL, NULL),
+('Chile', 'Argentina', '2024-06-25', NULL, NULL),
+('Ecuador', 'Jamaica', '2024-06-26', NULL, NULL),
+('Venezuela', 'México', '2024-06-26', NULL, NULL),
+('Panamá', 'United States', '2024-06-27', NULL, NULL),
+('Uruguay', 'Bolivia', '2024-06-27', NULL, NULL),
+('Colombia', 'Costa Rica', '2024-06-28', NULL, NULL),
+('Paraguay', 'Brasil', '2024-06-28', NULL, NULL),
+('Argentina', 'Peru', '2024-06-29', NULL, NULL),
+('Canadá', 'Chile', '2024-06-29', NULL, NULL),
+('Jamaica', 'Venezuela', '2024-06-30', NULL, NULL),
+('México', 'Ecuador', '2024-06-30', NULL, NULL),
+('United States', 'Uruguay', '2024-07-01', NULL, NULL),
+('Bolivia', 'Panamá', '2024-07-01', NULL, NULL),
+('Brasil', 'Colombia', '2024-07-02', NULL, NULL),
+('Costa Rica', 'Paraguay', '2024-07-02', NULL, NULL);
+
+INSERT INTO Estudiante_Realiza_Prediccion(idUsuario, idPrediccion, nombreSeleccionLocal, nombreSeleccionVisitante, golLocal, golVisitante) VALUE (1, 1, 'Argentina', 'Canadá', 0, 3);
+
+INSERT INTO Estudiante_Elige_Seleccion(idUsuario, nombreSeleccion, campeon) VALUE (1,'Argentina','Campeón');
+
+INSERT INTO Estudiante_Elige_Seleccion(idUsuario, nombreSeleccion, campeon) VALUE (1,'Brasil','Subcampeón');
 
 
