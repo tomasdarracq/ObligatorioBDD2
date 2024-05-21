@@ -125,3 +125,4 @@ INSERT INTO Estudiante_Realiza_Prediccion (idUsuario, idPrediccion, nombreSelecc
 INSERT INTO Estudiante_Elige_Seleccion (idUsuario, nombreSeleccion, campeon) VALUES
 (1, 'Argentina', 'Campeón'),
 (1, 'Brasil', 'Subcampeón');
+
