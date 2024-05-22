@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -22,17 +23,26 @@ public class PartidoController {
     public List<Partido> getPartidos() {
         return partidoService.getpartidos();
     }
-    */
-@GetMapping
-@ApiOperation(value = "Obtiene todos los partidos", response = PartidoDTO.class, responseContainer = "List")
-public ResponseEntity<List<PartidoDTO>> getAllPartidos() {
+
+ */
+
+    @GetMapping
+//@ApiOperation(value = "Obtiene todos los partidos", response = PartidoDTO.class, responseContainer = "List")
+    public ResponseEntity<List<PartidoDTO>> getAllPartidos() {
     List<PartidoDTO> partidosDTO = partidoService.getPartidosDTO();
     return ResponseEntity.ok(partidosDTO);
-}
+    }
+
+    @PostMapping("/fecha")
+    public ResponseEntity<List<PartidoDTO>> obtenerpartidobyFecha(@RequestBody LocalDateTime fecha){
+        List<PartidoDTO> partidosDTO=partidoService.getPartidobyFecha(fecha);
+        return ResponseEntity.ok(partidosDTO);
+    }
 
     @PostMapping
-    public void createPartido(@RequestBody  Partido partido ){
-
+    public ResponseEntity<PartidoDTO> createPartido(@RequestBody  PartidoDTO partido ){
         partidoService.createpartido(partido);
+        return  ResponseEntity.ok(partido);
+
     }
 }
