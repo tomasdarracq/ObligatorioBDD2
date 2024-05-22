@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { PartidoService } from './partido.service';
+import { Partido } from './partido';
 
 @Component({
   selector: 'app-penca',
@@ -8,7 +10,22 @@ import { Component } from '@angular/core';
   styleUrl: './penca.component.css'
 })
 export class PencaComponent {
-  fixture = [
+  fixture: Partido[] = [];
+  constructor(private partidoService: PartidoService) { }
+  ngOnInit() {
+    this.getPartidos();
+  }
+  
+
+  getPartidos() {
+    this.partidoService.getAllPartidos().subscribe((partidos) =>
+      (partidos: Partido[]) => {
+        this.fixture = partidos;
+      },
+      (error) => console.log(error)
+    );
+  }
+  /*fixture = [
     {
       fecha: '2023-05-17',
       partidos: [
@@ -51,5 +68,5 @@ export class PencaComponent {
         { id: 4, local: 'EEUU', visitante: 'Colombia' }
       ]
     }
-  ];
+  ];*/
 }

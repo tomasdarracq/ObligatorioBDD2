@@ -7,6 +7,6 @@ export const routes: Routes = [
     { path: '', component: LoginComponent },
     // { path: '', component:PencaComponent },
     { path: 'penca', component: PencaComponent },
-    { path: 'regis.tro', component: RegistroComponent },
+    { path: 'registro', component: RegistroComponent },
 
 ];
