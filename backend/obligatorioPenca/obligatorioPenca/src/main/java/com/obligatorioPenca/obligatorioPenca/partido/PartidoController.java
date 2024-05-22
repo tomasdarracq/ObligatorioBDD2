@@ -18,13 +18,6 @@ public class PartidoController {
         this.partidoService = partidoService;
     }
 
-/*
-    @GetMapping
-    public List<Partido> getPartidos() {
-        return partidoService.getpartidos();
-    }
-
- */
 
     @GetMapping
 //@ApiOperation(value = "Obtiene todos los partidos", response = PartidoDTO.class, responseContainer = "List")
