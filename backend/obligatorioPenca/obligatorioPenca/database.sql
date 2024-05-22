@@ -4,12 +4,13 @@ USE PencaUCU;
 
 -- Crear tabla Estudiante
 CREATE TABLE Estudiante (
-    idUsuario INT NOT NULL AUTO_INCREMENT,
+    idEstudiante INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     contrasena VARCHAR(50) NOT NULL,
     carrera VARCHAR(50) NOT NULL,
-    PRIMARY KEY (idUsuario)
+    puntajeTotal INT,
+    PRIMARY KEY (idEstudiante)
 );
 
 -- Crear tabla Administrador
@@ -41,30 +42,31 @@ CREATE TABLE Partido (
 
 -- Crear tabla Estudiante_Realiza_Prediccion
 CREATE TABLE Estudiante_Realiza_Prediccion (
-    idUsuario INT,
+    idEstudiante INT,
     idPrediccion INT,
     nombreSeleccionLocal VARCHAR(50) NOT NULL,
     nombreSeleccionVisitante VARCHAR(50) NOT NULL,
     fecha DATETIME NOT NULL,
     golLocal INT,
     golVisitante INT,
-    PRIMARY KEY (idUsuario, idPrediccion),
-    FOREIGN KEY (idUsuario) REFERENCES Estudiante(idUsuario),
+    puntaje INT,
+    PRIMARY KEY (idEstudiante, idPrediccion),
+    FOREIGN KEY (idEstudiante) REFERENCES Estudiante(idEstudiante),
     FOREIGN KEY (nombreSeleccionLocal, nombreSeleccionVisitante, fecha) REFERENCES Partido(nombreSeleccionLocal, nombreSeleccionVisitante, fecha)
 );
 
 -- Crear tabla Estudiante_Elige_Seleccion
 CREATE TABLE Estudiante_Elige_Seleccion (
-    idUsuario INT NOT NULL,
+    idEstudiante INT NOT NULL,
     nombreSeleccion VARCHAR(50) NOT NULL,
     campeon ENUM ('Campeón', 'Subcampeón') NOT NULL,
-    PRIMARY KEY (idUsuario, nombreSeleccion),
-    FOREIGN KEY (idUsuario) REFERENCES Estudiante(idUsuario),
+    PRIMARY KEY (idEstudiante, nombreSeleccion),
+    FOREIGN KEY (idEstudiante) REFERENCES Estudiante(idEstudiante),
     FOREIGN KEY (nombreSeleccion) REFERENCES Seleccion(nombre)
 );
 
 -- Insertar datos en la tabla Estudiante
-INSERT INTO Estudiante (idUsuario, nombre, email, contrasena, carrera) VALUES
+INSERT INTO Estudiante (idEstudiante, nombre, email, contrasena, carrera) VALUES
 (1, 'Maria', 'maria@madas.com', '1234', 'Ingeniería en Informática');
 
 -- Insertar datos en la tabla Administrador
@@ -118,11 +120,11 @@ INSERT INTO Partido (nombreSeleccionLocal, nombreSeleccionVisitante, fecha, golL
 ('Costa Rica', 'Paraguay', '2024-07-02 22:00:00', NULL, NULL);
 
 -- Insertar datos en la tabla Estudiante_Realiza_Prediccion
-INSERT INTO Estudiante_Realiza_Prediccion (idUsuario, idPrediccion, nombreSeleccionLocal, nombreSeleccionVisitante, fecha, golLocal, golVisitante) VALUES
-(1, 1, 'Argentina', 'Canadá', '2024-06-20 21:00:00', 0, 3);
+INSERT INTO Estudiante_Realiza_Prediccion (idEstudiante, idPrediccion, nombreSeleccionLocal, nombreSeleccionVisitante, fecha, golLocal, golVisitante,puntaje) VALUES
+(1, 1, 'Argentina', 'Canadá', '2024-06-20 21:00:00', 0, 3,4);
 
 -- Insertar datos en la tabla Estudiante_Elige_Seleccion
-INSERT INTO Estudiante_Elige_Seleccion (idUsuario, nombreSeleccion, campeon) VALUES
+INSERT INTO Estudiante_Elige_Seleccion (idEstudiante, nombreSeleccion, campeon) VALUES
 (1, 'Argentina', 'Campeón'),
 (1, 'Brasil', 'Subcampeón');
 
