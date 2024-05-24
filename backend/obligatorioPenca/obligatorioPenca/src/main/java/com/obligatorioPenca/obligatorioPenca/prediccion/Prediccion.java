@@ -13,16 +13,28 @@ import java.time.LocalDateTime;
 @Table(name = "Estudiante_Realiza_Prediccion")
 public class Prediccion {
 
+    public PrediccionCompositeKey getId() {
+        return id;
+    }
+
     @EmbeddedId
     private PrediccionCompositeKey id;
 
     @ManyToOne
+    //@MapsId("partidoId") // Nombre del atributo en PrediccionCompositeKey
     @JoinColumns({
             @JoinColumn(name = "nombreSeleccionLocal", referencedColumnName = "nombreSeleccionLocal"),
             @JoinColumn(name = "nombreSeleccionVisitante", referencedColumnName = "nombreSeleccionVisitante"),
             @JoinColumn(name = "fecha", referencedColumnName = "fecha")
     })
     private Partido partido;
+
+    @ManyToOne
+    @MapsId("idEstudiante")
+    @JoinColumns({
+            @JoinColumn(name = "idEstudiante", referencedColumnName = "idEstudiante"),
+    })
+    private Estudiante estudiante;
 
 /*
     @ManyToOne
@@ -50,8 +62,8 @@ public class Prediccion {
     public Prediccion() {
 
     }
-    public Prediccion( Integer puntaje,PrediccionCompositeKey id,Partido partido, Integer golLocal, Integer golVisitante) {
-        this.id = id;
+    public Prediccion( Estudiante estudiante, Partido partido,  Integer golLocal, Integer golVisitante, Integer puntaje) {
+        this.id = new PrediccionCompositeKey(estudiante.getIdEstudiante(),partido.getSeleccionlocal().getNombre(),partido.getSeleccionvisitante().getNombre(),partido.getId().getFecha());
         this.puntaje = puntaje;
         this.partido = partido;
         this.golLocal = golLocal;
