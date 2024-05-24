@@ -15,11 +15,11 @@ public class PartidoDTO {
         return fecha;
     }
 
-    public PartidoDTO(String seleccionLocalNombre, String seleccionVisitanteNombre, int golesLocal, int golesVisitante, LocalDateTime fecha) {
+    public PartidoDTO(String seleccionLocalNombre, String seleccionVisitanteNombre, Integer golesLocal, Integer golesVisitante, LocalDateTime fecha) {
         this.seleccionLocalNombre = seleccionLocalNombre;
         this.seleccionVisitanteNombre = seleccionVisitanteNombre;
-        this.golesLocal = golesLocal;
-        this.golesVisitante = golesVisitante;
+        this.golesLocal = (golesLocal != null) ? golesLocal : 0;  // Manejo de null
+        this.golesVisitante = (golesVisitante != null) ? golesVisitante : 0;  // Manejo de null
         this.fecha = fecha;
     }
 
@@ -59,4 +59,6 @@ public class PartidoDTO {
     public void setGolesVisitante(int golesVisitante) {
         this.golesVisitante = golesVisitante;
     }
+
+
 }
