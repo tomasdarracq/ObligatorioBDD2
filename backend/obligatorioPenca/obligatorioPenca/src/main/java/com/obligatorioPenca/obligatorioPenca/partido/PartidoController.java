@@ -20,7 +20,7 @@ public class PartidoController {
 
 
     @GetMapping
-//@ApiOperation(value = "Obtiene todos los partidos", response = PartidoDTO.class, responseContainer = "List")
+    //@ApiOperation(value = "Obtiene todos los partidos", response = PartidoDTO.class, responseContainer = "List")
     public ResponseEntity<List<PartidoDTO>> getAllPartidos() {
     List<PartidoDTO> partidosDTO = partidoService.getPartidosDTO();
     return ResponseEntity.ok(partidosDTO);
