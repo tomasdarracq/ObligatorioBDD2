@@ -2,37 +2,63 @@ package com.obligatorioPenca.obligatorioPenca.prediccion;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Embeddable
 public class PrediccionCompositeKey implements Serializable {
-    @Column(name = "idEstudiante")
+
+
+    @Column(name = "idEstudiante", insertable=false, updatable=false)
     private Integer idEstudiante;
 
-    @Column(name = "idPrediccion")
-    private Integer idPrediccion;
+    @Column(name = "nombreSeleccionLocal", insertable=false, updatable=false)
+    private String nombreSeleccionLocal;
 
+    @Column(name = "nombreSeleccionVisitante", insertable=false, updatable=false)
+    private String nombreSeleccionVisitante;
 
+    @Column(name = "fecha", insertable=false, updatable=false)
+    private LocalDateTime fecha;
 
     public PrediccionCompositeKey() {}
 
-    public PrediccionCompositeKey(Integer idEstudiante, Integer idPrediccion) {
+    public PrediccionCompositeKey(Integer idEstudiante, String nombreSeleccionLocal, String nombreSeleccionVisitante, LocalDateTime fecha) {
         this.idEstudiante = idEstudiante;
-        this.idPrediccion = idPrediccion;
-
+        this.nombreSeleccionLocal = nombreSeleccionLocal;
+        this.nombreSeleccionVisitante = nombreSeleccionVisitante;
+        this.fecha = fecha;
     }
 
-
-
-    public Integer getIdPrediccion() {
-        return idPrediccion;
+    public Integer getIdEstudiante() {
+        return idEstudiante;
     }
 
-    public void setIdPrediccion(Integer idPrediccion) {
-        this.idPrediccion = idPrediccion;
+    public void setIdEstudiante(Integer idEstudiante) {
+        this.idEstudiante = idEstudiante;
     }
 
+    public String getNombreSeleccionLocal() {
+        return nombreSeleccionLocal;
     }
 
+    public void setNombreSeleccionLocal(String nombreSeleccionLocal) {
+        this.nombreSeleccionLocal = nombreSeleccionLocal;
+    }
+
+    public String getNombreSeleccionVisitante() {
+        return nombreSeleccionVisitante;
+    }
+
+    public void setNombreSeleccionVisitante(String nombreSeleccionVisitante) {
+        this.nombreSeleccionVisitante = nombreSeleccionVisitante;
+    }
+
+    public LocalDateTime getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDateTime fecha) {
+        this.fecha = fecha;
+    }
+}
