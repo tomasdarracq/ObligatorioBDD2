@@ -43,14 +43,13 @@ CREATE TABLE Partido (
 -- Crear tabla Estudiante_Realiza_Prediccion
 CREATE TABLE Estudiante_Realiza_Prediccion (
     idEstudiante INT,
-    idPrediccion INT,
     nombreSeleccionLocal VARCHAR(50) NOT NULL,
     nombreSeleccionVisitante VARCHAR(50) NOT NULL,
     fecha DATETIME NOT NULL,
     golLocal INT,
     golVisitante INT,
     puntaje INT,
-    PRIMARY KEY (idEstudiante, idPrediccion),
+    PRIMARY KEY (idEstudiante, nombreSeleccionLocal,nombreSeleccionVisitante,fecha),
     FOREIGN KEY (idEstudiante) REFERENCES Estudiante(idEstudiante),
     FOREIGN KEY (nombreSeleccionLocal, nombreSeleccionVisitante, fecha) REFERENCES Partido(nombreSeleccionLocal, nombreSeleccionVisitante, fecha)
 );
@@ -120,8 +119,8 @@ INSERT INTO Partido (nombreSeleccionLocal, nombreSeleccionVisitante, fecha, golL
 ('Costa Rica', 'Paraguay', '2024-07-02 22:00:00', NULL, NULL);
 
 -- Insertar datos en la tabla Estudiante_Realiza_Prediccion
-INSERT INTO Estudiante_Realiza_Prediccion (idEstudiante, idPrediccion, nombreSeleccionLocal, nombreSeleccionVisitante, fecha, golLocal, golVisitante,puntaje) VALUES
-(1, 1, 'Argentina', 'Canadá', '2024-06-20 21:00:00', 0, 3,4);
+INSERT INTO Estudiante_Realiza_Prediccion (idEstudiante, nombreSeleccionLocal, nombreSeleccionVisitante, fecha, golLocal, golVisitante,puntaje) VALUES
+(1, 'Argentina', 'Canadá', '2024-06-20 21:00:00', 0, 3,4);
 
 -- Insertar datos en la tabla Estudiante_Elige_Seleccion
 INSERT INTO Estudiante_Elige_Seleccion (idEstudiante, nombreSeleccion, campeon) VALUES

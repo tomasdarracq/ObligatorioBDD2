@@ -12,4 +12,11 @@ public class Estudiante {
     @Column(name = "idEstudiante")
     private Integer idEstudiante;
 
+    public Integer getIdEstudiante() {
+        return idEstudiante;
+    }
+
+    public void setIdEstudiante(Integer idEstudiante) {
+        this.idEstudiante = idEstudiante;
+    }
 }

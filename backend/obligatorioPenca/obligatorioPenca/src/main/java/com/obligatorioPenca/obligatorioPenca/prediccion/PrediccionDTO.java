@@ -3,6 +3,8 @@ package com.obligatorioPenca.obligatorioPenca.prediccion;
 import java.time.LocalDateTime;
 
 public class PrediccionDTO {
+    private Integer idEstudiante;
+
     private String nombreSeleccionLocal;
     private String nombreSeleccionVisitante;
     private LocalDateTime fechaPartido;
@@ -10,7 +12,9 @@ public class PrediccionDTO {
     private Integer golVisitante;
     private Integer puntaje;
 
-    public PrediccionDTO( String nombreSeleccionLocal, String nombreSeleccionVisitante, LocalDateTime fechaPartido, Integer golLocal, Integer golVisitante, Integer puntaje) {
+    public PrediccionDTO(Integer idEstudiante, String nombreSeleccionLocal, String nombreSeleccionVisitante, LocalDateTime fechaPartido, Integer golLocal, Integer golVisitante, Integer puntaje) {
+
+        this.idEstudiante = idEstudiante;
         this.nombreSeleccionLocal = nombreSeleccionLocal;
         this.nombreSeleccionVisitante = nombreSeleccionVisitante;
         this.fechaPartido = fechaPartido;
@@ -63,7 +67,14 @@ public class PrediccionDTO {
         return golVisitante;
     }
 
+    public Integer getIdEstudiante() {return idEstudiante;}
+
     public void setGolVisitante(Integer golVisitante) {
         this.golVisitante = golVisitante;
     }
+
+    public void setIdEstudiante(Integer idEstudiante) {
+        this.idEstudiante = idEstudiante;
+    }
+
 }

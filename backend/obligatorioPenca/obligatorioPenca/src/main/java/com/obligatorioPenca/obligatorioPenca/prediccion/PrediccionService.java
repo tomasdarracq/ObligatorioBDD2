@@ -19,7 +19,7 @@ public class PrediccionService {
 
     public List<PrediccionDTO> mapPrediccionToDTO() {
         List<PrediccionDTO> prediccionDTOLista = new ArrayList<>();
-        List<Prediccion> prediccionLista = PrediccionRepository.getallPredicciones();
+        List<Prediccion> prediccionLista = PrediccionRepository.getAllPredicciones();
         for (Prediccion prediccion : prediccionLista) {
             Partido partido = prediccion.getPartido();
             String nombreSeleccionLocal = partido.getSeleccionlocal().getNombre();
@@ -28,8 +28,11 @@ public class PrediccionService {
             Integer golLocal = prediccion.getGolLocal();
             Integer golVisitante = prediccion.getGolVisitante();
             Integer puntaje = prediccion.getPuntaje();
+            //  Integer idPrediccion = prediccion.getId().getIdPrediccion();
+            Integer idEstudiante = prediccion.getId().getIdEstudiante();
 
             PrediccionDTO prediccionDTO = new PrediccionDTO(
+                    idEstudiante,
                     nombreSeleccionLocal,
                     nombreSeleccionVisitante,
                     fechaPartido,
@@ -38,53 +41,57 @@ public class PrediccionService {
                     puntaje
 
             );
+            //prediccionDTO.setIdPrediccion(idPrediccion);
             prediccionDTOLista.add(prediccionDTO);
         }
 
         return prediccionDTOLista;
     }
 
-    public PrediccionDTO getPrediccionByIdEstudiante(Integer idEstudiante) {
-        Prediccion prediccion = PrediccionRepository.getPrediccionByIdEstudiante(idEstudiante);
-        Partido partido = prediccion.getPartido();
-        String nombreSeleccionLocal = partido.getSeleccionlocal().getNombre();
-        String nombreSeleccionVisitante = partido.getSeleccionvisitante().getNombre();
-        LocalDateTime fechaPartido = partido.getId().getFecha();
-        Integer golLocal = prediccion.getGolLocal();
-        Integer golVisitante = prediccion.getGolVisitante();
-        Integer puntaje = prediccion.getPuntaje();
+    public List<PrediccionDTO> getPrediccionByIdEstudiante(Integer idEstudiante) {
+        List<PrediccionDTO> prediccionDTOLista = new ArrayList<>();
+        List<Prediccion> prediccionLista = PrediccionRepository.findByIdEstudiante(idEstudiante);
+        for (Prediccion prediccion : prediccionLista) {
+            Partido partido = prediccion.getPartido();
+            String nombreSeleccionLocal = partido.getSeleccionlocal().getNombre();
+            String nombreSeleccionVisitante = partido.getSeleccionvisitante().getNombre();
+            LocalDateTime fechaPartido = partido.getId().getFecha();
+            Integer golLocal = prediccion.getGolLocal();
+            Integer golVisitante = prediccion.getGolVisitante();
+            Integer puntaje = prediccion.getPuntaje();
+            //  Integer idPrediccion = prediccion.getId().getIdPrediccion();
 
 
-        PrediccionDTO prediccionDTO = new PrediccionDTO(
-                nombreSeleccionLocal,
-                nombreSeleccionVisitante,
-                fechaPartido,
-                golLocal,
-                golVisitante,
-                puntaje
-        );
-        return prediccionDTO;
+            PrediccionDTO prediccionDTO = new PrediccionDTO(
+                    idEstudiante,
+                    nombreSeleccionLocal,
+                    nombreSeleccionVisitante,
+                    fechaPartido,
+                    golLocal,
+                    golVisitante,
+                    puntaje
+
+            );
+            //prediccionDTO.setIdPrediccion(idPrediccion);
+            prediccionDTOLista.add(prediccionDTO);
+        }
+        return prediccionDTOLista;
     }
 
-    public PrediccionDTO getPrediccionByIdPrediccion(Integer idPrediccion) {
-        Prediccion prediccion = PrediccionRepository.getPrediccionByIdPrediccion(idPrediccion);
-        Partido partido = prediccion.getPartido();
-        String nombreSeleccionLocal = partido.getSeleccionlocal().getNombre();
-        String nombreSeleccionVisitante = partido.getSeleccionvisitante().getNombre();
-        LocalDateTime fechaPartido = partido.getId().getFecha();
-        Integer golLocal = prediccion.getGolLocal();
-        Integer golVisitante = prediccion.getGolVisitante();
-        Integer puntaje = prediccion.getPuntaje();
+
+    public void agregarPrediccion(PrediccionDTO prediccionDTO) {
+        // prediccionDTO.setIdPrediccion(key.getIdPrediccion());
+        PrediccionRepository.agregarPrediccion(
+                prediccionDTO.getIdEstudiante(),
+                prediccionDTO.getNombreSeleccionLocal(),
+                prediccionDTO.getNombreSeleccionVisitante(),
+                prediccionDTO.getFechaPartido(),
+                prediccionDTO.getGolLocal(),
+                prediccionDTO.getGolVisitante(),
+                prediccionDTO.getPuntaje());
 
 
-        PrediccionDTO prediccionDTO = new PrediccionDTO(
-                nombreSeleccionLocal,
-                nombreSeleccionVisitante,
-                fechaPartido,
-                golLocal,
-                golVisitante,
-                puntaje
-        );
-        return prediccionDTO;
     }
+
+
 }

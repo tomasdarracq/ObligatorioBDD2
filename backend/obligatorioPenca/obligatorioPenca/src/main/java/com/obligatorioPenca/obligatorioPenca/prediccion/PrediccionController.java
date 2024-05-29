@@ -17,25 +17,22 @@ public class PrediccionController {
         PrediccionService = prediccionService;
     }
 
-
-
-
-
     @GetMapping
     public List<PrediccionDTO> getPredicciones() {
         List<PrediccionDTO> prediccionDTO = PrediccionService.mapPrediccionToDTO();
         return prediccionDTO;
 
     }
-    @GetMapping("/{idPrediccion}")
-    public PrediccionDTO getPrediccionByIdPrediccion(@PathVariable String idPrediccion) {
-        PrediccionDTO prediccionDTO = PrediccionService.getPrediccionByIdPrediccion(Integer.parseInt(idPrediccion));
-        return prediccionDTO;
+    @GetMapping("/estudiante/{idEstudiante}")
+    public List<PrediccionDTO> getPrediccionByIdEstudiante(@PathVariable String idEstudiante) {
+        List<PrediccionDTO> prediccionDTO = PrediccionService.getPrediccionByIdEstudiante(Integer.parseInt(idEstudiante));
+        return prediccionDTO        ;
     }
 
-    @GetMapping("/estudiante/{idEstudiante}")
-    public PrediccionDTO getPrediccionByIdEstudiante(@PathVariable String idEstudiante) {
-        PrediccionDTO prediccionDTO = PrediccionService.getPrediccionByIdEstudiante(Integer.parseInt(idEstudiante));
-        return prediccionDTO;
+    @PostMapping
+    public void postPrediccion(@RequestBody PrediccionDTO prediccionDTO){
+     PrediccionService.agregarPrediccion(prediccionDTO);
     }
+
+
 }
