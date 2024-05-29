@@ -1,0 +1,29 @@
+<div class="bg">
+    @for (partido of fixture; track partido.fecha ) {
+        <div class="fecha">
+            <h1>{{partido.fecha}}</h1>
+            <div class="partido">
+                <h1>{{partido.seleccionLocalNombre}}</h1>
+                <label for="golesLocal"></label>
+                <input name="golesLocal" type="number" onkeypress="return event.charCode >= 48" min="0">
+                <span class="separador">vs</span>
+                <label for="golesVisitante"></label>
+                <input name="golesVisitante" type="number" onkeypress="return event.charCode >= 48" min="0">
+                <h1>{{partido.seleccionVisitanteNombre}}</h1>
+            </div>
+        </div>
+        }
+        <h1>Jugados</h1>
+        @for (jugado of jugados; track jugado.fecha) {
+        <div class="fecha">
+            <h1>{{jugado.fecha}}</h1>
+            <div class="partido">
+                <h1>{{jugado.seleccionLocalNombre}}</h1>
+                <h1>{{jugado.golesLocal}}</h1>
+                <span class="separador">vs</span>
+                <h1> {{jugado.golesVisitante}}</h1>
+                <h1>{{jugado.seleccionVisitanteNombre}}</h1>
+            </div>
+        </div>
+        }
+</div>
