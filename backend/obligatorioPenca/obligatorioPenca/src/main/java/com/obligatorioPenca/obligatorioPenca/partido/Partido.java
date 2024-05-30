@@ -42,6 +42,8 @@ public class Partido {
         this.id = new PartidocompositeKey(seleccionlocal.getNombre(), seleccionvisitante.getNombre(), fecha);
     }
 
+
+
     public PartidocompositeKey getId() {
         return id;
     }
