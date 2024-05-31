@@ -13,9 +13,7 @@ import java.time.LocalDateTime;
 @Table(name = "Estudiante_Realiza_Prediccion")
 public class Prediccion {
 
-    public PrediccionCompositeKey getId() {
-        return id;
-    }
+
 
     @EmbeddedId
     private PrediccionCompositeKey id;
@@ -70,7 +68,9 @@ public class Prediccion {
         this.golVisitante = golVisitante;
     }
 
-
+    public PrediccionCompositeKey getId() {
+        return id;
+    }
     public Integer getPuntaje() {
         return puntaje;
     }
