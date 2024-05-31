@@ -25,6 +25,7 @@ CREATE TABLE Administrador (
 -- Crear tabla Seleccion
 CREATE TABLE Seleccion (
     nombre VARCHAR(50) NOT NULL,
+    estado VARCHAR(50),
     PRIMARY KEY (nombre)
 );
 
@@ -58,7 +59,7 @@ CREATE TABLE Estudiante_Realiza_Prediccion (
 CREATE TABLE Estudiante_Elige_Seleccion (
     idEstudiante INT NOT NULL,
     nombreSeleccion VARCHAR(50) NOT NULL,
-    campeon ENUM ('Campeón', 'Subcampeón') NOT NULL,
+    eleccion varchar(50) NOT NULL,
     PRIMARY KEY (idEstudiante, nombreSeleccion),
     FOREIGN KEY (idEstudiante) REFERENCES Estudiante(idEstudiante),
     FOREIGN KEY (nombreSeleccion) REFERENCES Seleccion(nombre)
@@ -125,7 +126,7 @@ INSERT INTO Estudiante_Realiza_Prediccion (idEstudiante, nombreSeleccionLocal, n
 (1, 'Perú', 'Chile', '2024-06-21 21:00:00', 1, 6,0);
 
 -- Insertar datos en la tabla Estudiante_Elige_Seleccion
-INSERT INTO Estudiante_Elige_Seleccion (idEstudiante, nombreSeleccion, campeon) VALUES
+INSERT INTO Estudiante_Elige_Seleccion (idEstudiante, nombreSeleccion, eleccion) VALUES
 (1, 'Argentina', 'Campeón'),
 (1, 'Brasil', 'Subcampeón');
 

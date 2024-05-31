@@ -19,6 +19,8 @@ public interface PartidoRepository extends JpaRepository  <Partido,Partidocompos
     @Query(value="SELECT * from Partido p WHERE p.fecha = ?1", nativeQuery = true)
     List<Partido> findAllbyFecha(LocalDateTime fecha);
 
+
+
     @Modifying
     @Transactional
     @Query(
@@ -30,6 +32,17 @@ public interface PartidoRepository extends JpaRepository  <Partido,Partidocompos
                          @Param("golLocal") int golLocal,
                          @Param("golVisitante") int golVisitante);
 
+
+    @Modifying
+    @Transactional
+    @Query(
+            value = "UPDATE Partido SET golLocal = :golLocal, golVisitante = :golVisitante WHERE nombreSeleccionLocal = :nombreSeleccionLocal AND nombreSeleccionVisitante = :nombreSeleccionVisitante AND fecha = :fecha",
+            nativeQuery = true)
+    void actualizarGolesPartido(@Param("nombreSeleccionLocal") String nombreSeleccionLocal,
+                                @Param("nombreSeleccionVisitante") String nombreSeleccionVisitante,
+                                @Param("fecha") LocalDateTime fecha,
+                                @Param("golLocal") int golLocal,
+                                @Param("golVisitante") int golVisitante);
 
 
 

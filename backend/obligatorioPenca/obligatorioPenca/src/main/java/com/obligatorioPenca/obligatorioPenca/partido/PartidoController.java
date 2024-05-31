@@ -21,20 +21,27 @@ public class PartidoController {
     @GetMapping
     //@ApiOperation(value = "Obtiene todos los partidos", response = PartidoDTO.class, responseContainer = "List")
     public ResponseEntity<List<PartidoDTO>> getAllPartidos() {
-    List<PartidoDTO> partidosDTO = partidoService.getPartidosDTO();
+    List<PartidoDTO> partidosDTO = partidoService.obtenerPartidosDTO();
     return ResponseEntity.ok(partidosDTO);
     }
 
     @PostMapping("/fecha")
     public ResponseEntity<List<PartidoDTO>> obtenerpartidobyFecha(@RequestBody LocalDateTime fecha){
-        List<PartidoDTO> partidosDTO=partidoService.getPartidobyFecha(fecha);
+        List<PartidoDTO> partidosDTO=partidoService.obtnerPartidoByFecha(fecha);
         return ResponseEntity.ok(partidosDTO);
     }
 
     @PostMapping
     public ResponseEntity<PartidoDTO> createPartido(@RequestBody  PartidoDTO partido ){
-        partidoService.createpartido(partido);
+        partidoService.crearpartido(partido);
         return  ResponseEntity.ok(partido);
 
     }
+
+    @PutMapping
+    public ResponseEntity<String> agregarGoles(@RequestBody PartidoDTO partidoDTO){
+        return ResponseEntity.ok(partidoService.agregargoles(partidoDTO));
+    }
+
+
 }
