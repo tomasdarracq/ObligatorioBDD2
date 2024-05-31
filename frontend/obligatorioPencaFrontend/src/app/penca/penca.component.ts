@@ -18,19 +18,21 @@ export class PencaComponent implements OnInit {
     this.getPartidos();
   }
 
-  getPartidos() {
-    this.partidoService.getAllPartidos().subscribe(
-      (partidos: Partido[]) => {
-        this.fixture = partidos;
-        this.asignarDia();
-        this.asignarHorario();
-        this.ordenarFechas();
-        this.actualizarFixture();
-      },
-      (error) => console.log(error)
-    );
+
+
+  actualizarFixture() {
+    const ahora = new Date();
+    this.jugados = this.fixture.filter(partido => new Date(partido.fecha) <= ahora);
+    this.fixture = this.fixture.filter(partido => new Date(partido.fecha) > ahora);
   }
 
+    asignarDia() {
+    this.fixture.forEach(partido => {
+      const temp = new Date(partido.fecha);
+      partido.dia = "" + temp.getDate() + "/" + (temp.getMonth() + 1) + "/" + temp.getFullYear();
+    });
+  }
+  
   asignarHorario() {
     this.fixture.forEach(partido => {
       const temp = new Date(partido.fecha);
@@ -44,11 +46,17 @@ export class PencaComponent implements OnInit {
     });
   }
 
-  asignarDia() {
-    this.fixture.forEach(partido => {
-      const temp = new Date(partido.fecha);
-      partido.dia = "" + temp.getDate() + "/" + (temp.getMonth() + 1) + "/" + temp.getFullYear();
-    });
+  getPartidos() {
+    this.partidoService.getAllPartidos().subscribe(
+      (partidos: Partido[]) => {
+        this.fixture = partidos;
+        this.asignarDia();
+        this.asignarHorario();
+        this.ordenarFechas();
+        this.actualizarFixture();
+      },
+      (error) => console.log(error)
+    );
   }
 
   ordenarFechas() {
@@ -58,9 +66,4 @@ export class PencaComponent implements OnInit {
     });
   }
 
-  actualizarFixture() {
-    const now = new Date();
-    this.jugados = this.fixture.filter(partido => new Date(partido.fecha) <= now);
-    this.fixture = this.fixture.filter(partido => new Date(partido.fecha) > now);
-  }
 }
