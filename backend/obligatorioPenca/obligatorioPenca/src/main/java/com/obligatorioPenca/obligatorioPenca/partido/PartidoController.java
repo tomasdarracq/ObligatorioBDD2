@@ -38,9 +38,9 @@ public class PartidoController {
 
     }
 
-    @PutMapping("{idPartido}")
-    public ResponseEntity<String> agregarGoles(){
-        partidoService.
+    @PutMapping
+    public ResponseEntity<String> agregarGoles(@RequestBody PartidoDTO partidoDTO){
+        return ResponseEntity.ok(partidoService.agregargoles(partidoDTO));
     }
 
 
