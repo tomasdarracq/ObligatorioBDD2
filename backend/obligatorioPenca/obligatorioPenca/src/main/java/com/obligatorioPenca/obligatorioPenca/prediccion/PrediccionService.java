@@ -58,9 +58,31 @@ public class PrediccionService {
             LocalDateTime fechaPartido = partido.getId().getFecha();
             Integer golLocal = prediccion.getGolLocal();
             Integer golVisitante = prediccion.getGolVisitante();
-            Integer puntaje = prediccion.getPuntaje();
+
             //  Integer idPrediccion = prediccion.getId().getIdPrediccion();
 
+            LocalDateTime fechaActual = LocalDateTime.now();
+
+            if (partido.getId().getFecha().isBefore(fechaActual)){
+
+                if(partido.getGolLocal() == prediccion.getGolLocal() && partido.getGolVisitante() == prediccion.getGolVisitante()){
+                    prediccion.setPuntaje(4);
+                    System.out.println("le pego");
+                }
+
+                else{
+                    int ganadorPartido = partido.getGolLocal()- partido.getGolVisitante();
+                    int ganadorPrediccion = prediccion.getGolLocal() - prediccion.getGolVisitante();
+                    if((ganadorPartido <0 && ganadorPrediccion <0) || (ganadorPartido >0 && ganadorPrediccion >0) || (ganadorPartido ==0 && ganadorPrediccion ==0) ){
+                        prediccion.setPuntaje(2);
+                        System.out.println("b");
+                    }else{
+                        prediccion.setPuntaje(0);
+                        System.out.println("c");
+                    }
+                }
+            }
+            Integer puntaje = prediccion.getPuntaje();
 
             PrediccionDTO prediccionDTO = new PrediccionDTO(
                     idEstudiante,
@@ -75,6 +97,10 @@ public class PrediccionService {
             //prediccionDTO.setIdPrediccion(idPrediccion);
             prediccionDTOLista.add(prediccionDTO);
         }
+
+
+
+
         return prediccionDTOLista;
     }
 
