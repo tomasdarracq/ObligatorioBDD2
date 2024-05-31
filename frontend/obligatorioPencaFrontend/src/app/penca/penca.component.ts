@@ -1,55 +1,69 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PartidoService } from '../core/services/partido.service';
+import { Partido } from '../core/models/partido';
 
 @Component({
   selector: 'app-penca',
   standalone: true,
   imports: [],
   templateUrl: './penca.component.html',
-  styleUrl: './penca.component.css'
+  styleUrls: ['./penca.component.css']
 })
-export class PencaComponent {
-  fixture = [
-    {
-      fecha: '2023-05-17',
-      partidos: [
-        { id: 1, local: 'Uruguay', visitante: 'Brasil' },
-        { id: 2, local: 'Ecuador', visitante: 'Paraguay' }
-      ]
-    },
-    {
-      fecha: '2023-05-18',
-      partidos: [
-        { id: 3, local: 'Venezuela', visitante: 'México' },
-        { id: 4, local: 'EEUU', visitante: 'Colombia' }
-      ]
-    },
-    {
-      fecha: '2023-05-17',
-      partidos: [
-        { id: 1, local: 'Uruguay', visitante: 'Brasil' },
-        { id: 2, local: 'Ecuador', visitante: 'Paraguay' }
-      ]
-    },
-    {
-      fecha: '2023-05-18',
-      partidos: [
-        { id: 3, local: 'Venezuela', visitante: 'México' },
-        { id: 4, local: 'EEUU', visitante: 'Colombia' }
-      ]
-    },
-    {
-      fecha: '2023-05-17',
-      partidos: [
-        { id: 1, local: 'Uruguay', visitante: 'Brasil' },
-        { id: 2, local: 'Ecuador', visitante: 'Paraguay' }
-      ]
-    },
-    {
-      fecha: '2023-05-18',
-      partidos: [
-        { id: 3, local: 'Venezuela', visitante: 'México' },
-        { id: 4, local: 'EEUU', visitante: 'Colombia' }
-      ]
-    }
-  ];
+export class PencaComponent implements OnInit {
+  fixture: Partido[] = [];
+  jugados: Partido[] = []
+  constructor(private partidoService: PartidoService) { }
+
+  ngOnInit() {
+    this.getPartidos();
+  }
+
+
+
+  actualizarFixture() {
+    const ahora = new Date();
+    this.jugados = this.fixture.filter(partido => new Date(partido.fecha) <= ahora);
+    this.fixture = this.fixture.filter(partido => new Date(partido.fecha) > ahora);
+  }
+
+    asignarDia() {
+    this.fixture.forEach(partido => {
+      const temp = new Date(partido.fecha);
+      partido.dia = "" + temp.getDate() + "/" + (temp.getMonth() + 1) + "/" + temp.getFullYear();
+    });
+  }
+  
+  asignarHorario() {
+    this.fixture.forEach(partido => {
+      const temp = new Date(partido.fecha);
+      if (temp.getMinutes() == 0) {
+        partido.horario = temp.getHours() + ":" + temp.getMinutes() + "0";
+      } else if (temp.getMinutes() > 0 && temp.getMinutes() < 10) {
+        partido.horario = temp.getHours() + ":0" + temp.getMinutes();
+      } else {
+        partido.horario = temp.getHours() + ":" + temp.getMinutes();
+      }
+    });
+  }
+
+  getPartidos() {
+    this.partidoService.getAllPartidos().subscribe(
+      (partidos: Partido[]) => {
+        this.fixture = partidos;
+        this.asignarDia();
+        this.asignarHorario();
+        this.ordenarFechas();
+        this.actualizarFixture();
+      },
+      (error) => console.log(error)
+    );
+  }
+
+  ordenarFechas() {
+    this.fixture.sort((a, b) => {
+      //Ordenar por dia
+      return new Date(a.fecha).getTime() - new Date(b.fecha).getTime();
+    });
+  }
+
 }

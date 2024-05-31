@@ -10,6 +10,8 @@ public class Seleccion {
     @Id
     @Column(name = "Nombre", nullable = false)
     private String nombre;
+    @Column(name = "estado")
+    private String estado;
 
     public Seleccion() {
     }
@@ -28,5 +30,13 @@ public class Seleccion {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }
