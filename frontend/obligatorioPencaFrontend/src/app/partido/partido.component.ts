@@ -19,8 +19,6 @@ export class PartidoComponent {
     this.getPartidos();
   }
 
-
-
   actualizarFixture() {
     const ahora = new Date();
     this.jugados = this.fixture.filter(partido => new Date(partido.fecha) <= ahora);

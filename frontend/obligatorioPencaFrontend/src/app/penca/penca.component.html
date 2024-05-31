@@ -1,32 +1,42 @@
 <div class="bg">
-    @for (partido of fixture; track partido.fecha ) {
-    <form class="fecha">
-        <h1>{{ partido.dia }}</h1>
-        <h1> {{ partido.horario }} </h1>
-        <div class="partido">
-            <h1>{{ partido.seleccionLocalNombre }}</h1>
-            <label for="golesLocal"></label>
-            <input name="golesLocal" type="number" onkeypress="return event.charCode >= 48" min="0">
-            <span class="separador">vs</span>
-            <label for="golesVisitante"></label>
-            <input name="golesVisitante" type="number" onkeypress="return event.charCode >= 48" min="0">
-            <h1>{{ partido.seleccionVisitanteNombre }}</h1>
-        </div>
-        <button type="button" class="btn btn-success">Confirmar</button>
-    </form>
-    }
-    <h4>Resultados</h4>
-    @for (jugado of jugados; track jugado.fecha) {
-    <div class="fecha">
-        <h1>{{ jugado.dia }}</h1>
-        <h1> {{ jugado.horario }} </h1>
-        <div class="partido">
-            <h1>{{ jugado.seleccionLocalNombre }}</h1>
-            <h1>{{ jugado.golesLocal }}</h1>
-            <span class="separador">vs</span>
-            <h1> {{ jugado.golesVisitante }}</h1>
-            <h1>{{ jugado.seleccionVisitanteNombre }}</h1>
-        </div>
+
+    <div>
+        <h1>Próximos Partidos</h1>
+        @for (partido of fixture; track partido.fecha ) {
+        <form class="fecha" [formGroup]="prediccion" (ngSubmit)="crearPrediccion(partido)">
+            <h1>{{ partido.dia }}</h1>
+            <h1> {{ partido.horario }} </h1>
+            <div class="partido">
+                <h1>{{ partido.seleccionLocalNombre }}</h1>
+                <label for="golLocal"></label>
+                <input name="golLocal" type="number" onkeypress="return event.charCode >= 48" min="0"
+                    formControlName="golLocal">
+                <span class="separador">vs</span>
+                <label for="golVisitante"></label>
+                <input name="golVisitante" type="number" onkeypress="return event.charCode >= 48" min="0"
+                    formControlName="golVisitante">
+                <h1>{{ partido.seleccionVisitanteNombre }}</h1>
+            </div>
+            <button type="submit" class="btn btn-success">Confirmar</button>
+        </form>
+        }
     </div>
-    }
+
+    <div>
+        <h1>Resultados</h1>
+        @for (jugado of jugados; track jugado.fecha) {
+        <div class="fecha">
+            <h1>{{ jugado.dia }}</h1>
+            <h1> {{ jugado.horario }} </h1>
+            <div class="partido">
+                <h1>{{ jugado.seleccionLocalNombre }}</h1>
+                <h1>{{ jugado.golesLocal }}</h1>
+                <span class="separador">vs</span>
+                <h1> {{ jugado.golesVisitante }}</h1>
+                <h1>{{ jugado.seleccionVisitanteNombre }}</h1>
+            </div>
+        </div>
+        }
+    </div>
+
 </div>

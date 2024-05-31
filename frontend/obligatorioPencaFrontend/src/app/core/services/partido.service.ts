@@ -8,7 +8,9 @@ import { Observable } from 'rxjs';
 })
 export class PartidoService {
   private apiUrl = 'http://localhost:8080/api/partido';
+
   constructor(private http: HttpClient) { }
+  
   getAllPartidos(): Observable<Partido[]> {
     return this.http.get<Partido[]>(this.apiUrl);
   }
