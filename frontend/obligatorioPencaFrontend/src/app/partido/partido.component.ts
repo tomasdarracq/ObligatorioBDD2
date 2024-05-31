@@ -53,17 +53,25 @@ export class PartidoComponent {
         this.fixture = partidos;
         this.asignarDia();
         this.asignarHorario();
-        this.ordenarFechas();
+        this.ordenarFixture();
         this.actualizarFixture();
+        this.ordenarJugados();
       },
       (error) => console.log(error)
     );
   }
 
-  ordenarFechas() {
+  ordenarFixture() {
     this.fixture.sort((a, b) => {
       //Ordenar por dia
       return new Date(a.fecha).getTime() - new Date(b.fecha).getTime();
+    });
+  }
+
+  ordenarJugados() {
+    this.jugados.sort((a, b) => {
+      //Ordenar por horario
+      return new Date(b.fecha).getTime() - new Date(a.fecha).getTime();
     });
   }
 
