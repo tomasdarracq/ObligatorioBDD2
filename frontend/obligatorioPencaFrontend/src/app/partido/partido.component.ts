@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Partido } from '../core/models/partido';
 import { PartidoService } from '../core/services/partido.service';
+import { Time } from '@angular/common';
 
 @Component({
   selector: 'app-partido',

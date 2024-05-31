@@ -7,18 +7,7 @@
     <list default="true" id="8c042fc6-666a-4f0a-bc52-1e75435f2aa7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/database.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/partido/PartidoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/partido/PartidoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/app.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/app.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/app.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/penca/partido.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/penca/partido.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/penca/penca.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/penca/penca.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/penca/penca.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/penca/penca.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/penca/penca.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/penca/penca.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/core/models/partido.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/core/models/partido.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,30 +37,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Diego/Desktop/2024/1° Semestre/Base de Datos 2/ObligatorioBDD2/backend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "spring.configuration.checksum": "02876dd3220ea3b0416a51c5d14ce0a8",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Diego/Desktop/2024/1° Semestre/Base de Datos 2/ObligatorioBDD2/backend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;02876dd3220ea3b0416a51c5d14ce0a8&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="ObligatorioPencaApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="obligatorioPenca" />
@@ -96,6 +85,8 @@
       <workItem from="1716498315370" duration="2525000" />
       <workItem from="1716586244858" duration="477000" />
       <workItem from="1716588106026" duration="794000" />
+      <workItem from="1717014096060" duration="889000" />
+      <workItem from="1717087431666" duration="716000" />
     </task>
     <servers />
   </component>
