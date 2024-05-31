@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Partido } from '../core/models/partido';
 import { PartidoService } from '../core/services/partido.service';
+import { Time } from '@angular/common';
 
 @Component({
   selector: 'app-partido',
@@ -18,33 +19,60 @@ export class PartidoComponent {
     this.getPartidos();
   }
 
+
+
+  actualizarFixture() {
+    const ahora = new Date();
+    this.jugados = this.fixture.filter(partido => new Date(partido.fecha) <= ahora);
+    this.fixture = this.fixture.filter(partido => new Date(partido.fecha) > ahora);
+  }
+
+    asignarDia() {
+    this.fixture.forEach(partido => {
+      const temp = new Date(partido.fecha);
+      partido.dia = "" + temp.getDate() + "/" + (temp.getMonth() + 1) + "/" + temp.getFullYear();
+    });
+  }
+  
+  asignarHorario() {
+    this.fixture.forEach(partido => {
+      const temp = new Date(partido.fecha);
+      if (temp.getMinutes() == 0) {
+        partido.horario = temp.getHours() + ":" + temp.getMinutes() + "0";
+      } else if (temp.getMinutes() > 0 && temp.getMinutes() < 10) {
+        partido.horario = temp.getHours() + ":0" + temp.getMinutes();
+      } else {
+        partido.horario = temp.getHours() + ":" + temp.getMinutes();
+      }
+    });
+  }
+
   getPartidos() {
     this.partidoService.getAllPartidos().subscribe(
       (partidos: Partido[]) => {
         this.fixture = partidos;
-        this.orderByDate();
-        this.updateFixture();
+        this.asignarDia();
+        this.asignarHorario();
+        this.ordenarFixture();
+        this.actualizarFixture();
+        this.ordenarJugados();
       },
       (error) => console.log(error)
     );
   }
 
-  orderByDate() {
+  ordenarFixture() {
     this.fixture.sort((a, b) => {
       //Ordenar por dia
       return new Date(a.fecha).getTime() - new Date(b.fecha).getTime();
-      //chequear hora
-      
     });
   }
 
-  updateFixture() {
-    //Si la fecha del partido ya ha pasado, agregarlo a jugados, y eliminarlo de fixture
-    this.fixture.forEach(partido => {
-      if (new Date(partido.fecha) <= new Date()) {
-        this.jugados.push(partido);
-        this.fixture.splice(this.fixture.indexOf(partido), 1);
-      }
-    })
+  ordenarJugados() {
+    this.jugados.sort((a, b) => {
+      //Ordenar por horario
+      return new Date(b.fecha).getTime() - new Date(a.fecha).getTime();
+    });
   }
+
 }
