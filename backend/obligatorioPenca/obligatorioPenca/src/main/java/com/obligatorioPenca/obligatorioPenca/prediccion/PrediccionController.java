@@ -10,29 +10,30 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 public class PrediccionController {
 
-   private final PrediccionService PrediccionService;
+    private final PrediccionService prediccionService;
 
     @Autowired
     public PrediccionController(PrediccionService prediccionService) {
-        PrediccionService = prediccionService;
+        this.prediccionService = prediccionService;
     }
 
     @GetMapping
     public List<PrediccionDTO> getPredicciones() {
-        List<PrediccionDTO> prediccionDTO = PrediccionService.mapPrediccionToDTO();
-        return prediccionDTO;
-
+        return prediccionService.mapPrediccionToDTO();
     }
+
     @GetMapping("/estudiante/{idEstudiante}")
     public List<PrediccionDTO> getPrediccionByIdEstudiante(@PathVariable String idEstudiante) {
-        List<PrediccionDTO> prediccionDTO = PrediccionService.getPrediccionByIdEstudiante(Integer.parseInt(idEstudiante));
-        return prediccionDTO        ;
+        return prediccionService.getPrediccionByIdEstudiante(Integer.parseInt(idEstudiante));
     }
 
     @PostMapping
-    public void postPrediccion(@RequestBody PrediccionDTO prediccionDTO){
-     PrediccionService.agregarPrediccion(prediccionDTO);
+    public void postPrediccion(@RequestBody PrediccionDTO prediccionDTO) {
+        prediccionService.agregarPrediccion(prediccionDTO);
     }
 
-
+    @PutMapping
+    public void putPrediccion(@RequestBody PrediccionDTO prediccionDTO) {
+        prediccionService.editarPrediccion(prediccionDTO);
+    }
 }
