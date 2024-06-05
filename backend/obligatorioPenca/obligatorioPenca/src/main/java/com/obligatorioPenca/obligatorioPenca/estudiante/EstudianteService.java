@@ -12,9 +12,14 @@ import java.util.List;
 @Service
 public class EstudianteService {
     private final PartidoRepository partidoRepository;
+    private final EstudianteRepository estudianteRepository;
 
-    public EstudianteService(PartidoRepository partidoRepository) {
+    public EstudianteService(PartidoRepository partidoRepository, EstudianteRepository estudianteRepository) {
         this.partidoRepository = partidoRepository;
+        this.estudianteRepository = estudianteRepository;
+    }
+    public List<Estudiante> obtenerTodosLosEstudiantes(){
+        return estudianteRepository.obtenerTodosLosEstudiantes();
     }
 
     public PartidoDTO createpartido(PartidoDTO partidoDTO) {
@@ -44,6 +49,9 @@ public class EstudianteService {
             partidosDTO.add(partidoDTO);
         }
         return partidosDTO;
+    }
+    public Estudiante getDatosEstudianteById(int idEstudiante){
+        return estudianteRepository.getDatosEstudianteById(idEstudiante);
     }
 
     public List<PartidoDTO> getPartidobyFecha(LocalDateTime fecha){
