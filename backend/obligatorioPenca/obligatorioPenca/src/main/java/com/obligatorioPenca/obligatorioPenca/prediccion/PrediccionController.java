@@ -19,7 +19,7 @@ public class PrediccionController {
 
     @GetMapping
     public List<PrediccionDTO> getPredicciones() {
-        return prediccionService.mapPrediccionToDTO();
+        return prediccionService.getAllPredicciones();
     }
 
     @GetMapping("/estudiante/{idEstudiante}")
