@@ -6,7 +6,7 @@ import { Prediccion } from '../models/prediccion';
 @Injectable({
   providedIn: 'root'
 })
-export class PencaService {
+export class PrediccionService {
   private apiUrl = 'http://localhost:8080/api/prediccion';
 
   constructor(private http: HttpClient) { }

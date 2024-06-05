@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PartidoService } from '../core/services/partido.service';
 import { Partido } from '../core/models/partido';
-import { PencaService } from '../core/services/penca.service';
+import { PrediccionService } from '../core/services/prediccion.service';
 import { Prediccion } from '../core/models/prediccion';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { error } from 'console';
 
 @Component({
@@ -16,14 +16,10 @@ import { error } from 'console';
 export class PencaComponent implements OnInit {
   fixture: Partido[] = [];
   jugados: Partido[] = []
-  prediccion: FormGroup;
-  constructor(private partidoService: PartidoService, private pencaService: PencaService) {
+  prediccionForms: { [key: string]: FormGroup } = {};
 
-    this.prediccion = new FormGroup({
-      golLocal: new FormControl('', [Validators.required]),
-      golVisitante: new FormControl('', [Validators.required])
-    });
-  }
+  constructor(private fb: FormBuilder, private partidoService: PartidoService, private pencaService: PrediccionService) {}
+
 
   ngOnInit() {
     this.getPartidos();
@@ -36,15 +32,8 @@ export class PencaComponent implements OnInit {
     this.fixture = this.fixture.filter(partido => new Date(partido.fecha) > ahora);
   }
 
-  asignarDia() {
-    this.fixture.forEach(partido => {
-      const temp = new Date(partido.fecha);
-      partido.dia = "" + temp.getDate() + "/" + (temp.getMonth() + 1) + "/" + temp.getFullYear();
-    });
-  }
-
-  asignarHorario() {
-    this.fixture.forEach(partido => {
+  dividirFechas() {
+    this.fixture.forEach((partido, index) => {
       const temp = new Date(partido.fecha);
       if (temp.getMinutes() == 0) {
         partido.horario = temp.getHours() + ":" + temp.getMinutes() + "0";
@@ -53,22 +42,40 @@ export class PencaComponent implements OnInit {
       } else {
         partido.horario = temp.getHours() + ":" + temp.getMinutes();
       }
+      partido.dia = "" + temp.getDate() + "/" + (temp.getMonth() + 1) + "/" + temp.getFullYear();
+      partido.id = index;
     });
   }
 
-  crearPrediccion(partido: Partido) {
-    if (this.prediccion.invalid) {
-      console.log("Error al crear la prediccion");
+  crearPrediccion(partidoId: number) {
+    const form = this.prediccionForms[partidoId];
+
+    if (form.invalid) {
+      console.log("Formulario inválido. No se puede crear la predicción.");
       return;
     }
 
+    const golLocal = form.get('golLocal')?.value;
+    const golVisitante = form.get('golVisitante')?.value;
+
+    if (golLocal === null || golLocal === undefined || golVisitante === null || golVisitante === undefined) {
+      console.log("Error: Valores inválidos para goles.");
+      return;
+    }
+
+    const partido = this.fixture.find(p => p.id === partidoId);
+
+    if (!partido) {
+      console.log("Partido no encontrado.");
+      return;
+    }
     //SE REALIZA LA PREDICCION CON ID 1 
     const prediccion = new Prediccion(
       partido.seleccionLocalNombre,
       partido.seleccionVisitanteNombre,
       partido.fecha,
-      this.prediccion.value.golLocal,
-      this.prediccion.value.golVisitante
+      golLocal,
+      golVisitante
     );
 
     console.log(prediccion);
@@ -82,10 +89,10 @@ export class PencaComponent implements OnInit {
     this.partidoService.getAllPartidos().subscribe(
       (partidos: Partido[]) => {
         this.fixture = partidos;
-        this.asignarDia();
-        this.asignarHorario();
+        this.dividirFechas();
         this.ordenarFechas();
         this.actualizarFixture();
+        this.crearFormulariosDePrediccion();
       },
       (error) => console.log(error)
     );
@@ -98,4 +105,12 @@ export class PencaComponent implements OnInit {
     });
   }
 
+  crearFormulariosDePrediccion() {
+    this.fixture.forEach(partido => {
+      this.prediccionForms[partido.id] = this.fb.group({
+        golLocal: ['', Validators.required],
+        golVisitante: ['', Validators.required]
+      });
+    });
+  }
 }
