@@ -3,9 +3,13 @@ export class Prediccion {
     nombreSeleccionLocal!: string;
     nombreSeleccionVisitante!: string;
     fechaPartido!: Date;
+    dia?: string;
+    horario?: string;
+    jugado?: boolean = false;
     golLocal!: number;
     golVisitante!: number;
     puntaje: number = 0;
+    id: number = 0;
 
     constructor(nombreSeleccionLocal: string, nombreSeleccionVisitante: string, fechaPartido: Date,
         golLocal: number, golVisitante: number) {

@@ -1,102 +1,189 @@
 /* General reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  .bg {
-    background-image: url("stadium.jpeg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
-  }
-  
-  h1 {
-    font-size: 24px;
-    color: #ffffff;
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .fecha {
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 10px auto;
-    width: 80%;
-    justify-content: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 88vh;
+}
+
+.columna {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  padding: 15px;
+  margin: 0 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 80vh;
+  width: 600px;
+}
+
+.columna h1 {
+  color: #ffffff;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.col-partidos {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 90%;
+  width: 100%;
+  padding: 10px 25px 10px 10px;
+}
+
+.col-partidos::-webkit-scrollbar {
+  width: 5px;
+  margin: 10px 10px;
+}
+
+.col-partidos::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+
+.col-partidos::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.col-partidos::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+h1 {
+  font-size: 24px;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.fecha {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px 10px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.fecha h3 {
+  font-size: 16px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.partido {
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.07);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  color: #ffffff;
+}
+
+.partido h3 {
+  font-size: 20px;
+  flex: 1;
+  text-align: center;
+}
+
+.separador {
+  margin: 0 20px;
+  color: #6c757d;
+  font-size: 20px;
+}
+
+.partido input[type="number"] {
+  width: 50px;
+  padding: 10px;
+  font-size: 18px;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.005);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  display: block;
+  font-weight: 700;
+}
+
+.partido input[type="number"]:hover, .partido input[type="number"]:focus {
+  background-color: rgba(255, 255, 255, 0.13);
+  border-color: #80bdff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+}
+
+
+.partido input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+button {
+  width: 100%;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 5px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.partido img {
+  width: 50px; /* Adjust the width as needed */
+  height: 30px;
+  margin: 0 10px; /* Add some margin for spacing */
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.partido img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design: Columns stack on smaller screens */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
     align-items: center;
   }
-  
-  .fecha h3 {
-    font-size: 16px;
-    color: #ffffff;
-    text-align: center;
+
+  .columna {
+    width: 90%;
+    margin: 10px 0;
   }
-  
-  .partido {
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.07);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    color: #ffffff;
-  }
-  
-  .partido h3 {
-    font-size: 18px;
-    flex: 1;
-    text-align: center;
-  }
-  
-  .separador {
-    margin: 0 15px;
-    color: #6c757d;
-    font-size: 18px;
-  }
-  
-  .partido input[type="number"] {
-    width: 50px;
-    padding: 5px;
-    font-size: 16px;
-    color: white;
-    background-color: rgba(255, 255, 255, 0.005);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-    text-align: center;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    transition: border-color 0.2s, box-shadow 0.2s;
-    display: block;
-    font-weight: 700;
-  }
-  
-  .partido input[type="number"]:hover, .partido input[type="number"]:focus {
-    background-color: rgba(255, 255, 255, 0.13);
-    border-color: #80bdff;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
-  }
-  /* Esconder flechas de incremento y decremento en los inputs */
-  .partido input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  
-  button {
-    width: 100%;
-    font-size: 18px;
-    font-weight: 600;
-    border-radius: 5px;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
+}

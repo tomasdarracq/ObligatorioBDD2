@@ -1,44 +1,101 @@
-<div class="bg">
-
-    <div>
-        <h1>Próximos Partidos</h1>
-        @for (partido of fixture; track partido.fecha ) {
-        <form class="fecha" [formGroup]="prediccionForms[partido.id]" (ngSubmit)="crearPrediccion(partido.id)">
-            <h3>{{ partido.dia }}</h3>
-            <h3> {{ partido.horario }} </h3>
-            <div class="partido">
-                <h3>{{ partido.seleccionLocalNombre }}</h3>
-                <label for="golLocal"></label>
-                <input name="golLocal" type="number" onkeypress="return event.charCode >= 48" min="0"
-                    formControlName="golLocal">
-                <span class="separador">vs</span>
-                <label for="golVisitante"></label>
-                <input name="golVisitante" type="number" onkeypress="return event.charCode >= 48" min="0"
-                    formControlName="golVisitante">
-                <h3>{{ partido.seleccionVisitanteNombre }}</h3>
-            </div>
-            @if (prediccionForms[partido.id].valid) {
-            <button type="submit" class="btn btn-success">Guardar</button>
+<div class="container text-center">
+    <div class="columna">
+        <h1>Predicciones Realizadas</h1>
+        <div class="col-partidos">
+            @for (prediccion of predicciones; track prediccion.fechaPartido ) {
+            @if (!prediccion.jugado) {
+                <form class="fecha" [formGroup]="actualizarPrediccionForms[prediccion.id]"
+                    (ngSubmit)="actualizarPrediccion(prediccion.id)">
+                    <h3>{{ prediccion.dia }}</h3>
+                    <h3>{{ prediccion.horario }}</h3>
+                    <div class="partido">
+                        <img src="assets/banderas/{{prediccion.nombreSeleccionLocal}}.png"
+                            alt="{{prediccion.nombreSeleccionLocal}}">
+                        <label for="golLocal"></label>
+                        <input name="golLocal" type="number" onkeypress="return event.charCode >= 48" min="0"
+                            formControlName="golLocal">
+                        <span class="separador">vs</span>
+                        <label for="golVisitante"></label>
+                        <input name="golVisitante" type="number" onkeypress="return event.charCode >= 48" min="0"
+                            formControlName="golVisitante">
+                        <img src="assets/banderas/{{prediccion.nombreSeleccionVisitante}}.png"
+                            alt="{{prediccion.nombreSeleccionVisitante}}">
+                    </div>
+                    @if (actualizarPrediccionForms[prediccion.id].valid) {
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                    }
+                    <h3>{{prediccion.golLocal}} - {{prediccion.golLocal}}</h3>
+                </form>
             }
-        </form>
-        }
-    </div>
-
-    <div>
-        <h1>Resultados</h1>
-        @for (jugado of jugados; track jugado.fecha) {
-        <div class="fecha">
-            <h3>{{ jugado.dia }}</h3>
-            <h3> {{ jugado.horario }} </h3>
-            <div class="partido">
-                <h3>{{ jugado.seleccionLocalNombre }}</h3>
-                <h3>{{ jugado.golesLocal }}</h3>
-                <span class="separador">vs</span>
-                <h3> {{ jugado.golesVisitante }}</h3>
-                <h3>{{ jugado.seleccionVisitanteNombre }}</h3>
-            </div>
+            }
         </div>
-        }
     </div>
 
+    <div class="columna">
+        <h1>Próximos Partidos</h1>
+        <div class="col-partidos">
+            @for (partido of fixture; track partido.fecha ) {
+            <div>
+                <form class="fecha" [formGroup]="nuevaPrediccionForms[partido.id]"
+                    (ngSubmit)="crearPrediccion(partido.id)">
+                    <h3>{{ partido.dia }}</h3>
+                    <h3>{{ partido.horario }}</h3>
+                    <div class="partido">
+                        <img src="assets/banderas/{{partido.seleccionLocalNombre}}.png"
+                            alt="{{partido.seleccionLocalNombre}}">
+                        <label for="golLocal"></label>
+                        <input name="golLocal" type="number" onkeypress="return event.charCode >= 48" min="0"
+                            formControlName="golLocal">
+                        <span class="separador">vs</span>
+                        <label for="golVisitante"></label>
+                        <input name="golVisitante" type="number" onkeypress="return event.charCode >= 48" min="0"
+                            formControlName="golVisitante">
+                        <img src="assets/banderas/{{partido.seleccionVisitanteNombre}}.png"
+                            alt="{{partido.seleccionVisitanteNombre}}">
+                    </div>
+                    @if (nuevaPrediccionForms[partido.id].valid) {
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                    }
+                </form>
+            </div>
+            }
+        </div>
+    </div>
+
+    <div class="columna">
+        <h1>Resultados</h1>
+        <div class="col-partidos">
+            @for (jugado of jugados; track jugado.fecha) {
+            @for (prediccion of predicciones; track prediccion.fechaPartido) {
+            <div class="fecha">
+                <h3>{{ jugado.dia }}</h3>
+                <h3>{{ jugado.horario }}</h3>
+                <div class="partido">
+                    <img src="assets/banderas/{{jugado.seleccionLocalNombre}}.png"
+                        alt="{{jugado.seleccionLocalNombre}}">
+                    <h3>{{ jugado.golesLocal }}</h3>
+                    <span class="separador">vs</span>
+                    <h3>{{ jugado.golesVisitante }}</h3>
+                    <img src="assets/banderas/{{jugado.seleccionVisitanteNombre}}.png"
+                        alt="{{jugado.seleccionVisitanteNombre}}">
+                    @if (prediccion.jugado) {
+                    <div>
+                        <h3>Tu Predicción: {{prediccion.golLocal}} - {{prediccion.golVisitante}}</h3>
+                        <h3>{{prediccion.puntaje}} puntos obtenidos</h3>
+                    </div>
+                    }
+                </div>
+            </div>
+            }
+            }
+            @if (jugados[0] == null) {
+            <div class="fecha">
+                <div class="partido aviso">
+                    <h3>No Hay Resultados Aún</h3>
+                </div>
+                <h3>Cuando sean ingresados se desplegarán aquí</h3>
+            </div>
+            }
+        </div>
+    </div>
 </div>

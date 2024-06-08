@@ -6,20 +6,6 @@
     box-sizing: border-box;
 }
 
-body {
-    background-image: url("tunel.jpeg");
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    margin-top: 60vh;
-}
-
 .background {
     width: 430px;
     height: 520px;

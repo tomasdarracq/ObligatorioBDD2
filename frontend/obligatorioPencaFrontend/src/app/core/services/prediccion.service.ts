@@ -11,8 +11,21 @@ export class PrediccionService {
 
   constructor(private http: HttpClient) { }
 
+  getAllPrediccionesById(idEstudiante: number): Observable<Prediccion[]> {
+    return this.http.get<Prediccion[]>(`${this.apiUrl}/estudiante/${idEstudiante}`);
+  }
+
   guardarPrediccion(prediccion: Prediccion): Observable<Object> {
     return this.http.post<Prediccion>(this.apiUrl, prediccion).pipe(
+      catchError((error) => {
+        console.error('Error:', error);
+        throw error;
+      })
+    );
+  }
+
+  actualizarPrediccion(prediccion: Prediccion): Observable<Object> {
+    return this.http.put<Prediccion>(this.apiUrl, prediccion).pipe(
       catchError((error) => {
         console.error('Error:', error);
         throw error;
