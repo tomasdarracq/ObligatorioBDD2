@@ -11,56 +11,28 @@ import java.util.List;
 
 @Service
 public class EstudianteService {
-    private final PartidoRepository partidoRepository;
-
-    public EstudianteService(PartidoRepository partidoRepository) {
-        this.partidoRepository = partidoRepository;
+    private final EstudianteRepository estudianteRepository;
+    public EstudianteService(EstudianteRepository estudianteRepository) {
+        this.estudianteRepository = estudianteRepository;
     }
 
-    public PartidoDTO createpartido(PartidoDTO partidoDTO) {
-        partidoRepository.insertarPartido(
-                partidoDTO.getSeleccionLocalNombre(),
-                partidoDTO.getSeleccionVisitanteNombre(),
-                partidoDTO.getFecha(),
-                partidoDTO.getGolesLocal(),
-                partidoDTO.getGolesVisitante()
-        );
-        return partidoDTO;
+    public void registrarEstudiante(Estudiante estudiante) {
+      estudianteRepository.insertarEstudiante(
+              estudiante.getNombre(),
+              estudiante.getEmail(),
+              estudiante.getContrasena(),
+              estudiante.getCarrera()
+      );
     }
 
-    public List<PartidoDTO> getPartidosDTO() {
-        List<Partido> partidos = partidoRepository.findAllPartidos();
-        List<PartidoDTO> partidosDTO = new ArrayList<>();
-
-        for (Partido partido : partidos) {
-            PartidoDTO partidoDTO = new PartidoDTO(
-                    partido.getSeleccionlocal().getNombre(),
-                    partido.getSeleccionvisitante().getNombre(),
-                    partido.getGolLocal(),
-                    partido.getGolVisitante(),
-
-                    partido.getId().getFecha()
-            );
-            partidosDTO.add(partidoDTO);
+    public Estudiante iniciarsecion(String email, String contrasena){
+        Estudiante student = estudianteRepository.obtenerEstudiante(email, contrasena);
+        if (student != null) {
+                return student;
         }
-        return partidosDTO;
+        return null;
     }
 
-    public List<PartidoDTO> getPartidobyFecha(LocalDateTime fecha){
-        List<Partido> partidos= partidoRepository.findAllbyFecha(fecha);
-        List<PartidoDTO> partidosDTO = new ArrayList<>();
 
-        for (Partido partido : partidos) {
-            PartidoDTO partidoDTO = new PartidoDTO(
-                    partido.getSeleccionlocal().getNombre(),
-                    partido.getSeleccionvisitante().getNombre(),
-                    partido.getGolLocal(),
-                    partido.getGolVisitante(),
-                    partido.getId().getFecha()
-            );
-            partidosDTO.add(partidoDTO);
-        }
-        return partidosDTO;
-    }
 }
 
