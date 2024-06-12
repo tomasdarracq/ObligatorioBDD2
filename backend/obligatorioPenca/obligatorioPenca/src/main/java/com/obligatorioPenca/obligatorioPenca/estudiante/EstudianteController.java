@@ -20,10 +20,10 @@ public class EstudianteController {
     @PostMapping
     public ResponseEntity<String> register(@RequestBody Estudiante estudiante){
         estudianteService.registrarEstudiante(estudiante);
-        return ResponseEntity.ok("El estudiante se rgeistro correctamente");
+        return ResponseEntity.ok("El estudiante se registro correctamente");
     }
 
-    @PostMapping("/loggear")
+    @PostMapping("/iniciarsesion")
     public  ResponseEntity<Integer>  iniciarSesion (@RequestBody LoginDTO loginDTO){
         Estudiante estudiante = estudianteService.iniciarsecion(loginDTO.email, loginDTO.contrasena);
         if(estudiante==null)
