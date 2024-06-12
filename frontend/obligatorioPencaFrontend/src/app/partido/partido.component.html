@@ -1,37 +1,60 @@
-<div class="bg">
-
-    <div>
-        <h1>Ingresar Resultados</h1>
-        @for (jugado of jugados; track jugado.fecha) {
-        <div class="fecha">
-            <h1>{{ jugado.dia }}</h1>
-            <h1> {{ jugado.horario }} </h1>
-            <div class="partido">
-                <h1>{{ jugado.seleccionLocalNombre }}</h1>
-                <label for="golesLocal"></label>
-                <input name="golesLocal" type="number" onkeypress="return event.charCode >= 48" min="0">
-                <span class="separador">vs</span>
-                <label for="golesVisitante"></label>
-                <input name="golesVisitante" type="number" onkeypress="return event.charCode >= 48" min="0">
-                <h1>{{ jugado.seleccionVisitanteNombre }}</h1>
+<div class="container text-center">
+    <div class="columna">
+        <h1>Resultados</h1>
+        <div class="col-partidos">
+            @for (jugado of jugados; track jugado.fecha ) {
+            <div>
+                <form class="fecha" [formGroup]="resultadoForms[jugado.id]" (ngSubmit)="ingresarResultado(jugado.id)">
+                    <h3>{{ jugado.dia }}</h3>
+                    <h3>{{ jugado.horario }}</h3>
+                    <div class="partido">
+                        <img src="assets/banderas/{{jugado.seleccionLocalNombre}}.png"
+                            alt="{{jugado.seleccionLocalNombre}}">
+                        <label for="golLocal"></label>
+                        <input name="golLocal" type="number" onkeypress="return event.charCode >= 48" min="0"
+                            formControlName="golLocal">
+                        <span class="separador">vs</span>
+                        <label for="golVisitante"></label>
+                        <input name="golVisitante" type="number" onkeypress="return event.charCode >= 48" min="0"
+                            formControlName="golVisitante">
+                        <img src="assets/banderas/{{jugado.seleccionVisitanteNombre}}.png"
+                            alt="{{jugado.seleccionVisitanteNombre}}">
+                    </div>
+                    @if (resultadoForms[jugado.id].valid) {
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                    }
+                </form>
             </div>
+            }
+            @if (jugados.length == 0) {
+            <div class="fecha">
+                <div class="partido">
+                    <h3>No Hay Resultados Aún</h3>
+                </div>
+                <h3>Cuando sean ingresados se desplegarán aquí</h3>
+            </div>
+            }
         </div>
-        }
     </div>
 
-    <div>
+    <div class="columna">
         <h1>Próximos Partidos</h1>
-        @for (partido of fixture; track partido.fecha ) {
-        <div class="fecha">
-            <h1>{{ partido.dia }}</h1>
-            <h1> {{ partido.horario }} </h1>
-            <div class="partido">
-                <h1>{{ partido.seleccionLocalNombre }}</h1>
-                <span class="separador">vs</span>
-                <h1>{{ partido.seleccionVisitanteNombre }}</h1>
+        <div class="col-partidos">
+            @for (partido of fixture; track partido.fecha) {
+            <div class="fecha">
+                <h3>{{ partido.dia }}</h3>
+                <h3>{{ partido.horario }}</h3>
+                <div class="partido">
+                    <img src="assets/banderas/{{partido.seleccionLocalNombre}}.png"
+                        alt="{{partido.seleccionLocalNombre}}">
+                    <h3>{{ partido.golesLocal }}</h3>
+                    <span class="separador">vs</span>
+                    <h3>{{ partido.golesVisitante }}</h3>
+                    <img src="assets/banderas/{{partido.seleccionVisitanteNombre}}.png"
+                        alt="{{partido.seleccionVisitanteNombre}}">
+                </div>
             </div>
+            }
         </div>
-        }
     </div>
-
 </div>

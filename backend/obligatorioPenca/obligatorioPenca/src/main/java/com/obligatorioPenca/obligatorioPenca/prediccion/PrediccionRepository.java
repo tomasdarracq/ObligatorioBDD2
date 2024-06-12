@@ -32,4 +32,17 @@ public interface PrediccionRepository extends JpaRepository<Prediccion, Predicci
             @Param("golLocal") int golLocal,
             @Param("golVisitante") int golVisitante,
             @Param("puntaje") int puntaje);
+
+    @Modifying
+    @Transactional
+    @Query(
+            value = "UPDATE Estudiante_Realiza_Prediccion SET golLocal = :golLocal, golVisitante = :golVisitante WHERE idEstudiante = :idEstudiante AND nombreSeleccionLocal = :nombreSeleccionLocal AND nombreSeleccionVisitante = :nombreSeleccionVisitante AND fecha = :fecha",
+            nativeQuery = true)
+    void editarPrediccion(
+            @Param("idEstudiante") int idEstudiante,
+            @Param("nombreSeleccionLocal") String nombreSeleccionLocal,
+            @Param("nombreSeleccionVisitante") String nombreSeleccionVisitante,
+            @Param("fecha") LocalDateTime fecha,
+            @Param("golLocal") int golLocal,
+            @Param("golVisitante") int golVisitante);
 }
