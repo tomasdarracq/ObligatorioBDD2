@@ -117,7 +117,8 @@ INSERT INTO Partido (nombreSeleccionLocal, nombreSeleccionVisitante, fecha, golL
 ('Estados Unidos', 'Uruguay', '2024-07-01 22:00:00', NULL, NULL),
 ('Bolivia', 'Panamá', '2024-07-01 22:00:00', NULL, NULL),
 ('Brasil', 'Colombia', '2024-07-02 22:00:00', NULL, NULL),
-('Costa Rica', 'Paraguay', '2024-07-02 22:00:00', NULL, NULL);
+('Costa Rica', 'Paraguay', '2024-07-02 22:00:00', NULL, NULL),
+('Costa Rica', 'Paraguay', '2024-06-12 14:50:00', NULL, NULL);
 
 
 -- Insertar datos en la tabla Estudiante_Realiza_Prediccion

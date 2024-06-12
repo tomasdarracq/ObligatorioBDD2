@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8c042fc6-666a-4f0a-bc52-1e75435f2aa7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c3845e4a-2836-4483-929e-5407b04c1d2f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c3845e4a-2836-4483-929e-5407b04c1d2f.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/database.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/estudiante/EstudianteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/estudiante/EstudianteController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/core/models/partido.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/core/models/partido.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/core/services/partido.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/core/services/partido.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/partido/partido.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/partido/partido.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/partido/partido.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/partido/partido.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/penca/penca.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/penca/penca.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/penca/penca.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/penca/penca.component.ts" afterDir="false" />
     </list>
@@ -93,7 +94,15 @@
       <workItem from="1717014096060" duration="889000" />
       <workItem from="1717087431666" duration="4694000" />
       <workItem from="1717182793851" duration="364000" />
-      <workItem from="1717183194258" duration="1940000" />
+      <workItem from="1717183194258" duration="2105000" />
+      <workItem from="1717271770226" duration="3143000" />
+      <workItem from="1717451919333" duration="736000" />
+      <workItem from="1717601824462" duration="467000" />
+      <workItem from="1717622719467" duration="591000" />
+      <workItem from="1717628727632" duration="884000" />
+      <workItem from="1717795511722" duration="2321000" />
+      <workItem from="1718056847227" duration="1865000" />
+      <workItem from="1718140473463" duration="3386000" />
     </task>
     <servers />
   </component>
@@ -116,7 +125,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java</url>
-          <line>107</line>
+          <line>133</line>
           <properties class="com.obligatorioPenca.obligatorioPenca.prediccion.PrediccionService" method="agregarPrediccion">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -125,58 +134,43 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java</url>
-          <line>108</line>
+          <line>134</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java</url>
-          <line>111</line>
+          <line>135</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java</url>
-          <line>112</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java</url>
-          <line>113</line>
+          <line>136</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java</url>
-          <line>114</line>
+          <line>137</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java</url>
-          <line>115</line>
+          <line>138</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java</url>
-          <line>116</line>
+          <line>139</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java</url>
-          <line>117</line>
+          <line>140</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java</url>
-          <line>118</line>
+          <line>141</line>
           <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java</url>
-          <line>109</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java</url>
-          <line>110</line>
-          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

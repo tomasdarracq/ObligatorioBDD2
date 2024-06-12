@@ -8,15 +8,16 @@ export class Prediccion {
     jugado?: boolean = false;
     golLocal!: number;
     golVisitante!: number;
-    puntaje: number = 0;
+    puntaje: number;
     id: number = 0;
 
     constructor(nombreSeleccionLocal: string, nombreSeleccionVisitante: string, fechaPartido: Date,
-        golLocal: number, golVisitante: number) {
+        golLocal: number, golVisitante: number, puntaje:number) {
         this.nombreSeleccionLocal = nombreSeleccionLocal;
         this.nombreSeleccionVisitante = nombreSeleccionVisitante;
         this.fechaPartido = fechaPartido;
         this.golLocal = golLocal;
         this.golVisitante = golVisitante;
+        this.puntaje = puntaje;
     }
 }

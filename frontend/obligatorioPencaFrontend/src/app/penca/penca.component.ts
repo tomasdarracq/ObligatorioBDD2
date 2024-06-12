@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { PartidoService } from '../core/services/partido.service';
 import { Partido } from '../core/models/partido';
 import { PrediccionService } from '../core/services/prediccion.service';
@@ -19,7 +19,7 @@ export class PencaComponent implements OnInit {
   nuevaPrediccionForms: { [key: string]: FormGroup } = {};
   actualizarPrediccionForms: { [key: string]: FormGroup } = {};
 
-  constructor(private fb: FormBuilder, private partidoService: PartidoService, private prediccionService: PrediccionService) {}
+  constructor(private fb: FormBuilder, private partidoService: PartidoService, private prediccionService: PrediccionService, private cdr: ChangeDetectorRef) { }
 
 
   ngOnInit() {
@@ -28,7 +28,7 @@ export class PencaComponent implements OnInit {
     this.jugados = this.partidoService.jugados;
 
     this.obtenerPredicciones();
-  }  
+  }
 
   crearPrediccion(partidoId: number) {
     const form = this.nuevaPrediccionForms[partidoId];
@@ -58,12 +58,16 @@ export class PencaComponent implements OnInit {
       partido.seleccionVisitanteNombre,
       partido.fecha,
       golLocal,
-      golVisitante
+      golVisitante,
+      0
     );
 
     console.log(prediccion);
     this.prediccionService.guardarPrediccion(prediccion).subscribe(
-      (data: any) => console.log('Predicción guardada:', data),
+      (data: any) => {
+        console.log('Predicción guardada: ', data),
+          this.obtenerPredicciones();
+      },
       error => console.log('Error al guardar la predicción:', error)
     );
   }
@@ -91,6 +95,7 @@ export class PencaComponent implements OnInit {
         this.ordenarPredicciones();
         this.filtrarPredicciones();
         this.crearFormulariosDePrediccion();
+
       },
       (error) => console.log(error)
     );
@@ -122,10 +127,21 @@ export class PencaComponent implements OnInit {
       this.jugados.forEach(j => {
         if (p.fechaPartido == j.fecha && p.nombreSeleccionLocal == j.seleccionLocalNombre && p.nombreSeleccionVisitante == j.seleccionVisitanteNombre) {
           p.jugado = true;
+          j.prediccionGolesLocal = p.golLocal;
+          j.prediccionGolesVisitante = p.golVisitante;
+          j.prediccionPuntaje = p.puntaje;
+        }
+      });
+      this.fixture.forEach(f => {
+        if (p.fechaPartido == f.fecha && p.nombreSeleccionLocal == f.seleccionLocalNombre && p.nombreSeleccionVisitante == f.seleccionVisitanteNombre) {
+          f.predicho = true;
+          f.prediccionGolesLocal = p.golLocal;
+          f.prediccionGolesVisitante = p.golVisitante;
         }
       })
-    });    
+    });
   }
+
   actualizarPrediccion(prediccionId: number) {
     const form = this.actualizarPrediccionForms[prediccionId];
 
@@ -154,12 +170,16 @@ export class PencaComponent implements OnInit {
       partido.nombreSeleccionVisitante,
       partido.fechaPartido,
       golLocal,
-      golVisitante
+      golVisitante,
+      0
     );
 
     console.log(prediccion);
     this.prediccionService.actualizarPrediccion(prediccion).subscribe(
-      (data: any) => console.log('Predicción actualizada:', data),
+      (data: any) => {
+        console.log('Predicción actualizada:', data),
+          this.obtenerPredicciones();
+      },
       error => console.log('Error al actualizar la predicción:', error)
     );
   }

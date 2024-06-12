@@ -1222,8 +1222,8 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="327" parent="307" name="campeon">
-      <DasType>enum(&apos;Campeón&apos;, &apos;Subcampeón&apos;)|0e</DasType>
+    <column id="327" parent="307" name="eleccion">
+      <DasType>varchar(50)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
@@ -1371,12 +1371,16 @@ fecha</ColNames>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <index id="356" parent="310" name="PRIMARY">
+    <column id="356" parent="310" name="estado">
+      <DasType>varchar(50)|0s</DasType>
+      <Position>2</Position>
+    </column>
+    <index id="357" parent="310" name="PRIMARY">
       <ColNames>nombre</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="357" parent="310" name="PRIMARY">
+    <key id="358" parent="310" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

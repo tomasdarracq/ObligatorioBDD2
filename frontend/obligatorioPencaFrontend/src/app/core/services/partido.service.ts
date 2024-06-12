@@ -49,6 +49,7 @@ export class PartidoService {
       partido.id = index;
     });
   }
+  
   ordenarFechas() {
     this.fixture.sort((a, b) => {
       return new Date(a.fecha).getTime() - new Date(b.fecha).getTime();
