@@ -19,10 +19,9 @@ public class PartidoController {
     }
 
     @GetMapping
-    //@ApiOperation(value = "Obtiene todos los partidos", response = PartidoDTO.class, responseContainer = "List")
     public ResponseEntity<List<PartidoDTO>> getAllPartidos() {
-    List<PartidoDTO> partidosDTO = partidoService.obtenerPartidosDTO();
-    return ResponseEntity.ok(partidosDTO);
+        List<PartidoDTO> partidosDTO = partidoService.obtenerPartidosDTO();
+        return ResponseEntity.ok(partidosDTO);
     }
 
     @PostMapping("/fecha")
