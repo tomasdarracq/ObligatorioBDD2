@@ -22,8 +22,6 @@ public class Seleccion {
 
 
 
-
-
     public String getNombre() {
         return nombre;
     }

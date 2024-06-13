@@ -25,12 +25,16 @@ public class EstudianteService {
       );
     }
 
-    public Estudiante iniciarsecion(String email, String contrasena){
+    public Estudiante iniciarsesion(String email, String contrasena){
         Estudiante student = estudianteRepository.obtenerEstudiante(email, contrasena);
         if (student != null) {
                 return student;
         }
         return null;
+    }
+
+    public List<Estudiante> obtenerTodosLosEstudiantes(){
+        return estudianteRepository.obtenerEstudiante();
     }
 
 
