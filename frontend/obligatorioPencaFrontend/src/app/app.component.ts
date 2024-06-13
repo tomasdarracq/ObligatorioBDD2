@@ -12,7 +12,7 @@ import { filter, map, mergeMap } from 'rxjs/operators';
 })
 export class AppComponent {
   title = 'obligatorioPencaFrontend';
-  showNavBar = false;
+  mostrarNavBar = false;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
     this.router.events.pipe(
@@ -26,13 +26,13 @@ export class AppComponent {
       }),
       mergeMap(route => route.data)
     ).subscribe(data => {
-      this.showNavBar = !data['hideNavBar'];
+      this.mostrarNavBar = !data['esconderNavBar'];
     });
   }
 
-  checkRoute(url: string) {
+  chequearURL(url: string) {
     // Lista de rutas donde no se debe mostrar la nav bar
-    const hideNavRoutes = ['', '/registro'];
-    this.showNavBar = !hideNavRoutes.includes(url);
+    const rutasBloqueadas = ['', '/registro'];
+    this.mostrarNavBar = !rutasBloqueadas.includes(url);
   }
 }
