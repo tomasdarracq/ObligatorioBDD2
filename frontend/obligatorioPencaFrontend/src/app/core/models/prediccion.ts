@@ -1,5 +1,5 @@
 export class Prediccion {
-    idEstudiante: number = 1;
+    idEstudiante: number;
     nombreSeleccionLocal!: string;
     nombreSeleccionVisitante!: string;
     fechaPartido!: Date;
@@ -11,8 +11,9 @@ export class Prediccion {
     puntaje: number;
     id: number = 0;
 
-    constructor(nombreSeleccionLocal: string, nombreSeleccionVisitante: string, fechaPartido: Date,
-        golLocal: number, golVisitante: number, puntaje:number) {
+    constructor(idEstudiante: number, nombreSeleccionLocal: string, nombreSeleccionVisitante: string, fechaPartido: Date,
+        golLocal: number, golVisitante: number, puntaje: number) {
+        this.idEstudiante = idEstudiante;
         this.nombreSeleccionLocal = nombreSeleccionLocal;
         this.nombreSeleccionVisitante = nombreSeleccionVisitante;
         this.fechaPartido = fechaPartido;

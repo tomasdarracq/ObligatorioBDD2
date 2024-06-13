@@ -1,9 +1,10 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PartidoService } from '../core/services/partido.service';
 import { Partido } from '../core/models/partido';
 import { PrediccionService } from '../core/services/prediccion.service';
 import { Prediccion } from '../core/models/prediccion';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-penca',
@@ -18,11 +19,14 @@ export class PencaComponent implements OnInit {
   predicciones: Prediccion[] = [];
   nuevaPrediccionForms: { [key: string]: FormGroup } = {};
   actualizarPrediccionForms: { [key: string]: FormGroup } = {};
+  idEstudiante: number = -1;
 
-  constructor(private fb: FormBuilder, private partidoService: PartidoService, private prediccionService: PrediccionService, private cdr: ChangeDetectorRef) { }
+  constructor(private fb: FormBuilder, private partidoService: PartidoService, private prediccionService: PrediccionService, private activatedRoute: ActivatedRoute) { }
 
 
   ngOnInit() {
+    this.idEstudiante = Number(this.activatedRoute.snapshot.paramMap.get('idEstudiante'));
+
     this.partidoService.obtenerPartidos();
     this.fixture = this.partidoService.fixture;
     this.jugados = this.partidoService.jugados;
@@ -52,8 +56,10 @@ export class PencaComponent implements OnInit {
       console.log("Partido no encontrado.");
       return;
     }
-    //SE REALIZA LA PREDICCION CON ID 1 
+
+    console.log(this.idEstudiante)
     const prediccion = new Prediccion(
+      this.idEstudiante,
       partido.seleccionLocalNombre,
       partido.seleccionVisitanteNombre,
       partido.fecha,
@@ -88,7 +94,7 @@ export class PencaComponent implements OnInit {
   }
 
   obtenerPredicciones() {
-    this.prediccionService.getAllPrediccionesById(1).subscribe(
+    this.prediccionService.getAllPrediccionesById(this.idEstudiante).subscribe(
       (prediccion: Prediccion[]) => {
         this.predicciones = prediccion;
         this.dividirFechasPrediccion();
@@ -166,6 +172,7 @@ export class PencaComponent implements OnInit {
     }
     //SE REALIZA LA PREDICCION CON ID 1 
     const prediccion = new Prediccion(
+      this.idEstudiante,
       partido.nombreSeleccionLocal,
       partido.nombreSeleccionVisitante,
       partido.fechaPartido,
