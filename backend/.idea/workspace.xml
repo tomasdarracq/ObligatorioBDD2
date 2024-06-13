@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c042fc6-666a-4f0a-bc52-1e75435f2aa7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c3845e4a-2836-4483-929e-5407b04c1d2f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c3845e4a-2836-4483-929e-5407b04c1d2f.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/database.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/core/models/prediccion.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/core/models/prediccion.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/core/models/seleccion.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/core/models/seleccion.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/penca/penca.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/penca/penca.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/registro/registro.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/registro/registro.component.ts" afterDir="false" />
-    </list>
+    <list default="true" id="8c042fc6-666a-4f0a-bc52-1e75435f2aa7" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

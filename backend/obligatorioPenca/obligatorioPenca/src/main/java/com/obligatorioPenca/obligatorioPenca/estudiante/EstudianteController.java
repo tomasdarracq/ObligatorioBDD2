@@ -14,6 +14,38 @@ import java.util.List;
 public class EstudianteController {
     @Autowired
     private final EstudianteService estudianteService;
+    @Autowired
+    private final EstudianteService estudianteService;
+    public EstudianteController(EstudianteService estudianteService) {
+        this.estudianteService = estudianteService;
+    }
+
+    @PostMapping
+    public ResponseEntity<String> register(@RequestBody Estudiante estudiante){
+        estudianteService.registrarEstudiante(estudiante);
+        return ResponseEntity.ok("El estudiante se registro correctamente");
+    }
+
+    @PostMapping("/iniciarsesion")
+    public  ResponseEntity<Integer>  iniciarSesion (@RequestBody LoginDTO loginDTO){
+        Estudiante estudiante = estudianteService.iniciarsesion(loginDTO.email, loginDTO.contrasena);
+        if(estudiante==null)
+            return ResponseEntity.ok(0);
+        return ResponseEntity.ok(estudiante.getIdEstudiante());
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	@Autowired
 	public EstudianteController(EstudianteService estudianteService) {
