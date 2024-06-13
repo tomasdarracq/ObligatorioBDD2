@@ -31,6 +31,11 @@ public class EstudianteController {
         return ResponseEntity.ok(estudiante.getIdEstudiante());
     }
 
+    @GetMapping
+    public ResponseEntity<List<Estudiante>> getEstudiantes(){
+        return ResponseEntity.ok(estudianteService.obtenerTodosLosEstudiantes());
+    }
+
 
 
 
