@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c042fc6-666a-4f0a-bc52-1e75435f2aa7" name="Changes" comment="" />
+    <list default="true" id="8c042fc6-666a-4f0a-bc52-1e75435f2aa7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/app.routes.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -94,6 +98,7 @@
       <workItem from="1717795511722" duration="2321000" />
       <workItem from="1718056847227" duration="1865000" />
       <workItem from="1718140473463" duration="5628000" />
+      <workItem from="1718320565157" duration="284000" />
     </task>
     <servers />
   </component>

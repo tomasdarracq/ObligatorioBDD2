@@ -10,5 +10,5 @@ export const routes: Routes = [
     { path: ':idEstudiante/fixture', component: PencaComponent },
     { path: ':idAdmin/fixture/update', component: PartidoComponent },
     { path: 'registro', component: RegistroComponent },
-    { path: 'ranking', component: RankingComponent },
+    { path: ':idEstudiante/ranking', component: RankingComponent },
 ];
