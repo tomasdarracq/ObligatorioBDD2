@@ -25,11 +25,17 @@ public class EstudianteController {
 
     @PostMapping("/iniciarsesion")
     public  ResponseEntity<Integer>  iniciarSesion (@RequestBody LoginDTO loginDTO){
-        Estudiante estudiante = estudianteService.iniciarsecion(loginDTO.email, loginDTO.contrasena);
+        Estudiante estudiante = estudianteService.iniciarsesion(loginDTO.email, loginDTO.contrasena);
         if(estudiante==null)
             return ResponseEntity.ok(0);
         return ResponseEntity.ok(estudiante.getIdEstudiante());
     }
+
+
+
+
+
+
 
 
 
