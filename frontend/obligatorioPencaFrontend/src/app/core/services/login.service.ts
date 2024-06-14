@@ -8,7 +8,7 @@ import { login } from '../models/login';
 })
 export class loginService {
 
-  private apiUrl = 'http://localhost:8080/api/estudiante/iniciarsesion';
+  private apiUrl = 'http://localhost:8080/login';
 
   constructor(private http: HttpClient) { }
   
