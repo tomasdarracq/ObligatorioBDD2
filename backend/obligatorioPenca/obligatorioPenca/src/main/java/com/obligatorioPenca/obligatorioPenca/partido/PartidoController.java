@@ -22,7 +22,7 @@ public class PartidoController {
     @GetMapping
     public ResponseEntity<List<PartidoDTO>> getAllPartidos() {
         List<PartidoDTO> partidosDTO = partidoService.obtenerPartidosDTO();
-        return ResponseEntity.ok(partidosDTO);
+        return ResponseEntity.ok(partidosDTO);//ResponseEntity.ok().body(partidosDTO)
     }
 
     @PostMapping("/fecha")

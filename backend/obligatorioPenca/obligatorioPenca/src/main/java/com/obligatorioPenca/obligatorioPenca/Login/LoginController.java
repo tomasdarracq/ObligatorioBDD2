@@ -19,11 +19,11 @@ public class LoginController {
     }
 
     @PostMapping
-    public ResponseEntity<Integer> iniciarSesion (@RequestBody LoginDTO loginDTO){
+    public Integer iniciarSesion (@RequestBody LoginDTO loginDTO){
         Integer idUsuario = loginService.iniciarsesion(loginDTO.email, loginDTO.contrasena);
         if(idUsuario==null)
-            return ResponseEntity.ok(0);
-        return ResponseEntity.ok( idUsuario);
+            return 0;
+        return idUsuario;
     }
 
 }
