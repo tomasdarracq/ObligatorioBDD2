@@ -7,7 +7,7 @@ import { RankingComponent } from './ranking/ranking.component';
 
 export const routes: Routes = [
     { path: '', component: LoginComponent },
-    { path: 'fixture', component: PencaComponent },
+    { path: 'fixture/:id', component: PencaComponent },
     {path: 'fixture/update', component: PartidoComponent},
     { path: 'registro', component: RegistroComponent },
     { path: 'ranking', component: RankingComponent },
