@@ -12,8 +12,8 @@ export class loginService {
 
   constructor(private http: HttpClient) { }
   
-  iniciarsesion(login: login) : Observable<login>{
-    return this.http.post<login>(this.apiUrl, login).pipe(
+  iniciarsesion(login: login) : Observable<any>{
+    return this.http.post<any>(this.apiUrl, login).pipe(
         catchError((error) => {
           console.error('Error:', error);
           throw error;

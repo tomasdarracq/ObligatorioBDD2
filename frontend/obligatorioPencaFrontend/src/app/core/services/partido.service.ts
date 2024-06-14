@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Partido } from '../models/partido';
-import { Observable } from 'rxjs';
+import { Observable, catchError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +15,13 @@ export class PartidoService {
   constructor(private http: HttpClient) { }
 
   getAllPartidos(): Observable<Partido[]> {
-    return this.http.get<Partido[]>(this.apiUrl);
-  }
+    return this.http.get<Partido[]>(this.apiUrl).pipe(
+      catchError((error) => {
+        console.error('Error:', error);
+        throw error;
+      })
+    );
+};
 
   actualizarPartido(partido: Partido): Observable<Partido> {
     return this.http.put<Partido>(this.apiUrl, partido);

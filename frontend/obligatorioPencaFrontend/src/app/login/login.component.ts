@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { login } from '../core/models/login';
+import { PartidoService } from '../core/services/partido.service';
 import { loginService } from '../core/services/login.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 @Component({
@@ -13,12 +14,14 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder ,private router: Router, private estudianteService: loginService) {}
+  constructor(private fb: FormBuilder ,private router: Router, private estudianteService: loginService , private partidoService: PartidoService) {}
   ngOnInit() {
     this.loginForm = this.fb.group({
       email: '',
       contrasena: ''
+      
     });
+    this.partidoService.obtenerPartidos();
   }
 
   onSubmit() {
@@ -30,8 +33,10 @@ export class LoginComponent implements OnInit {
         response => {
           console.log('Login successful:', response);
           const userId=response;
-          this.router.navigate(['/fixture', userId]);
-          //this.router.navigateByUrl('/fixture'); // Cambia '/fixture' por la ruta deseada
+
+
+          //this.router.navigate(['/fixture', userId]);
+          this.router.navigateByUrl('/fixture'); // Cambia '/fixture' por la ruta deseada
         },
         error => {
           console.error('Login failed:', error);
