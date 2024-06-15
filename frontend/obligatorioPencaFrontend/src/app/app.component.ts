@@ -35,4 +35,13 @@ export class AppComponent {
     const rutasBloqueadas = ['', '/registro'];
     this.mostrarNavBar = !rutasBloqueadas.includes(url);
   }
+
+
+  logout() {
+    // Perform logout logic here (e.g., clear authentication tokens, etc.)
+    // Then navigate to the login page or home page
+    this.router.navigate(['/login']);
+  }
+
+
 }

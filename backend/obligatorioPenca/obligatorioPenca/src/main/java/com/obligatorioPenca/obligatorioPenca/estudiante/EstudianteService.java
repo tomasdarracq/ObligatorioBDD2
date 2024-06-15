@@ -25,7 +25,7 @@ public class EstudianteService {
       );
     }
 
-    public Estudiante iniciarsesion(String email, String contrasena){
+    public Estudiante iniciarSesion(String email, String contrasena){
         Estudiante student = estudianteRepository.obtenerEstudiante(email, contrasena);
         if (student != null) {
                 return student;

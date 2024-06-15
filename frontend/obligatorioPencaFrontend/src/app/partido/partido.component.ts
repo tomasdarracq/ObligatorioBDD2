@@ -18,17 +18,9 @@ export class PartidoComponent {
 
   ngOnInit() {
     this.partidoService.obtenerPartidos();
-    this.obtenerFixture();
-    this.obtenerJugados();
-    this.crearFormulariosDeResultado();
-  }
-
-  obtenerFixture() {
     this.fixture = this.partidoService.fixture;
-  }
-
-  obtenerJugados() {
     this.jugados = this.partidoService.jugados;
+    this.crearFormulariosDeResultado();
   }
 
   ingresarResultado(partidoId: number) {

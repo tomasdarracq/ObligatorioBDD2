@@ -1,49 +1,75 @@
-<body>
-    <div class="form-container">
-        <form>
-            <!-- Form header -->
-            <h3>¡Regístrate!</h3>
+<div class="form-container">
+    <form [formGroup]="registroForm" (ngSubmit)="crearUsuario()">
+        <!-- Form header -->
+        <h3>¡Regístrate!</h3>
 
-            <!-- Username input field -->
-            <label for="reg-username">Usuario</label>
-            <input type="text" id="reg-username">
+        <div>
+            <label for="nombre">Nombre Completo</label>
+            <input type="text" formControlName="nombre">
+            @if (esValido('nombre')) {
+            <div class="error">El nombre completo es requerido.</div>
+            }
+        </div>
 
-            <!-- Email input field -->
-            <label for="reg-email">Correo Electrónico</label>
-            <input type="email" id="reg-email">
+        <div>
+            <label for="email">Correo Electrónico</label>
+            <input type="email" formControlName="email">
+            @if (esValido('email')) {
+            <div class="error">
+                @if (registroForm.get('email')?.errors?.['required']) {
+                El correo electrónico es requerido.
+                }
+                @if (registroForm.get('email')?.errors?.['email']) {
+                El correo electrónico no es válido.
+                }
+            </div>
+            }
+        </div>
 
-            <!-- Password input field -->
-            <label for="reg-password">Contraseña</label>
-            <input type="password" id="reg-password">
+        <div>
+            <label for="carrera">Carrera</label>
+            <input type="text" formControlName="carrera">
+            @if (esValido('carrera')) {
+            <div class="error">La carrera es requerida.</div>
+            }
+        </div>
 
-            <!-- Confirm password input field -->
-            <label for="reg-confirm-password">Confirmar Contraseña</label>
-            <input type="password" id="reg-confirm-password">
+        <div>
+            <label for="contrasena">Contraseña</label>
+            <input type="password" formControlName="contrasena">
+            @if (esValido('contrasena')) {
+            <div class="error">La contraseña es requerida.</div>
+            }
+        </div>
 
-            <!-- Campeon input field -->
-            <label for="reg-campeon">Campeón</label>
-            <select id="reg-campeon">
+        <div>
+            <label for="campeon">Campeón</label>
+            <select formControlName="campeon">
                 <option value="" disabled selected>Seleccione un campeón</option>
                 @for (s of selecciones; track s.nombre) {
-                <option>{{ s.nombre }}</option>
+                <option [value]="s.nombre" [disabled]="desabilitarOpcion(s.nombre, 'subcampeon')">{{ s.nombre }}</option>
                 }
             </select>
+            @if (esValido('campeon')) {
+            <div class="error">El campeón es requerido.</div>
+            }
+        </div>
 
-            <!-- Subcampeon input field -->
-            <label for="reg-subcampeon">Subcampeón</label>
-            <select id="reg-campeon">
+        <div>
+            <label for="subcampeon">Subcampeón</label>
+            <select formControlName="subcampeon">
                 <option value="" disabled selected>Seleccione un subcampeón</option>
                 @for (s of selecciones; track s.nombre) {
-                <option>{{ s.nombre }}</option>
+                <option [value]="s.nombre" [disabled]="desabilitarOpcion(s.nombre, 'campeon')">{{ s.nombre }}</option>
                 }
             </select>
+            @if (esValido('subcampeon')) {
+            <div class="error">El subcampeón es requerido.</div>
+            }
+        </div>
 
-            <!-- Submit button -->
-            <button>Crear Cuenta</button>
+        <button type="submit">Crear Cuenta</button>
 
-            <!-- Login link for existing users -->
-            <a href="" class="login-link">¿Ya tienes una cuenta? Inicia sesión</a>
-        </form>
-    </div>
-
-</body>
+        <a routerLink="/login" class="login-link">¿Ya tienes una cuenta? Inicia sesión</a>
+    </form>
+</div>

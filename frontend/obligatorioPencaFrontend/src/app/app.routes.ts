@@ -6,9 +6,9 @@ import { PartidoComponent } from './partido/partido.component';
 import { RankingComponent } from './ranking/ranking.component';
 
 export const routes: Routes = [
-    { path: '', component: LoginComponent },
-    { path: ':idEstudiante/fixture', component: PencaComponent },
-    { path: ':idAdmin/fixture/update', component: PartidoComponent },
-    { path: 'registro', component: RegistroComponent },
-    { path: ':idEstudiante/ranking', component: RankingComponent },
+    { path: '', component: LoginComponent, data: { esconderNavBar: true }  },
+    { path: 'registro', component: RegistroComponent, data: { esconderNavBar: true }  },
+    { path: ':idEstudiante/fixture', component: PencaComponent, data: { esconderNavBar: false } },
+    { path: ':idAdmin/fixture/update', component: PartidoComponent, data: { esconderNavBar: false }  },
+    { path: ':idEstudiante/ranking', component: RankingComponent, data: { esconderNavBar: false }  },
 ];
