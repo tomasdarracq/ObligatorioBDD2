@@ -95,15 +95,16 @@ export class PartidoComponent {
     this.partidoService.crearPartido(nuevoPartido).subscribe(
       (data: any) => {
         console.log('Predicción guardada:', data),
-          this.mensajeModal = 'Partido creado con exito';
+          this.mensajeModal = 'Partido creado con exito',
+          this.partidoService.obtenerPartidos();
+          this.mostrarFormulario();
       },
       error => {
         console.log('Error al guardar la predicción:', error),
-        this.mensajeModal = 'Error al crear el partido';
+          this.mensajeModal = 'Error al crear el partido';
       }
     )
     console.log(nuevoPartido);
-    this.partidoService.obtenerPartidos();
   }
 
   deshabilitarOpcion(opcion: string, otroControl: string): boolean {

@@ -107,9 +107,8 @@ button:hover {
 .error {
     color: red;
     font-size: 0.875em;
-  }
+}
 
-  option:disabled {
-   color: gray;
-  }
-  
+option:disabled {
+    color: gray;
+}

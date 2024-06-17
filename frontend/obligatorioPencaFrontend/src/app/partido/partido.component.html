@@ -40,6 +40,35 @@
     <div class="columna">
         <h1>Próximos Partidos</h1>
         <div class="col-partidos">
+            <form class="fecha" [formGroup]="crearPartidoForm" (ngSubmit)="crearPartido()">
+                <div>
+                    <label for="fecha"></label>
+                    <input class="nuevaFecha" formControlName="fecha" type="datetime-local">
+                </div>
+                <div class="partido">
+                    <label for="seleccionLocalNombre"></label>
+                    <select formControlName="seleccionLocalNombre">
+                        <option value="" disabled selected>Selección Local</option>
+                        @for (s of selecciones; track s.nombre) {
+                        <option [value]="s.nombre"
+                            [disabled]="deshabilitarOpcion(s.nombre, 'seleccionVisitanteNombre')">{{ s.nombre }}
+                        </option>
+                        }
+                    </select>
+                    <label for="seleccionVisitanteNombre"></label>
+                    <select formControlName="seleccionVisitanteNombre">
+                        <option value="" disabled selected>Selección Visitante</option>
+                        @for (s of selecciones; track s.nombre) {
+                        <option [value]="s.nombre" [disabled]="deshabilitarOpcion(s.nombre, 'seleccionLocalNombre')">{{
+                            s.nombre }}
+                        </option>
+                        }
+                    </select>
+                </div>
+                @if (crearPartidoForm.valid) {
+                <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#crearPartidoModal">Crear</button>
+                }
+            </form>
             @for (partido of fixture; track partido.fecha) {
             <div class="fecha">
                 <h3>{{ partido.dia }}</h3>
@@ -95,14 +124,13 @@
 </div>
 
 <div class="modal fade" id="crearPartidoModal" tabindex="-1" aria-labelledby="crearPartidoModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="crearPartidoModalLabel">Crear Partido</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <!-- Contenido dinámico para mostrar el resultado de la creación del partido -->
+            <div class="modal-body"><div class="fecha"><div class="partido">asd</div></div>
                 <h4>{{ mensajeModal }}</h4>
             </div>
             <div class="modal-footer">
