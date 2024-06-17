@@ -69,6 +69,9 @@ CREATE TABLE Estudiante_Elige_Seleccion (
 INSERT INTO Estudiante (idEstudiante, nombre, email, contrasena, carrera) VALUES
 (1, 'Maria', 'maria@madas.com', '1234', 'Ingeniería en Informática');
 
+INSERT INTO Estudiante (idEstudiante, nombre, email, contrasena, carrera, puntajeTotal) VALUES
+    (3, 'Juan', 'maria@madas.com', '1234', 'Ingeniería en Informática', 2);
+
 -- Insertar datos en la tabla Administrador
 INSERT INTO Administrador (idAdmin, nombre, email, contrasena) VALUES
 (1, 'Administrador', 'admin@gmail.com', '4321');
