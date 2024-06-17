@@ -56,7 +56,7 @@ export class RegistroComponent {
     return !!control?.invalid && control?.touched;
   }
 
-  desabilitarOpcion(opcion: string, otroControl: string): boolean {
+  deshabilitarOpcion(opcion: string, otroControl: string): boolean {
     const eleccion = this.registroForm.get(otroControl)?.value;
     return eleccion === opcion;
   }

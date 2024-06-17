@@ -12,6 +12,7 @@ import java.util.List;
 @Service
 public class EstudianteService {
     private final EstudianteRepository estudianteRepository;
+    
     public EstudianteService(EstudianteRepository estudianteRepository) {
         this.estudianteRepository = estudianteRepository;
     }
@@ -25,19 +26,9 @@ public class EstudianteService {
       );
     }
 
-    public Estudiante iniciarSesion(String email, String contrasena){
-        Estudiante student = estudianteRepository.obtenerEstudiante(email, contrasena);
-        if (student != null) {
-                return student;
-        }
-        return null;
-    }
-
     public List<Estudiante> obtenerTodosLosEstudiantes(){
         return estudianteRepository.obtenerEstudiante();
     }
-
-
 
 }
 

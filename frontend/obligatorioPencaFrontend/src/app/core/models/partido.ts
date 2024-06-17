@@ -13,7 +13,7 @@ export class Partido {
     prediccionPuntaje?: number = 0;
 
     constructor(seleccionLocalNombre: string, seleccionVisitanteNombre: string, fecha: Date,
-        golesLocal: number, golesVisitante: number, dia?: string, horario?: string) {
+        golesLocal?: number, golesVisitante?: number, dia?: string, horario?: string) {
 
         this.seleccionLocalNombre = seleccionLocalNombre;
         this.seleccionVisitanteNombre = seleccionVisitanteNombre;

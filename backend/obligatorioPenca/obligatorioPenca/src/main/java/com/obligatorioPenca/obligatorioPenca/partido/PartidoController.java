@@ -1,5 +1,6 @@
 package com.obligatorioPenca.obligatorioPenca.partido;
 
+import com.obligatorioPenca.obligatorioPenca.estudiante.Estudiante;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class PartidoController {
     @GetMapping
     public ResponseEntity<List<PartidoDTO>> getAllPartidos() {
         List<PartidoDTO> partidosDTO = partidoService.obtenerPartidosDTO();
-        return ResponseEntity.ok(partidosDTO);
+        return ResponseEntity.ok(partidosDTO);//ResponseEntity.ok().body(partidosDTO)
     }
 
     @PostMapping("/fecha")

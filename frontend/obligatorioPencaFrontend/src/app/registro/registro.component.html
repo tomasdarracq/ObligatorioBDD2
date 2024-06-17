@@ -47,7 +47,7 @@
             <select formControlName="campeon">
                 <option value="" disabled selected>Seleccione un campeón</option>
                 @for (s of selecciones; track s.nombre) {
-                <option [value]="s.nombre" [disabled]="desabilitarOpcion(s.nombre, 'subcampeon')">{{ s.nombre }}</option>
+                <option [value]="s.nombre" [disabled]="deshabilitarOpcion(s.nombre, 'subcampeon')">{{ s.nombre }}</option>
                 }
             </select>
             @if (esValido('campeon')) {
@@ -60,7 +60,7 @@
             <select formControlName="subcampeon">
                 <option value="" disabled selected>Seleccione un subcampeón</option>
                 @for (s of selecciones; track s.nombre) {
-                <option [value]="s.nombre" [disabled]="desabilitarOpcion(s.nombre, 'campeon')">{{ s.nombre }}</option>
+                <option [value]="s.nombre" [disabled]="deshabilitarOpcion(s.nombre, 'campeon')">{{ s.nombre }}</option>
                 }
             </select>
             @if (esValido('subcampeon')) {

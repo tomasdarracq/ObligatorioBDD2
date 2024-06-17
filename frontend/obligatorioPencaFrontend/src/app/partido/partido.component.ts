@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Partido } from '../core/models/partido';
 import { PartidoService } from '../core/services/partido.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Seleccion } from '../core/models/seleccion';
+import { SeleccionService } from '../core/services/seleccion.service';
 
 @Component({
   selector: 'app-partido',
@@ -12,15 +14,25 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class PartidoComponent {
   fixture: Partido[] = [];
-  jugados: Partido[] = []
+  jugados: Partido[] = [];
+  selecciones: Seleccion[] = [];
   resultadoForms: { [key: string]: FormGroup } = {};
-  constructor(private fb: FormBuilder, private partidoService: PartidoService) { }
+  crearPartidoForm!: FormGroup;
+  mostrarForm: boolean = false;
+  mensajeModal: string = '';
+
+  constructor(private fb: FormBuilder, private partidoService: PartidoService, private seleccionService: SeleccionService) { }
 
   ngOnInit() {
     this.partidoService.obtenerPartidos();
     this.fixture = this.partidoService.fixture;
     this.jugados = this.partidoService.jugados;
-    this.crearFormulariosDeResultado();
+
+    this.crearFormulariosResultado();
+    this.crearFormularioPartido();
+
+    this.seleccionService.obtenerAllSelecciones();
+    this.selecciones = this.seleccionService.selecciones;
   }
 
   ingresarResultado(partidoId: number) {
@@ -61,7 +73,7 @@ export class PartidoComponent {
     );
   }
 
-  crearFormulariosDeResultado() {
+  crearFormulariosResultado() {
     this.jugados.forEach(jugado => {
       this.resultadoForms[jugado.id] = this.fb.group({
         golLocal: ['', Validators.required],
@@ -69,4 +81,43 @@ export class PartidoComponent {
       });
     });
   }
+
+  crearFormularioPartido() {
+    this.crearPartidoForm = this.fb.group({
+      seleccionLocalNombre: ['', Validators.required],
+      seleccionVisitanteNombre: ['', Validators.required],
+      fecha: ['', Validators.required],
+    });
+  }
+
+  crearPartido() {
+    const nuevoPartido = this.crearPartidoForm.value;
+    this.partidoService.crearPartido(nuevoPartido).subscribe(
+      (data: any) => {
+        console.log('Predicción guardada:', data),
+          this.mensajeModal = 'Partido creado con exito';
+      },
+      error => {
+        console.log('Error al guardar la predicción:', error),
+        this.mensajeModal = 'Error al crear el partido';
+      }
+    )
+    console.log(nuevoPartido);
+    this.partidoService.obtenerPartidos();
+  }
+
+  deshabilitarOpcion(opcion: string, otroControl: string): boolean {
+    const eleccion = this.crearPartidoForm.get(otroControl)?.value;
+    return eleccion === opcion;
+  }
+
+  mostrarFormulario() {
+    this.mostrarForm = !this.mostrarForm;
+    this.crearPartidoForm.reset({
+      fecha: null,
+      seleccionLocalNombre: '',
+      seleccionVisitanteNombre: ''
+    });
+  }
+
 }

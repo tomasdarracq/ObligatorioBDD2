@@ -32,16 +32,14 @@ export class AppComponent {
 
   chequearURL(url: string) {
     // Lista de rutas donde no se debe mostrar la nav bar
-    const rutasBloqueadas = ['', '/registro'];
+    const rutasBloqueadas = ['', '/registro', ':idAdmin/fixture/update'];
     this.mostrarNavBar = !rutasBloqueadas.includes(url);
   }
 
 
   logout() {
-    // Perform logout logic here (e.g., clear authentication tokens, etc.)
-    // Then navigate to the login page or home page
+    ///////////HACER
     this.router.navigate(['/login']);
   }
-
 
 }

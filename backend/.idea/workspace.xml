@@ -5,9 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8c042fc6-666a-4f0a-bc52-1e75435f2aa7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/app.routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/CorsConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/Login/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/Login/LoginRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/Login/LoginService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/core/models/login.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/core/services/login.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/estudiante/EstudianteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/estudiante/EstudianteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/estudiante/EstudianteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/estudiante/EstudianteRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/estudiante/EstudianteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/estudiante/EstudianteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/estudiante/LoginDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/Login/LoginDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/partido/PartidoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/partido/PartidoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/core/services/partido.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/core/services/partido.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/login/login.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/login/login.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +109,7 @@
       <workItem from="1717795511722" duration="2321000" />
       <workItem from="1718056847227" duration="1865000" />
       <workItem from="1718140473463" duration="5628000" />
-      <workItem from="1718320565157" duration="284000" />
+      <workItem from="1718320565157" duration="6484000" />
     </task>
     <servers />
   </component>
