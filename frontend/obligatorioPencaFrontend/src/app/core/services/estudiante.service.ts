@@ -15,4 +15,12 @@ export class EstudianteService {
   getAllEstudiantes(): Observable<Estudiante[]> {
     return this.http.get<Estudiante[]>(this.apiUrl);
   }
+
+  crearEstudiante(estudiante: Estudiante): Observable<Estudiante> {
+    return this.http.post<Estudiante>(this.apiUrl, estudiante)
+  }
+
+  elegirSeleccion(campeon: string, subcampeon: string): Observable<Estudiante> {
+    return this.http.get<Estudiante>(this.apiUrl + '/seleccion/' + campeon);
+  }
 }

@@ -5,13 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8c042fc6-666a-4f0a-bc52-1e75435f2aa7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/core/models/partido.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/core/models/partido.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/CorsConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/Login/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/Login/LoginRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/Login/LoginService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/core/models/login.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/core/services/login.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/estudiante/EstudianteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/estudiante/EstudianteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/estudiante/EstudianteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/estudiante/EstudianteRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/estudiante/EstudianteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/estudiante/EstudianteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/estudiante/LoginDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/Login/LoginDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/partido/PartidoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/partido/PartidoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/core/services/partido.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/core/services/partido.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/partido/partido.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/partido/partido.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/penca/penca.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/penca/penca.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/penca/penca.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/penca/penca.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/login/login.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/login/login.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +100,16 @@
       <workItem from="1717014096060" duration="889000" />
       <workItem from="1717087431666" duration="4694000" />
       <workItem from="1717182793851" duration="364000" />
-      <workItem from="1717183194258" duration="1940000" />
+      <workItem from="1717183194258" duration="2105000" />
+      <workItem from="1717271770226" duration="3143000" />
+      <workItem from="1717451919333" duration="736000" />
+      <workItem from="1717601824462" duration="467000" />
+      <workItem from="1717622719467" duration="591000" />
+      <workItem from="1717628727632" duration="884000" />
+      <workItem from="1717795511722" duration="2321000" />
+      <workItem from="1718056847227" duration="1865000" />
+      <workItem from="1718140473463" duration="5628000" />
+      <workItem from="1718320565157" duration="6484000" />
     </task>
     <servers />
   </component>
@@ -114,70 +130,10 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java</url>
-          <line>107</line>
-          <properties class="com.obligatorioPenca.obligatorioPenca.prediccion.PrediccionService" method="agregarPrediccion">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java</url>
-          <line>108</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java</url>
-          <line>111</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java</url>
-          <line>112</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java</url>
-          <line>113</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java</url>
-          <line>114</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java</url>
-          <line>115</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java</url>
-          <line>116</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java</url>
-          <line>117</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java</url>
-          <line>118</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java</url>
-          <line>109</line>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/prediccion/PrediccionService.java</url>
-          <line>110</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

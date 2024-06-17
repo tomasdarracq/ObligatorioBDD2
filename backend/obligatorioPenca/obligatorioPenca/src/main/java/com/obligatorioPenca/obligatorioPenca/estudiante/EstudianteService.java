@@ -14,8 +14,13 @@ import java.util.List;
 @Service
 public class EstudianteService {
     private final EstudianteRepository estudianteRepository;
+<<<<<<< HEAD
     private final PrediccionCampeonRepository prediccionCampeonRepository;
     public EstudianteService(EstudianteRepository estudianteRepository, PrediccionCampeonRepository prediccionCampeonRepository) {
+=======
+    
+    public EstudianteService(EstudianteRepository estudianteRepository) {
+>>>>>>> 7d08b1608bf2bc90eba1cc1af048a055d319b522
         this.estudianteRepository = estudianteRepository;
         this.prediccionCampeonRepository = prediccionCampeonRepository;
     }
@@ -30,6 +35,7 @@ public class EstudianteService {
       return estudianteRepository.obtenerEstudiante(estudiante.getEmail(), estudiante.getContrasena()).getIdEstudiante();
       }
 
+<<<<<<< HEAD
 
 
 
@@ -44,11 +50,11 @@ public class EstudianteService {
         return null;
     }
 
+=======
+>>>>>>> 7d08b1608bf2bc90eba1cc1af048a055d319b522
     public List<Estudiante> obtenerTodosLosEstudiantes(){
         return estudianteRepository.obtenerEstudiante();
     }
-
-
 
 }
 

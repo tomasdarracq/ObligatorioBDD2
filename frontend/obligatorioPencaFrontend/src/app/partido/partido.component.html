@@ -1,6 +1,6 @@
 <div class="container text-center">
     <div class="columna">
-        <h1>Resultados</h1>
+        <h1>Ingresar Resultados</h1>
         <div class="col-partidos">
             @for (jugado of jugados; track jugado.fecha ) {
             <div>
@@ -26,7 +26,7 @@
                 </form>
             </div>
             }
-            @if (jugados.length == 0) {
+            @if (jugados.length === 0) {
             <div class="fecha">
                 <div class="partido">
                     <h3>No Hay Resultados Aún</h3>
@@ -40,6 +40,35 @@
     <div class="columna">
         <h1>Próximos Partidos</h1>
         <div class="col-partidos">
+            <form class="fecha" [formGroup]="crearPartidoForm" (ngSubmit)="crearPartido()">
+                <div>
+                    <label for="fecha"></label>
+                    <input class="nuevaFecha" formControlName="fecha" type="datetime-local">
+                </div>
+                <div class="partido">
+                    <label for="seleccionLocalNombre"></label>
+                    <select formControlName="seleccionLocalNombre">
+                        <option value="" disabled selected>Selección Local</option>
+                        @for (s of selecciones; track s.nombre) {
+                        <option [value]="s.nombre"
+                            [disabled]="deshabilitarOpcion(s.nombre, 'seleccionVisitanteNombre')">{{ s.nombre }}
+                        </option>
+                        }
+                    </select>
+                    <label for="seleccionVisitanteNombre"></label>
+                    <select formControlName="seleccionVisitanteNombre">
+                        <option value="" disabled selected>Selección Visitante</option>
+                        @for (s of selecciones; track s.nombre) {
+                        <option [value]="s.nombre" [disabled]="deshabilitarOpcion(s.nombre, 'seleccionLocalNombre')">{{
+                            s.nombre }}
+                        </option>
+                        }
+                    </select>
+                </div>
+                @if (crearPartidoForm.valid) {
+                <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#crearPartidoModal">Crear</button>
+                }
+            </form>
             @for (partido of fixture; track partido.fecha) {
             <div class="fecha">
                 <h3>{{ partido.dia }}</h3>
@@ -47,14 +76,66 @@
                 <div class="partido">
                     <img src="assets/banderas/{{partido.seleccionLocalNombre}}.png"
                         alt="{{partido.seleccionLocalNombre}}">
-                    <h3>{{ partido.golesLocal }}</h3>
                     <span class="separador">vs</span>
-                    <h3>{{ partido.golesVisitante }}</h3>
                     <img src="assets/banderas/{{partido.seleccionVisitanteNombre}}.png"
                         alt="{{partido.seleccionVisitanteNombre}}">
                 </div>
             </div>
             }
+            @if (!mostrarForm) {
+            <div class="fecha"><button (click)="mostrarFormulario()">Añadir Partido</button></div>
+            }
+
+            @if (mostrarForm) {
+            <div class="fecha"><button (click)="mostrarFormulario()">Cancelar</button></div>
+            <form class="fecha" [formGroup]="crearPartidoForm" (ngSubmit)="crearPartido()">
+                <div>
+                    <label for="fecha"></label>
+                    <input class="nuevaFecha" formControlName="fecha" type="datetime-local">
+                </div>
+                <div class="partido">
+                    <label for="seleccionLocalNombre"></label>
+                    <select formControlName="seleccionLocalNombre">
+                        <option value="" disabled selected>Selección Local</option>
+                        @for (s of selecciones; track s.nombre) {
+                        <option [value]="s.nombre"
+                            [disabled]="deshabilitarOpcion(s.nombre, 'seleccionVisitanteNombre')">{{ s.nombre }}
+                        </option>
+                        }
+                    </select>
+                    <label for="seleccionVisitanteNombre"></label>
+                    <select formControlName="seleccionVisitanteNombre">
+                        <option value="" disabled selected>Selección Visitante</option>
+                        @for (s of selecciones; track s.nombre) {
+                        <option [value]="s.nombre" [disabled]="deshabilitarOpcion(s.nombre, 'seleccionLocalNombre')">{{
+                            s.nombre }}
+                        </option>
+                        }
+                    </select>
+                </div>
+                @if (crearPartidoForm.valid) {
+                <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#crearPartidoModal">Crear</button>
+                }
+            </form>
+            }
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="crearPartidoModal" tabindex="-1" aria-labelledby="crearPartidoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="crearPartidoModalLabel">Crear Partido</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body"><div class="fecha"><div class="partido">asd</div></div>
+                <h4>{{ mensajeModal }}</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
         </div>
     </div>
 </div>

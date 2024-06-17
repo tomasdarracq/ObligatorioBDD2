@@ -67,7 +67,10 @@ CREATE TABLE Estudiante_Elige_Seleccion (
 
 -- Insertar datos en la tabla Estudiante
 INSERT INTO Estudiante (idEstudiante, nombre, email, contrasena, carrera) VALUES
-(1, 'Maria', 'maria@madas.com', '1234', 'Ingeniería en Informática');
+(1, 'Maria', 'maria@madas.com', '1234', 'Ingeniería en Alimentos'),
+(2, 'Diego', 'handalian.diego11@gmail.com', '4321', 'Ingeniería en Informática'),
+(3, 'Juan', 'juan@gmail.com', '1111', 'Ingeniería en Informática'),
+(4, 'Sebastián', 'sebamart12@gmail.com', '2222', 'Ingeniería en Informática');
 
 INSERT INTO Estudiante (idEstudiante, nombre, email, contrasena, carrera, puntajeTotal) VALUES
     (3, 'Juan', 'maria@madas.com', '1234', 'Ingeniería en Informática', 2);
@@ -121,7 +124,6 @@ INSERT INTO Partido (nombreSeleccionLocal, nombreSeleccionVisitante, fecha, golL
 ('Bolivia', 'Panamá', '2024-07-01 22:00:00', NULL, NULL),
 ('Brasil', 'Colombia', '2024-07-02 22:00:00', NULL, NULL),
 ('Costa Rica', 'Paraguay', '2024-07-02 22:00:00', NULL, NULL);
-
 
 -- Insertar datos en la tabla Estudiante_Realiza_Prediccion
 INSERT INTO Estudiante_Realiza_Prediccion (idEstudiante, nombreSeleccionLocal, nombreSeleccionVisitante, fecha, golLocal, golVisitante,puntaje) VALUES

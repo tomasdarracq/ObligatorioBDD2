@@ -4,6 +4,7 @@ import { Partido } from '../core/models/partido';
 import { PrediccionService } from '../core/services/prediccion.service';
 import { Prediccion } from '../core/models/prediccion';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-penca',
@@ -18,17 +19,20 @@ export class PencaComponent implements OnInit {
   predicciones: Prediccion[] = [];
   nuevaPrediccionForms: { [key: string]: FormGroup } = {};
   actualizarPrediccionForms: { [key: string]: FormGroup } = {};
+  idEstudiante: number = -1;
 
-  constructor(private fb: FormBuilder, private partidoService: PartidoService, private prediccionService: PrediccionService) {}
+  constructor(private fb: FormBuilder, private partidoService: PartidoService, private prediccionService: PrediccionService, private activatedRoute: ActivatedRoute) { }
 
 
   ngOnInit() {
+    this.idEstudiante = Number(this.activatedRoute.snapshot.paramMap.get('idEstudiante'));
+
     this.partidoService.obtenerPartidos();
     this.fixture = this.partidoService.fixture;
     this.jugados = this.partidoService.jugados;
 
     this.obtenerPredicciones();
-  }  
+  }
 
   crearPrediccion(partidoId: number) {
     const form = this.nuevaPrediccionForms[partidoId];
@@ -52,18 +56,24 @@ export class PencaComponent implements OnInit {
       console.log("Partido no encontrado.");
       return;
     }
-    //SE REALIZA LA PREDICCION CON ID 1 
+
+    console.log(this.idEstudiante)
     const prediccion = new Prediccion(
+      this.idEstudiante,
       partido.seleccionLocalNombre,
       partido.seleccionVisitanteNombre,
       partido.fecha,
       golLocal,
-      golVisitante
+      golVisitante,
+      0
     );
 
     console.log(prediccion);
     this.prediccionService.guardarPrediccion(prediccion).subscribe(
-      (data: any) => console.log('Predicción guardada:', data),
+      (data: any) => {
+        console.log('Predicción guardada: ', data),
+          this.obtenerPredicciones();
+      },
       error => console.log('Error al guardar la predicción:', error)
     );
   }
@@ -84,13 +94,14 @@ export class PencaComponent implements OnInit {
   }
 
   obtenerPredicciones() {
-    this.prediccionService.getAllPrediccionesById(1).subscribe(
+    this.prediccionService.getAllPrediccionesById(this.idEstudiante).subscribe(
       (prediccion: Prediccion[]) => {
         this.predicciones = prediccion;
         this.dividirFechasPrediccion();
         this.ordenarPredicciones();
         this.filtrarPredicciones();
         this.crearFormulariosDePrediccion();
+
       },
       (error) => console.log(error)
     );
@@ -122,10 +133,21 @@ export class PencaComponent implements OnInit {
       this.jugados.forEach(j => {
         if (p.fechaPartido == j.fecha && p.nombreSeleccionLocal == j.seleccionLocalNombre && p.nombreSeleccionVisitante == j.seleccionVisitanteNombre) {
           p.jugado = true;
+          j.prediccionGolesLocal = p.golLocal;
+          j.prediccionGolesVisitante = p.golVisitante;
+          j.prediccionPuntaje = p.puntaje;
+        }
+      });
+      this.fixture.forEach(f => {
+        if (p.fechaPartido == f.fecha && p.nombreSeleccionLocal == f.seleccionLocalNombre && p.nombreSeleccionVisitante == f.seleccionVisitanteNombre) {
+          f.predicho = true;
+          f.prediccionGolesLocal = p.golLocal;
+          f.prediccionGolesVisitante = p.golVisitante;
         }
       })
-    });    
+    });
   }
+
   actualizarPrediccion(prediccionId: number) {
     const form = this.actualizarPrediccionForms[prediccionId];
 
@@ -150,16 +172,21 @@ export class PencaComponent implements OnInit {
     }
     //SE REALIZA LA PREDICCION CON ID 1 
     const prediccion = new Prediccion(
+      this.idEstudiante,
       partido.nombreSeleccionLocal,
       partido.nombreSeleccionVisitante,
       partido.fechaPartido,
       golLocal,
-      golVisitante
+      golVisitante,
+      0
     );
 
     console.log(prediccion);
     this.prediccionService.actualizarPrediccion(prediccion).subscribe(
-      (data: any) => console.log('Predicción actualizada:', data),
+      (data: any) => {
+        console.log('Predicción actualizada:', data),
+          this.obtenerPredicciones();
+      },
       error => console.log('Error al actualizar la predicción:', error)
     );
   }
