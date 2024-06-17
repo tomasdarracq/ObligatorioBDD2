@@ -14,32 +14,28 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder ,private router: Router, private estudianteService: loginService , private partidoService: PartidoService) {}
+  constructor(private fb: FormBuilder, private router: Router, private estudianteService: loginService, private partidoService: PartidoService) { }
   ngOnInit() {
     this.loginForm = this.fb.group({
-      email: '',
-      contrasena: ''
-      
+      email: ['', [Validators.required, Validators.email]],
+      contrasena: ['', Validators.required],
     });
-    this.partidoService.obtenerPartidos();
   }
 
-  onSubmit() {
+  iniciarSesion() {
     if (this.loginForm.valid) {
       const { email, contrasena } = this.loginForm.value; // Desestructura los valores del formulario
       const loginData = new login(email, contrasena); // Crea una instancia de la clase Login con los datos del formulario
 
       this.estudianteService.iniciarsesion(loginData).subscribe(
         response => {
-          console.log('Login successful:', response);
-          const userId=response;
-
-
+          console.log('Inicio de Sesión Exitoso', response);
+          const idUsuario = response;
           //this.router.navigate(['/fixture', userId]);
-          this.router.navigateByUrl('/fixture'); // Cambia '/fixture' por la ruta deseada
+          this.router.navigateByUrl(idUsuario + '/fixture'); // Cambiar '/fixture' por la ruta deseada
         },
         error => {
-          console.error('Login failed:', error);
+          console.error('Inicio de Sesión Fallido:', error);
         }
       );
     }

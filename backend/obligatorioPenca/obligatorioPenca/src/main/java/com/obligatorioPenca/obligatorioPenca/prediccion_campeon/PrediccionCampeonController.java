@@ -7,16 +7,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/prediccionCampeon")
 public class PrediccionCampeonController {
 
     @Autowired
     private PrediccionCampeonService prediccionCampeonService;
 
-    @GetMapping("prediccionCampeon/{idEstudiante}")
+    @GetMapping("/{idEstudiante}")
     public List<PrediccionCampeonDTO> getPrediccionCampeonByIdEstudiante(@PathVariable String idEstudiante) {
         int studentId = Integer.parseInt(idEstudiante);
         return prediccionCampeonService.getPrediccionCampeonByIdEstudiante(studentId);
     }
-
+    @PostMapping()
+    public void postPrediccionCampeon(@RequestBody PrediccionCampeonDTO prediccionCampeonDTO) {
+        prediccionCampeonService.agregarPrediccionCampeon(prediccionCampeonDTO);
+    }
 }

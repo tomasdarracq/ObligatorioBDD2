@@ -1,4 +1,4 @@
-package com.obligatorioPenca.obligatorioPenca.Login;
+package com.obligatorioPenca.obligatorioPenca.login;
 
 public class LoginDTO {
     public String email;

@@ -54,6 +54,7 @@ export class PartidoService {
       partido.id = index;
     });
   }
+  
   ordenarFechas() {
     this.fixture.sort((a, b) => {
       return new Date(a.fecha).getTime() - new Date(b.fecha).getTime();
@@ -70,5 +71,9 @@ export class PartidoService {
     this.jugados.sort((a, b) => {
       return new Date(b.fecha).getTime() - new Date(a.fecha).getTime();
     });
+  }
+
+  crearPartido(partido: Partido): Observable<Partido> {
+    return this.http.post<Partido>(this.apiUrl, partido);
   }
 }

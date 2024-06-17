@@ -32,4 +32,11 @@ public class PrediccionCampeonService {
 
         return prediccionCampeonDTOList;
     }
+    public void agregarPrediccionCampeon(PrediccionCampeonDTO prediccionCampeonDTO) {
+        prediccionCampeonRepository.agregarPrediccionCampeon(
+                prediccionCampeonDTO.getIdEstudiante(),
+                prediccionCampeonDTO.getNombreSeleccion(),
+                prediccionCampeonDTO.getEleccion()
+        );
+    }
 }

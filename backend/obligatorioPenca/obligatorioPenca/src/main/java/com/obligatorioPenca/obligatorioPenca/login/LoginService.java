@@ -1,6 +1,5 @@
-package com.obligatorioPenca.obligatorioPenca.Login;
+package com.obligatorioPenca.obligatorioPenca.login;
 
-import com.obligatorioPenca.obligatorioPenca.estudiante.Estudiante;
 import org.springframework.stereotype.Service;
 
 @Service
