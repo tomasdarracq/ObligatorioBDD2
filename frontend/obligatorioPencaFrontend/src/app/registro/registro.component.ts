@@ -4,6 +4,8 @@ import { Seleccion } from '../core/models/seleccion';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Estudiante } from '../core/models/estudiante';
 import { EstudianteService } from '../core/services/estudiante.service';
+import { Finalista } from '../core/models/finalista';
+import { FinalistaService } from '../core/services/finalista.service';
 
 @Component({
   selector: 'app-registro',
@@ -15,8 +17,9 @@ import { EstudianteService } from '../core/services/estudiante.service';
 export class RegistroComponent {
   registroForm !: FormGroup;
   selecciones: Seleccion[] = [];
+  idEstudiante!: number;
 
-  constructor(private fb: FormBuilder, private seleccionService: SeleccionService, private estudianteService: EstudianteService) { }
+  constructor(private fb: FormBuilder, private seleccionService: SeleccionService, private estudianteService: EstudianteService, private finalistaService: FinalistaService) { }
 
   ngOnInit() {
     this.registroForm = this.fb.group({
@@ -40,12 +43,33 @@ export class RegistroComponent {
         this.registroForm.get('contrasena')?.value,
         this.registroForm.get('carrera')?.value.trim(),
         0
-      )
+      );
+
       console.log('New User:', estudiante);
       console.log(this.registroForm.get('campeon')?.value);
       console.log(this.registroForm.get('subcampeon')?.value);
-      this.estudianteService.crearEstudiante(estudiante);
-      this.estudianteService.elegirSeleccion(this.registroForm.get('campeon')?.value, this.registroForm.get('subcampeon')?.value);
+
+      this.estudianteService.crearEstudiante(estudiante).subscribe(
+        (id: number) => {
+          console.log('Estudiante creado con ID:', id);
+          const campeon = new Finalista(id, this.registroForm.get('campeon')?.value, 'Campeon');
+          const subcampeon = new Finalista(id, this.registroForm.get('subcampeon')?.value, 'Subcampeon');
+
+          this.finalistaService.elegirSeleccion(campeon).subscribe(
+            (data: any) => console.log('Campeon elegido:', data),
+            error =>
+              console.log('Error al guardar la predicción:', error),
+          )
+
+          this.finalistaService.elegirSeleccion(subcampeon).subscribe(
+            (data: any) => console.log('Subcampeón elegido:', data),
+            error =>
+              console.log('Error al guardar la predicción:', error),
+          )
+        },
+        (error) => {
+          console.error('Error al crear el estudiante:', error);
+        });
     } else {
       this.registroForm.markAllAsTouched();
     }

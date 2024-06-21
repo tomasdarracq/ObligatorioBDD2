@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Estudiante } from '../models/estudiante';
 import { Observable } from 'rxjs';
+import { Finalista } from '../models/finalista';
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +17,8 @@ export class EstudianteService {
     return this.http.get<Estudiante[]>(this.apiUrl);
   }
 
-  crearEstudiante(estudiante: Estudiante): Observable<Estudiante> {
-    return this.http.post<Estudiante>(this.apiUrl, estudiante)
+  crearEstudiante(estudiante: Estudiante): Observable<number> {
+    return this.http.post<number>(this.apiUrl, estudiante)
   }
 
-  elegirSeleccion(campeon: string, subcampeon: string): Observable<Estudiante> {
-    return this.http.get<Estudiante>(this.apiUrl + '/seleccion/' + campeon);
-  }
 }

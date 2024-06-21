@@ -51,7 +51,7 @@ export class PartidoComponent {
       return;
     }
 
-    const partido = this.fixture.find(p => p.id === partidoId);
+    const partido = this.jugados.find(p => p.id === partidoId);
 
     if (!partido) {
       console.log("Partido no encontrado.");
@@ -68,7 +68,10 @@ export class PartidoComponent {
 
     console.log(resultado);
     this.partidoService.actualizarPartido(resultado).subscribe(
-      (data: any) => console.log('Predicción guardada:', data),
+      (data: any) => {
+        console.log('Predicción guardada:', data),
+        partido.actualizado = true;
+      },
       error => console.log('Error al guardar la predicción:', error)
     );
   }
@@ -97,7 +100,7 @@ export class PartidoComponent {
         console.log('Predicción guardada:', data),
           this.mensajeModal = 'Partido creado con exito',
           this.partidoService.obtenerPartidos();
-          this.mostrarFormulario();
+        this.mostrarFormulario();
       },
       error => {
         console.log('Error al guardar la predicción:', error),

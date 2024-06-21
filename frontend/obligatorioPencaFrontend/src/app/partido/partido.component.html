@@ -66,7 +66,8 @@
                     </select>
                 </div>
                 @if (crearPartidoForm.valid) {
-                <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#crearPartidoModal">Crear</button>
+                <button type="submit" class="btn btn-success" data-bs-toggle="modal"
+                    data-bs-target="#crearPartidoModal">Crear</button>
                 }
             </form>
             @for (partido of fixture; track partido.fecha) {
@@ -83,11 +84,11 @@
             </div>
             }
             @if (!mostrarForm) {
-            <div class="fecha"><button (click)="mostrarFormulario()">Añadir Partido</button></div>
+            <div class="fecha"><button class="btn btn-warning" (click)="mostrarFormulario()">Añadir Partido</button></div>
             }
 
             @if (mostrarForm) {
-            <div class="fecha"><button (click)="mostrarFormulario()">Cancelar</button></div>
+            <div class="fecha"><button class="btn btn-danger" (click)="mostrarFormulario()">Cancelar</button></div>
             <form class="fecha" [formGroup]="crearPartidoForm" (ngSubmit)="crearPartido()">
                 <div>
                     <label for="fecha"></label>
@@ -114,7 +115,8 @@
                     </select>
                 </div>
                 @if (crearPartidoForm.valid) {
-                <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#crearPartidoModal">Crear</button>
+                <button type="submit" class="btn btn-success" data-bs-toggle="modal"
+                    data-bs-target="#crearPartidoModal">Crear</button>
                 }
             </form>
             }
@@ -123,14 +125,18 @@
     </div>
 </div>
 
-<div class="modal fade" id="crearPartidoModal" tabindex="-1" aria-labelledby="crearPartidoModalLabel" aria-hidden="true">
+<div class="modal fade" id="crearPartidoModal" tabindex="-1" aria-labelledby="crearPartidoModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="crearPartidoModalLabel">Crear Partido</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body"><div class="fecha"><div class="partido">asd</div></div>
+            <div class="modal-body">
+                <div class="fecha">
+                    <div class="partido">asd</div>
+                </div>
                 <h4>{{ mensajeModal }}</h4>
             </div>
             <div class="modal-footer">

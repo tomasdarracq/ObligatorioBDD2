@@ -3,7 +3,7 @@
         <h1>Predicciones Realizadas</h1>
         <div class="col-partidos">
             @for (prediccion of predicciones; track prediccion.fechaPartido ) {
-            @if (!prediccion.jugado) {
+            @if (!prediccion.jugado || puedePredecir(prediccion.fechaPartido)) {
             <form class="fecha" [formGroup]="actualizarPrediccionForms[prediccion.id]"
                 (ngSubmit)="actualizarPrediccion(prediccion.id)">
                 <h3>{{ prediccion.dia }}</h3>
@@ -26,6 +26,19 @@
                 }
                 <h3>{{prediccion.golLocal}} - {{prediccion.golVisitante}}</h3>
             </form>
+            }@else if (!prediccion.jugado && !puedePredecir(prediccion.fechaPartido)) {
+            <div class="fecha">
+                <h3>{{ prediccion.dia }}</h3>
+                <h3>{{ prediccion.horario }}</h3>
+                <div class="partido">
+                    <img src="assets/banderas/{{prediccion.nombreSeleccionLocal}}.png"
+                        alt="{{prediccion.nombreSeleccionLocal}}">
+                    <span class="separador">vs</span>
+                    <img src="assets/banderas/{{prediccion.nombreSeleccionVisitante}}.png"
+                        alt="{{prediccion.nombreSeleccionVisitante}}">
+                </div>
+                <h3>{{prediccion.golLocal}} - {{prediccion.golVisitante}}</h3>
+            </div>
             }
             }
         </div>
@@ -36,7 +49,7 @@
         <div class="col-partidos">
             @for (partido of fixture; track partido.fecha ) {
             <div>
-                @if (!partido.predicho) {
+                @if (!partido.predicho && puedePredecir(partido.fecha)) {
                 <form class="fecha" [formGroup]="nuevaPrediccionForms[partido.id]"
                     (ngSubmit)="crearPrediccion(partido.id)">
                     <h3>{{ partido.dia }}</h3>
@@ -86,6 +99,7 @@
             <div class="fecha">
                 <h3>{{ jugado.dia }}</h3>
                 <h3>{{ jugado.horario }}</h3>
+                @if (jugado.actualizado) {
                 <div class="partido">
                     <img src="assets/banderas/{{jugado.seleccionLocalNombre}}.png"
                         alt="{{jugado.seleccionLocalNombre}}">
@@ -94,12 +108,23 @@
                     <h3>{{ jugado.golesVisitante }}</h3>
                     <img src="assets/banderas/{{jugado.seleccionVisitanteNombre}}.png"
                         alt="{{jugado.seleccionVisitanteNombre}}">
-                    </div>
+                </div>
 
-                    @if (jugado.prediccionGolesLocal != null && jugado.prediccionGolesVisitante != null) {
-                    <h3>Tu Predicción: {{jugado.prediccionGolesLocal}} - {{jugado.prediccionGolesVisitante}}</h3>
-                    <h3>{{jugado.prediccionPuntaje}} puntos obtenidos</h3>
-                    } 
+
+                } @else {
+                <div class="partido">
+                    <img src="assets/banderas/{{jugado.seleccionLocalNombre}}.png"
+                        alt="{{jugado.seleccionLocalNombre}}">
+                    @if (jugado.golesLocal != null && jugado.golesVisitante != null) {
+                    <span class="separador">vs</span>
+                    }
+                    <img src="assets/banderas/{{jugado.seleccionVisitanteNombre}}.png"
+                        alt="{{jugado.seleccionVisitanteNombre}}">
+                </div>
+
+                <h3>Esperando Resultado...</h3>
+
+                }
             </div>
             }
             @if (jugados[0] == null) {

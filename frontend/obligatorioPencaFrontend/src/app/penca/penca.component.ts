@@ -34,6 +34,16 @@ export class PencaComponent implements OnInit {
     this.obtenerPredicciones();
   }
 
+  puedePredecir(fechaPartido: Date): boolean {
+    if (!(fechaPartido instanceof Date)) {
+      fechaPartido = new Date(fechaPartido);
+    }
+
+    const ahora = new Date();
+    const horaAntesPartido = new Date(fechaPartido.getTime() - 60 * 60 * 1000);
+    return ahora <= horaAntesPartido;
+  }
+
   crearPrediccion(partidoId: number) {
     const form = this.nuevaPrediccionForms[partidoId];
 
