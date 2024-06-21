@@ -15,7 +15,7 @@ CREATE TABLE Estudiante (
 
 -- Crear tabla Administrador
 CREATE TABLE Administrador (
-    idAdmin INT NOT NULL AUTO_INCREMENT,
+    idAdmin INT NOT NULL,
     nombre VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     contrasena VARCHAR(50) NOT NULL,
@@ -74,7 +74,7 @@ INSERT INTO Estudiante (idEstudiante, nombre, email, contrasena, carrera) VALUES
 
 -- Insertar datos en la tabla Administrador
 INSERT INTO Administrador (idAdmin, nombre, email, contrasena) VALUES
-(1, 'Administrador', 'admin@gmail.com', '4321');
+(0, 'Administrador', 'admin@gmail.com', '4321');
 
 -- Insertar datos en la tabla Seleccion
 INSERT INTO Seleccion (nombre) VALUES

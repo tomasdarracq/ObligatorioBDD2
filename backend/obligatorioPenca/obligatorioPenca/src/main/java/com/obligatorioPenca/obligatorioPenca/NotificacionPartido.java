@@ -1,11 +1,11 @@
 package com.obligatorioPenca.obligatorioPenca;
 
-import com.obligatorioPenca.obligatorioPenca.estudiante.Estudiante;
-import com.obligatorioPenca.obligatorioPenca.estudiante.EstudianteService;
-import com.obligatorioPenca.obligatorioPenca.partido.PartidoDTO;
-import com.obligatorioPenca.obligatorioPenca.partido.PartidoService;
-import com.obligatorioPenca.obligatorioPenca.prediccion.PrediccionDTO;
-import com.obligatorioPenca.obligatorioPenca.prediccion.PrediccionService;
+import com.obligatorioPenca.obligatorioPenca.model.Estudiante;
+import com.obligatorioPenca.obligatorioPenca.service.EstudianteService;
+import com.obligatorioPenca.obligatorioPenca.model.PartidoDTO;
+import com.obligatorioPenca.obligatorioPenca.service.PartidoService;
+import com.obligatorioPenca.obligatorioPenca.model.PrediccionDTO;
+import com.obligatorioPenca.obligatorioPenca.service.PrediccionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
