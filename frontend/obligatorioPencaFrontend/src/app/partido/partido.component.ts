@@ -51,7 +51,7 @@ export class PartidoComponent {
       return;
     }
 
-    const partido = this.fixture.find(p => p.id === partidoId);
+    const partido = this.jugados.find(p => p.id === partidoId);
 
     if (!partido) {
       console.log("Partido no encontrado.");

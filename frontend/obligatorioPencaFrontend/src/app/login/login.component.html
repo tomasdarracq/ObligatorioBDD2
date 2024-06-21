@@ -1,12 +1,27 @@
-
-
 <form [formGroup]="loginForm" (ngSubmit)="iniciarSesion()">
-    <h3>¡Inicia Sesión!</h3>
-    <label for="email">Correo Electrónico</label>
-    <input type="email" formControlName="email">
+  <h3>¡Inicia Sesión!</h3>
+  <label for="email">Correo Electrónico</label>
+  <input type="email" formControlName="email">
+  @if (esValido('email')) {
+    <div class="error">
+        @if (loginForm.get('email')?.errors?.['required']) {
+        El correo electrónico es requerido.
+        }
+        @if (loginForm.get('email')?.errors?.['email']) {
+        El correo electrónico no es válido.
+        }
+    </div>
+    }
 
-    <label for="contrasena">Contraseña</label>
-    <input type="password" formControlName="contrasena">
+  <label for="contrasena">Contraseña</label>
+  <input type="password" formControlName="contrasena">
+  @if (esValido('contrasena')) {
+    <div class="error">La contraseña es requerida.</div>
+    }
 
-    <button type="submit" class="btn btn-success">Ingresar</button>
+  @if (fail) {
+    <h4>El usuario o contraseña son incorrectos</h4>
+  }
+  <button type="submit" class="btn btn-success">Ingresar</button>
+  <a href="/registro" class="register-link">¿Aún no tienes una cuenta? Regístrate</a>
 </form>

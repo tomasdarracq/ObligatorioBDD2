@@ -22,8 +22,7 @@ public class LoginController {
     public Integer iniciarSesion (@RequestBody LoginDTO loginDTO){
         Integer idUsuario = loginService.iniciarsesion(loginDTO.email, loginDTO.contrasena);
         if(idUsuario==null)
-            return 0;
+            return null;
         return idUsuario;
     }
-
 }
