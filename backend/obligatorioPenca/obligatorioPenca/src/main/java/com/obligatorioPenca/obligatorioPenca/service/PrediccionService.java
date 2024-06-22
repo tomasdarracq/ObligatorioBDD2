@@ -46,24 +46,28 @@ public class PrediccionService {
         return prediccionDTOLista;
     }
 
-    public int revisarPuntaje(Partido partido, Prediccion prediccion){
+    public int revisarPuntaje(Partido partido, Prediccion prediccion) {
         LocalDateTime fechaActual = LocalDateTime.now();
 
         if (partido.getId().getFecha().isBefore(fechaActual)) {
-            if (Objects.equals(partido.getGolLocal(), prediccion.getGolLocal()) && Objects.equals(partido.getGolVisitante(), prediccion.getGolVisitante())) {
-                return 4;
-            } else {
-                int ganadorPartido = partido.getGolLocal() - partido.getGolVisitante();
-                int ganadorPrediccion = prediccion.getGolLocal() - prediccion.getGolVisitante();
-                if ((ganadorPartido < 0 && ganadorPrediccion < 0) || (ganadorPartido > 0 && ganadorPrediccion > 0) || (ganadorPartido == 0 && ganadorPrediccion == 0)) {
-                    return 2;
+            if (partido.getGolLocal() != null && partido.getGolVisitante() != null) {
+
+                if (Objects.equals(partido.getGolLocal(), prediccion.getGolLocal()) && Objects.equals(partido.getGolVisitante(), prediccion.getGolVisitante())) {
+                    return 4;
                 } else {
-                    return 0;
+                    int ganadorPartido = partido.getGolLocal() - partido.getGolVisitante();
+                    int ganadorPrediccion = prediccion.getGolLocal() - prediccion.getGolVisitante();
+                    if ((ganadorPartido < 0 && ganadorPrediccion < 0) || (ganadorPartido > 0 && ganadorPrediccion > 0) || (ganadorPartido == 0 && ganadorPrediccion == 0)) {
+                        return 2;
+                    } else {
+                        return 0;
+                    }
                 }
+            } else {
+                return 0;
             }
-        } else{
-            return 0;
         }
+        return 0;
     }
 
     public List<PrediccionDTO> getAllPredicciones() {
