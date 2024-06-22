@@ -72,8 +72,7 @@ INSERT INTO Estudiante (idEstudiante, nombre, email, contrasena, carrera) VALUES
 (3, 'Juan', 'juan@gmail.com', '1111', 'Ingeniería en Informática'),
 (4, 'Sebastián', 'sebamart12@gmail.com', '2222', 'Ingeniería en Informática');
 
-INSERT INTO Estudiante (idEstudiante, nombre, email, contrasena, carrera, puntajeTotal) VALUES
-    (3, 'Juan', 'maria@madas.com', '1234', 'Ingeniería en Informática', 2);
+
 
 -- Insertar datos en la tabla Administrador
 INSERT INTO Administrador (idAdmin, nombre, email, contrasena) VALUES
@@ -100,8 +99,8 @@ INSERT INTO Seleccion (nombre) VALUES
 
 -- Insertar datos en la tabla Partido
 INSERT INTO Partido (nombreSeleccionLocal, nombreSeleccionVisitante, fecha, golLocal, golVisitante) VALUES
-('Argentina', 'Canadá', '2024-06-20 21:00:00', NULL, NULL),
-('Perú', 'Chile', '2024-06-21 21:00:00', NULL, NULL),
+('Argentina', 'Canadá', '2024-06-18 17:00:00', 1, 8),
+('Perú', 'Chile', '2024-06-18 17:00:00', 1, 2),
 ('Ecuador', 'Venezuela', '2024-06-22 19:00:00', NULL, NULL),
 ('México', 'Jamaica', '2024-06-22 22:00:00', NULL, NULL),
 ('Estados Unidos', 'Bolivia', '2024-06-23 19:00:00', NULL, NULL),
@@ -127,8 +126,8 @@ INSERT INTO Partido (nombreSeleccionLocal, nombreSeleccionVisitante, fecha, golL
 
 -- Insertar datos en la tabla Estudiante_Realiza_Prediccion
 INSERT INTO Estudiante_Realiza_Prediccion (idEstudiante, nombreSeleccionLocal, nombreSeleccionVisitante, fecha, golLocal, golVisitante,puntaje) VALUES
-(1, 'Argentina', 'Canadá', '2024-06-20 21:00:00', 1, 8,0),
-(1, 'Perú', 'Chile', '2024-06-21 21:00:00', 1, 6,0);
+(1, 'Argentina', 'Canadá', '2024-06-18 17:00:00', 1, 8,0),
+(1, 'Perú', 'Chile', '2024-06-18 17:00:00', 1, 6,0);
 
 -- Insertar datos en la tabla Estudiante_Elige_Seleccion
 INSERT INTO Estudiante_Elige_Seleccion (idEstudiante, nombreSeleccion, eleccion) VALUES
