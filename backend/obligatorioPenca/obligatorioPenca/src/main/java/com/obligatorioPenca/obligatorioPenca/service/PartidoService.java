@@ -38,7 +38,6 @@ public class PartidoService {
                     partido.getSeleccionvisitante().getNombre(),
                     partido.getGolLocal(),
                     partido.getGolVisitante(),
-
                     partido.getId().getFecha()
             );
             partidosDTO.add(partidoDTO);

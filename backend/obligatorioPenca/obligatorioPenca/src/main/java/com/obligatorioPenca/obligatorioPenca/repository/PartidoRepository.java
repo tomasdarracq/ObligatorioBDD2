@@ -30,8 +30,8 @@ public interface PartidoRepository extends JpaRepository  <Partido, Partidocompo
     void insertarPartido(@Param("nombreSeleccionLocal") String nombreSeleccionLocal,
                          @Param("nombreSeleccionVisitante") String nombreSeleccionVisitante,
                          @Param("fecha") LocalDateTime fecha,
-                         @Param("golLocal") int golLocal,
-                         @Param("golVisitante") int golVisitante);
+                         @Param("golLocal") Integer golLocal,
+                         @Param("golVisitante") Integer golVisitante);
 
 
     @Modifying
@@ -42,8 +42,8 @@ public interface PartidoRepository extends JpaRepository  <Partido, Partidocompo
     void actualizarGolesPartido(@Param("nombreSeleccionLocal") String nombreSeleccionLocal,
                                 @Param("nombreSeleccionVisitante") String nombreSeleccionVisitante,
                                 @Param("fecha") LocalDateTime fecha,
-                                @Param("golLocal") int golLocal,
-                                @Param("golVisitante") int golVisitante);
+                                @Param("golLocal") Integer golLocal,
+                                @Param("golVisitante") Integer golVisitante);
 
 
 
