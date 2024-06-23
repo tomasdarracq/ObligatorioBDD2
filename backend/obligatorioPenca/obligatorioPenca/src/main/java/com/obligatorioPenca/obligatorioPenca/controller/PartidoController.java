@@ -26,14 +26,14 @@ public class PartidoController {
     }
 
     @PostMapping("/fecha")
-    public ResponseEntity<List<PartidoDTO>> obtenerpartidobyFecha(@RequestBody LocalDateTime fecha){
-        List<PartidoDTO> partidosDTO=partidoService.obtnerPartidoByFecha(fecha);
+    public ResponseEntity<List<PartidoDTO>> obtenerPartidoByFecha(@RequestBody LocalDateTime fecha){
+        List<PartidoDTO> partidosDTO=partidoService.obtenerPartidoByFecha(fecha);
         return ResponseEntity.ok(partidosDTO);
     }
 
     @PostMapping
-    public ResponseEntity<PartidoDTO> createPartido(@RequestBody  PartidoDTO partido ){
-        partidoService.crearpartido(partido);
+    public ResponseEntity<PartidoDTO> crearPartido(@RequestBody  PartidoDTO partido ){
+        partidoService.crearPartido(partido);
         return  ResponseEntity.ok(partido);
 
     }
@@ -41,7 +41,7 @@ public class PartidoController {
     @PutMapping
     public ResponseEntity<Boolean> agregarGoles(@RequestBody PartidoDTO partidoDTO){
         boolean result=false;
-        if (partidoService.agregargoles(partidoDTO)!=null){
+        if (partidoService.agregarGoles(partidoDTO)!=null){
             result=true;
         }
         return ResponseEntity.ok(result);
