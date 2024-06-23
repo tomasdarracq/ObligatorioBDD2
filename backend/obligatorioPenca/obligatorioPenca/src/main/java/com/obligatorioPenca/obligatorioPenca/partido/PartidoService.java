@@ -14,7 +14,7 @@ public class PartidoService {
         this.partidoRepository = partidoRepository;
     }
 
-    public PartidoDTO crearpartido(PartidoDTO partidoDTO) {
+    public PartidoDTO crearPartido(PartidoDTO partidoDTO) {
         partidoRepository.insertarPartido(
                 partidoDTO.getSeleccionLocalNombre(),
                 partidoDTO.getSeleccionVisitanteNombre(),
@@ -43,7 +43,7 @@ public class PartidoService {
         return partidosDTO;
     }
 
-    public List<PartidoDTO> obtnerPartidoByFecha(LocalDateTime fecha){
+    public List<PartidoDTO> obtenerPartidoByFecha(LocalDateTime fecha){
         List<Partido> partidos= partidoRepository.findAllbyFecha(fecha);
         List<PartidoDTO> partidosDTO = new ArrayList<>();
 
@@ -60,13 +60,13 @@ public class PartidoService {
         return partidosDTO;
     }
 
-    public String agregargoles(PartidoDTO partidoDTO){
+    public Integer agregarGoles(PartidoDTO partidoDTO){
     partidoRepository.actualizarGolesPartido(partidoDTO.getSeleccionLocalNombre(),
             partidoDTO.getSeleccionVisitanteNombre(),
             partidoDTO.getFecha(),
             partidoDTO.getGolesLocal(),
             partidoDTO.getGolesVisitante());
-    return "El partido se guardo correctamente";
+    return partidoDTO.getGolesLocal();
 
     }
     
