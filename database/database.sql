@@ -15,7 +15,7 @@ CREATE TABLE Estudiante (
 
 -- Crear tabla Administrador
 CREATE TABLE Administrador (
-    idAdmin INT NOT NULL AUTO_INCREMENT,
+    idAdmin INT NOT NULL,
     nombre VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     contrasena VARCHAR(50) NOT NULL,
@@ -74,7 +74,7 @@ INSERT INTO Estudiante (idEstudiante, nombre, email, contrasena, carrera) VALUES
 
 -- Insertar datos en la tabla Administrador
 INSERT INTO Administrador (idAdmin, nombre, email, contrasena) VALUES
-(1, 'Administrador', 'admin@gmail.com', '4321');
+(0, 'Administrador', 'admin@gmail.com', '4321');
 
 -- Insertar datos en la tabla Seleccion
 INSERT INTO Seleccion (nombre) VALUES
@@ -97,8 +97,8 @@ INSERT INTO Seleccion (nombre) VALUES
 
 -- Insertar datos en la tabla Partido
 INSERT INTO Partido (nombreSeleccionLocal, nombreSeleccionVisitante, fecha, golLocal, golVisitante) VALUES
-('Argentina', 'Canadá', '2024-06-18 17:00:00', 1, 8),
-('Perú', 'Chile', '2024-06-18 17:00:00', 1, 2),
+('Argentina', 'Canadá', '2024-06-20 21:00:00', NULL, NULL),
+('Perú', 'Chile', '2024-06-21 21:00:00', NULL, NULL),
 ('Ecuador', 'Venezuela', '2024-06-22 19:00:00', NULL, NULL),
 ('México', 'Jamaica', '2024-06-22 22:00:00', NULL, NULL),
 ('Estados Unidos', 'Bolivia', '2024-06-23 19:00:00', NULL, NULL),
@@ -120,16 +120,14 @@ INSERT INTO Partido (nombreSeleccionLocal, nombreSeleccionVisitante, fecha, golL
 ('Estados Unidos', 'Uruguay', '2024-07-01 22:00:00', NULL, NULL),
 ('Bolivia', 'Panamá', '2024-07-01 22:00:00', NULL, NULL),
 ('Brasil', 'Colombia', '2024-07-02 22:00:00', NULL, NULL),
-('Costa Rica', 'Paraguay', '2024-07-02 22:00:00', NULL, NULL),
-('Costa Rica', 'Paraguay', '2024-06-21 20:00:00', NULL, NULL);
+('Costa Rica', 'Paraguay', '2024-07-02 22:00:00', NULL, NULL);
 
 -- Insertar datos en la tabla Estudiante_Realiza_Prediccion
 INSERT INTO Estudiante_Realiza_Prediccion (idEstudiante, nombreSeleccionLocal, nombreSeleccionVisitante, fecha, golLocal, golVisitante,puntaje) VALUES
-(1, 'Argentina', 'Canadá', '2024-06-18 17:00:00', 1, 8,0),
-(1, 'Perú', 'Chile', '2024-06-18 17:00:00', 1, 6,0);
+(1, 'Argentina', 'Canadá', '2024-06-20 21:00:00', 1, 8,0),
+(1, 'Perú', 'Chile', '2024-06-21 21:00:00', 1, 6,0);
 
 -- Insertar datos en la tabla Estudiante_Elige_Seleccion
 INSERT INTO Estudiante_Elige_Seleccion (idEstudiante, nombreSeleccion, eleccion) VALUES
 (1, 'Argentina', 'Campeón'),
 (1, 'Brasil', 'Subcampeón');
-

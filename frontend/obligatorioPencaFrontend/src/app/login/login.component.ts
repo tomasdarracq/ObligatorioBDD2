@@ -13,6 +13,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+  respuesta = ""
+  fail: boolean = false;
 
   constructor(private fb: FormBuilder, private router: Router, private estudianteService: loginService, private partidoService: PartidoService) { }
   ngOnInit() {
@@ -20,6 +22,7 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       contrasena: ['', Validators.required],
     });
+
   }
 
   iniciarSesion() {
@@ -29,15 +32,34 @@ export class LoginComponent implements OnInit {
 
       this.estudianteService.iniciarsesion(loginData).subscribe(
         response => {
-          console.log('Inicio de Sesión Exitoso', response);
-          const idUsuario = response;
-          //this.router.navigate(['/fixture', userId]);
-          this.router.navigateByUrl(idUsuario + '/fixture'); // Cambiar '/fixture' por la ruta deseada
+          if (response != null) {
+            console.log('Inicio de Sesión Exitoso', response);
+            this.fail = false;
+            const idUsuario = response;
+            if (idUsuario == 0) {
+              this.router.navigateByUrl(idUsuario + '/fixture/update');
+              this.partidoService.obtenerPartidos();
+            }
+            else {
+              this.router.navigateByUrl(idUsuario + '/fixture');
+              this.partidoService.obtenerPartidos();
+            }
+          }
+          else {
+            console.log(response)
+            this.fail = true;
+          }
+
         },
         error => {
           console.error('Inicio de Sesión Fallido:', error);
         }
       );
     }
+  }
+
+  esValido(input: string): boolean {
+    const control = this.loginForm.get(input);
+    return !!control?.invalid && control?.touched;
   }
 }
