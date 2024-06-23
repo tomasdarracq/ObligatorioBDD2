@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8c042fc6-666a-4f0a-bc52-1e75435f2aa7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c3845e4a-2836-4483-929e-5407b04c1d2f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c3845e4a-2836-4483-929e-5407b04c1d2f.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/database.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/controller/PartidoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/obligatorioPenca/obligatorioPenca/src/main/java/com/obligatorioPenca/obligatorioPenca/controller/PartidoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/core/models/partido.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/core/models/partido.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/partido/partido.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/partido/partido.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +111,7 @@
       <workItem from="1718900630264" duration="146000" />
       <workItem from="1718988667778" duration="8704000" />
       <workItem from="1719076901919" duration="1232000" />
-      <workItem from="1719160867981" duration="1348000" />
+      <workItem from="1719160867981" duration="2653000" />
     </task>
     <servers />
   </component>

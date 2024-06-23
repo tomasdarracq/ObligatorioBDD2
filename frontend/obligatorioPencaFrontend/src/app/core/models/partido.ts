@@ -11,7 +11,6 @@ export class Partido {
     prediccionGolesLocal?: number;
     prediccionGolesVisitante?: number;
     prediccionPuntaje?: number = 0;
-    actualizado?: boolean = true;
 
     constructor(seleccionLocalNombre: string, seleccionVisitanteNombre: string, fecha: Date,
         golesLocal?: number, golesVisitante?: number, dia?: string, horario?: string) {

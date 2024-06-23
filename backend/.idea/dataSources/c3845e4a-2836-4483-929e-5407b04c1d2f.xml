@@ -158,6 +158,24 @@
 |root||root|localhost|XA_RECOVER_ADMIN|G
 |root||root||grant option|G
 |root||root|localhost|grant option|G
+PencaUCU|schema||bernardo||ALTER|G
+PencaUCU|schema||bernardo||ALTER ROUTINE|G
+PencaUCU|schema||bernardo||CREATE|G
+PencaUCU|schema||bernardo||CREATE ROUTINE|G
+PencaUCU|schema||bernardo||CREATE TEMPORARY TABLES|G
+PencaUCU|schema||bernardo||CREATE VIEW|G
+PencaUCU|schema||bernardo||DELETE|G
+PencaUCU|schema||bernardo||DROP|G
+PencaUCU|schema||bernardo||EVENT|G
+PencaUCU|schema||bernardo||EXECUTE|G
+PencaUCU|schema||bernardo||INDEX|G
+PencaUCU|schema||bernardo||INSERT|G
+PencaUCU|schema||bernardo||LOCK TABLES|G
+PencaUCU|schema||bernardo||REFERENCES|G
+PencaUCU|schema||bernardo||SELECT|G
+PencaUCU|schema||bernardo||SHOW VIEW|G
+PencaUCU|schema||bernardo||TRIGGER|G
+PencaUCU|schema||bernardo||UPDATE|G
 performance_schema|schema||mysql.session|localhost|SELECT|G
 sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <ServerVersion>8.1.0</ServerVersion>
@@ -1061,235 +1079,214 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     <collation id="287" parent="1" name="utf8mb4_zh_0900_as_cs">
       <Charset>utf8mb4</Charset>
     </collation>
-    <schema id="288" parent="1" name="BDIPrimerParcial">
+    <schema id="288" parent="1" name="PencaUCU">
       <Current>1</Current>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="289" parent="1" name="OBLIGATORIOBdD1">
-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
-    </schema>
-    <schema id="290" parent="1" name="PencaUCU">
-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
-    </schema>
-    <schema id="291" parent="1" name="bd1_dia1">
-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
-    </schema>
-    <schema id="292" parent="1" name="information_schema">
+    <schema id="289" parent="1" name="information_schema">
       <CollationName>utf8mb3_general_ci</CollationName>
     </schema>
-    <schema id="293" parent="1" name="mysql">
+    <schema id="290" parent="1" name="mysql">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="294" parent="1" name="parcial1viejo">
+    <schema id="291" parent="1" name="performance_schema">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="295" parent="1" name="performance_schema">
+    <schema id="292" parent="1" name="sys">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="296" parent="1" name="practicaparcial1">
-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
-    </schema>
-    <schema id="297" parent="1" name="practico1">
-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
-    </schema>
-    <schema id="298" parent="1" name="productopedido">
-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
-    </schema>
-    <schema id="299" parent="1" name="sys">
-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
-    </schema>
-    <user id="300" parent="1" name="mysql.infoschema">
+    <user id="293" parent="1" name="bernardo"/>
+    <user id="294" parent="1" name="mysql.infoschema">
       <CanLogin>0</CanLogin>
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="301" parent="1" name="mysql.session">
+    <user id="295" parent="1" name="mysql.session">
       <CanLogin>0</CanLogin>
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="302" parent="1" name="mysql.sys">
+    <user id="296" parent="1" name="mysql.sys">
       <CanLogin>0</CanLogin>
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="303" parent="1" name="root"/>
-    <user id="304" parent="1" name="root">
+    <user id="297" parent="1" name="root"/>
+    <user id="298" parent="1" name="root">
       <Host>localhost</Host>
     </user>
-    <table id="305" parent="290" name="Administrador">
+    <table id="299" parent="288" name="Administrador">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="306" parent="290" name="Estudiante">
+    <table id="300" parent="288" name="Estudiante">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="307" parent="290" name="Estudiante_Elige_Seleccion">
+    <table id="301" parent="288" name="Estudiante_Elige_Seleccion">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="308" parent="290" name="Estudiante_Realiza_Prediccion">
+    <table id="302" parent="288" name="Estudiante_Realiza_Prediccion">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="309" parent="290" name="Partido">
+    <table id="303" parent="288" name="Partido">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="310" parent="290" name="Seleccion">
+    <table id="304" parent="288" name="Seleccion">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <column id="311" parent="305" name="idAdmin">
-      <AutoIncrement>2</AutoIncrement>
+    <column id="305" parent="299" name="idAdmin">
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="312" parent="305" name="nombre">
+    <column id="306" parent="299" name="nombre">
       <DasType>varchar(50)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="313" parent="305" name="email">
+    <column id="307" parent="299" name="email">
       <DasType>varchar(50)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="314" parent="305" name="contrasena">
+    <column id="308" parent="299" name="contrasena">
       <DasType>varchar(50)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <index id="315" parent="305" name="PRIMARY">
+    <index id="309" parent="299" name="PRIMARY">
       <ColNames>idAdmin</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="316" parent="305" name="PRIMARY">
+    <key id="310" parent="299" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="317" parent="306" name="idEstudiante">
-      <AutoIncrement>5</AutoIncrement>
+    <column id="311" parent="300" name="idEstudiante">
+      <AutoIncrement>4</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="318" parent="306" name="nombre">
+    <column id="312" parent="300" name="nombre">
       <DasType>varchar(50)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="319" parent="306" name="email">
+    <column id="313" parent="300" name="email">
       <DasType>varchar(50)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="320" parent="306" name="contrasena">
+    <column id="314" parent="300" name="contrasena">
       <DasType>varchar(50)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="321" parent="306" name="carrera">
+    <column id="315" parent="300" name="carrera">
       <DasType>varchar(50)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="322" parent="306" name="puntajeTotal">
+    <column id="316" parent="300" name="puntajeTotal">
       <DasType>int|0s</DasType>
       <Position>6</Position>
     </column>
-    <index id="323" parent="306" name="PRIMARY">
+    <index id="317" parent="300" name="PRIMARY">
       <ColNames>idEstudiante</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="324" parent="306" name="PRIMARY">
+    <key id="318" parent="300" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="325" parent="307" name="idEstudiante">
+    <column id="319" parent="301" name="idEstudiante">
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="326" parent="307" name="nombreSeleccion">
+    <column id="320" parent="301" name="nombreSeleccion">
       <DasType>varchar(50)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="327" parent="307" name="eleccion">
+    <column id="321" parent="301" name="eleccion">
       <DasType>varchar(50)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <foreign-key id="328" parent="307" name="Estudiante_Elige_Seleccion_ibfk_1">
+    <foreign-key id="322" parent="301" name="Estudiante_Elige_Seleccion_ibfk_1">
       <ColNames>idEstudiante</ColNames>
       <RefColNames>idEstudiante</RefColNames>
       <RefTableName>Estudiante</RefTableName>
     </foreign-key>
-    <foreign-key id="329" parent="307" name="Estudiante_Elige_Seleccion_ibfk_2">
+    <foreign-key id="323" parent="301" name="Estudiante_Elige_Seleccion_ibfk_2">
       <ColNames>nombreSeleccion</ColNames>
       <RefColNames>nombre</RefColNames>
       <RefTableName>Seleccion</RefTableName>
     </foreign-key>
-    <index id="330" parent="307" name="PRIMARY">
+    <index id="324" parent="301" name="PRIMARY">
       <ColNames>idEstudiante
 nombreSeleccion</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="331" parent="307" name="nombreSeleccion">
+    <index id="325" parent="301" name="nombreSeleccion">
       <ColNames>nombreSeleccion</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="332" parent="307" name="PRIMARY">
+    <key id="326" parent="301" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="333" parent="308" name="idEstudiante">
+    <column id="327" parent="302" name="idEstudiante">
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="334" parent="308" name="nombreSeleccionLocal">
+    <column id="328" parent="302" name="nombreSeleccionLocal">
       <DasType>varchar(50)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="335" parent="308" name="nombreSeleccionVisitante">
+    <column id="329" parent="302" name="nombreSeleccionVisitante">
       <DasType>varchar(50)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="336" parent="308" name="fecha">
+    <column id="330" parent="302" name="fecha">
       <DasType>datetime|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="337" parent="308" name="golLocal">
+    <column id="331" parent="302" name="golLocal">
       <DasType>int|0s</DasType>
       <Position>5</Position>
     </column>
-    <column id="338" parent="308" name="golVisitante">
+    <column id="332" parent="302" name="golVisitante">
       <DasType>int|0s</DasType>
       <Position>6</Position>
     </column>
-    <column id="339" parent="308" name="puntaje">
+    <column id="333" parent="302" name="puntaje">
       <DasType>int|0s</DasType>
       <Position>7</Position>
     </column>
-    <foreign-key id="340" parent="308" name="Estudiante_Realiza_Prediccion_ibfk_1">
+    <foreign-key id="334" parent="302" name="Estudiante_Realiza_Prediccion_ibfk_1">
       <ColNames>idEstudiante</ColNames>
       <RefColNames>idEstudiante</RefColNames>
       <RefTableName>Estudiante</RefTableName>
     </foreign-key>
-    <foreign-key id="341" parent="308" name="Estudiante_Realiza_Prediccion_ibfk_2">
+    <foreign-key id="335" parent="302" name="Estudiante_Realiza_Prediccion_ibfk_2">
       <ColNames>nombreSeleccionLocal
 nombreSeleccionVisitante
 fecha</ColNames>
@@ -1298,7 +1295,7 @@ nombreSeleccionVisitante
 fecha</RefColNames>
       <RefTableName>Partido</RefTableName>
     </foreign-key>
-    <index id="342" parent="308" name="PRIMARY">
+    <index id="336" parent="302" name="PRIMARY">
       <ColNames>idEstudiante
 nombreSeleccionLocal
 nombreSeleccionVisitante
@@ -1306,81 +1303,81 @@ fecha</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="343" parent="308" name="nombreSeleccionLocal">
+    <index id="337" parent="302" name="nombreSeleccionLocal">
       <ColNames>nombreSeleccionLocal
 nombreSeleccionVisitante
 fecha</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="344" parent="308" name="PRIMARY">
+    <key id="338" parent="302" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="345" parent="309" name="nombreSeleccionLocal">
+    <column id="339" parent="303" name="nombreSeleccionLocal">
       <DasType>varchar(50)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="346" parent="309" name="nombreSeleccionVisitante">
+    <column id="340" parent="303" name="nombreSeleccionVisitante">
       <DasType>varchar(50)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="347" parent="309" name="fecha">
+    <column id="341" parent="303" name="fecha">
       <DasType>datetime|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="348" parent="309" name="golLocal">
+    <column id="342" parent="303" name="golLocal">
       <DasType>int|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="349" parent="309" name="golVisitante">
+    <column id="343" parent="303" name="golVisitante">
       <DasType>int|0s</DasType>
       <Position>5</Position>
     </column>
-    <foreign-key id="350" parent="309" name="Partido_ibfk_1">
+    <foreign-key id="344" parent="303" name="Partido_ibfk_1">
       <ColNames>nombreSeleccionLocal</ColNames>
       <RefColNames>nombre</RefColNames>
       <RefTableName>Seleccion</RefTableName>
     </foreign-key>
-    <foreign-key id="351" parent="309" name="Partido_ibfk_2">
+    <foreign-key id="345" parent="303" name="Partido_ibfk_2">
       <ColNames>nombreSeleccionVisitante</ColNames>
       <RefColNames>nombre</RefColNames>
       <RefTableName>Seleccion</RefTableName>
     </foreign-key>
-    <index id="352" parent="309" name="PRIMARY">
+    <index id="346" parent="303" name="PRIMARY">
       <ColNames>nombreSeleccionLocal
 nombreSeleccionVisitante
 fecha</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="353" parent="309" name="nombreSeleccionVisitante">
+    <index id="347" parent="303" name="nombreSeleccionVisitante">
       <ColNames>nombreSeleccionVisitante</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="354" parent="309" name="PRIMARY">
+    <key id="348" parent="303" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="355" parent="310" name="nombre">
+    <column id="349" parent="304" name="nombre">
       <DasType>varchar(50)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="356" parent="310" name="estado">
+    <column id="350" parent="304" name="estado">
       <DasType>varchar(50)|0s</DasType>
       <Position>2</Position>
     </column>
-    <index id="357" parent="310" name="PRIMARY">
+    <index id="351" parent="304" name="PRIMARY">
       <ColNames>nombre</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="358" parent="310" name="PRIMARY">
+    <key id="352" parent="304" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

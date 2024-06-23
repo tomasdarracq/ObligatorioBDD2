@@ -69,8 +69,7 @@ export class PartidoComponent {
     console.log(resultado);
     this.partidoService.actualizarPartido(resultado).subscribe(
       (data: any) => {
-        console.log('Predicción guardada:', data),
-        partido.actualizado = true;
+        console.log('Predicción guardada:', data)
       },
       error => console.log('Error al guardar la predicción:', error)
     );

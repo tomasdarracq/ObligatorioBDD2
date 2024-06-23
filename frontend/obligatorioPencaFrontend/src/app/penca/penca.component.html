@@ -99,7 +99,7 @@
             <div class="fecha">
                 <h3>{{ jugado.dia }}</h3>
                 <h3>{{ jugado.horario }}</h3>
-                @if (jugado.actualizado) {
+                @if (jugado.golesLocal != null && jugado.golesVisitante != null) {
                 <div class="partido">
                     <img src="assets/banderas/{{jugado.seleccionLocalNombre}}.png"
                         alt="{{jugado.seleccionLocalNombre}}">
@@ -109,21 +109,24 @@
                     <img src="assets/banderas/{{jugado.seleccionVisitanteNombre}}.png"
                         alt="{{jugado.seleccionVisitanteNombre}}">
                 </div>
-
+                @if (jugado.prediccionGolesLocal != null && jugado.prediccionGolesVisitante != null) {
+                    <h3>Tu Predicción: {{jugado.prediccionGolesLocal}} - {{jugado.prediccionGolesVisitante}}</h3>
+                    <h3>{{jugado.prediccionPuntaje}} puntos obtenidos</h3>
+                }
 
                 } @else {
                 <div class="partido">
                     <img src="assets/banderas/{{jugado.seleccionLocalNombre}}.png"
                         alt="{{jugado.seleccionLocalNombre}}">
-                    @if (jugado.golesLocal != null && jugado.golesVisitante != null) {
                     <span class="separador">vs</span>
-                    }
                     <img src="assets/banderas/{{jugado.seleccionVisitanteNombre}}.png"
                         alt="{{jugado.seleccionVisitanteNombre}}">
                 </div>
 
                 <h3>Esperando Resultado...</h3>
-
+                @if (jugado.prediccionGolesLocal != null && jugado.prediccionGolesVisitante != null) {
+                    <h3>Tu Predicción: {{jugado.prediccionGolesLocal}} - {{jugado.prediccionGolesVisitante}}</h3>
+                }
                 }
             </div>
             }
