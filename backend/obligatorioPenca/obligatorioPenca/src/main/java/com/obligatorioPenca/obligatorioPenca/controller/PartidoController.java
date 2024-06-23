@@ -39,8 +39,12 @@ public class PartidoController {
     }
 
     @PutMapping
-    public ResponseEntity<String> agregarGoles(@RequestBody PartidoDTO partidoDTO){
-        return ResponseEntity.ok(partidoService.agregargoles(partidoDTO));
+    public ResponseEntity<Boolean> agregarGoles(@RequestBody PartidoDTO partidoDTO){
+        boolean result=false;
+        if (partidoService.agregargoles(partidoDTO)!=null){
+            result=true;
+        }
+        return ResponseEntity.ok(result);
     }
 
 
