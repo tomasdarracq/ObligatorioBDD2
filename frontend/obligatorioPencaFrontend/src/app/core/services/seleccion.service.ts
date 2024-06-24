@@ -25,4 +25,8 @@ export class SeleccionService {
       (error) => console.log(error)
     );
   }
+  
+  actualizarSeleccion(seleccion: Seleccion): Observable<Seleccion> {
+    return this.http.put<Seleccion>(this.apiUrl, seleccion);
+  }
 }

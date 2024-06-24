@@ -180,7 +180,6 @@ export class PencaComponent implements OnInit {
       console.log("Partido no encontrado.");
       return;
     }
-    //SE REALIZA LA PREDICCION CON ID 1 
     const prediccion = new Prediccion(
       this.idEstudiante,
       partido.nombreSeleccionLocal,

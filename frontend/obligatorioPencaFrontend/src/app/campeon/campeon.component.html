@@ -1,0 +1,51 @@
+@if (habilitarActualizacion()) {
+<div class="form-container">
+    <form [formGroup]="finalistasForm" (ngSubmit)="resultadoFinalistas()">
+        <div>
+            <label for="campeon">Campeón</label>
+            <select formControlName="campeon">
+                <option value="" disabled selected>Seleccione un campeón</option>
+                @for (s of selecciones; track s.nombre) {
+                <option [value]="s.nombre" [disabled]="deshabilitarOpcion(s.nombre, 'subcampeon')">{{ s.nombre }}
+                </option>
+                }
+            </select>
+            @if (esValido('campeon')) {
+            <div class="error">El campeón es requerido.</div>
+            }
+        </div>
+
+        <div>
+            <label for="subcampeon">Subcampeón</label>
+            <select formControlName="subcampeon">
+                <option value="" disabled selected>Seleccione un subcampeón</option>
+                @for (s of selecciones; track s.nombre) {
+                <option [value]="s.nombre" [disabled]="deshabilitarOpcion(s.nombre, 'campeon')">{{ s.nombre }}</option>
+                }
+            </select>
+            @if (esValido('subcampeon')) {
+            <div class="error">El subcampeón es requerido.</div>
+            }
+        </div>
+
+        <button type="submit">Confirmar</button>
+        @if (guardado === undefined) {
+        <p>UNA VEZ CONFIRMADO</p>
+        <p>NO LO PODRÁS CAMBIAR</p>
+        } @else if (guardado){
+        <p>Guardado!</p>
+        } @else {
+        <p class="error">Error al guardar</p>
+        }
+
+
+    </form>
+</div>
+} @else {
+<div class="form-container">
+    <div class="confirmados">
+        <div><img class="campeon" src="assets/banderas/{{campeon?.nombre}}.png" alt="{{campeon?.nombre}}"></div>
+        <div><img class="subcampeon" src="assets/banderas/{{subcampeon?.nombre}}.png" alt="{{subcampeon?.nombre}}"></div>
+    </div>
+</div>
+}

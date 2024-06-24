@@ -3,7 +3,7 @@ export class Estudiante {
     nombre!: string;
     email!: string;
     contrasena!: string;
-    carrera!: string;  
+    carrera!: string;
     puntajeTotal!: number;
 
     constructor(idEstudiante: number, nombre: string, email: string, contrasena: string, carrera: string, puntajeTotal: number) {

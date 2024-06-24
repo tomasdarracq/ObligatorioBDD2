@@ -57,7 +57,6 @@ export class PartidoComponent {
       console.log("Partido no encontrado.");
       return;
     }
-    //SE REALIZA LA PREDICCION CON ID 1 
     const resultado = new Partido(
       partido.seleccionLocalNombre,
       partido.seleccionVisitanteNombre,
