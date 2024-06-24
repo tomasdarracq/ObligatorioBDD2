@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c042fc6-666a-4f0a-bc52-1e75435f2aa7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/partido/partido.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/obligatorioPencaFrontend/src/app/partido/partido.component.ts" afterDir="false" />
-    </list>
+    <list default="true" id="8c042fc6-666a-4f0a-bc52-1e75435f2aa7" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -108,7 +105,7 @@
       <workItem from="1718900630264" duration="146000" />
       <workItem from="1718988667778" duration="8704000" />
       <workItem from="1719076901919" duration="1232000" />
-      <workItem from="1719160867981" duration="7904000" />
+      <workItem from="1719160867981" duration="8552000" />
     </task>
     <servers />
   </component>
