@@ -28,4 +28,8 @@ public class SeleccionService {
         System.out.println("Seleccion: " + seleccion);
         return seleccion;
     }
+
+    public void actualizarSeleccion(Seleccion seleccion) {
+        seleccionRepository.actualizarSeleccion(seleccion.getNombre(),seleccion.getEstado());
+    }
 }
