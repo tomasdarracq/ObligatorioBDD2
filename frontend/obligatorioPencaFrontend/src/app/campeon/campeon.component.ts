@@ -86,9 +86,9 @@ export class CampeonComponent {
     this.selecciones.forEach(pais => {
       if (pais.estado != null) {
         actualizable = false;
-        if (pais.estado === 'Campeón') {
+        if (pais.estado === 'Campeon') {
           this.campeon = pais;
-        } else if (pais.estado === 'Subcampeón') {
+        } else if (pais.estado === 'Subcampeon') {
           this.subcampeon = pais;
         }
       }
