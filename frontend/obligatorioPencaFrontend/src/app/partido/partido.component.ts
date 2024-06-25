@@ -4,11 +4,12 @@ import { PartidoService } from '../core/services/partido.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Seleccion } from '../core/models/seleccion';
 import { SeleccionService } from '../core/services/seleccion.service';
+import { AdminNavBarComponent } from '../nav-bar/admin-nav-bar/admin-nav-bar.component';
 
 @Component({
   selector: 'app-partido',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, AdminNavBarComponent],
   templateUrl: './partido.component.html',
   styleUrl: './partido.component.css'
 })
