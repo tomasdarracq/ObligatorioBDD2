@@ -5,11 +5,12 @@ import { PrediccionService } from '../core/services/prediccion.service';
 import { Prediccion } from '../core/models/prediccion';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { EstudianteNavBarComponent } from '../nav-bar/estudiante-nav-bar/estudiante-nav-bar.component';
 
 @Component({
   selector: 'app-penca',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, EstudianteNavBarComponent],
   templateUrl: './penca.component.html',
   styleUrls: ['./penca.component.css']
 })

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { EstudianteService } from '../core/services/estudiante.service';
 import { Estudiante } from '../core/models/estudiante';
+import { EstudianteNavBarComponent } from '../nav-bar/estudiante-nav-bar/estudiante-nav-bar.component';
 
 @Component({
   selector: 'app-ranking',
   standalone: true,
-  imports: [],
+  imports: [EstudianteNavBarComponent],
   templateUrl: './ranking.component.html',
   styleUrl: './ranking.component.css'
 })
