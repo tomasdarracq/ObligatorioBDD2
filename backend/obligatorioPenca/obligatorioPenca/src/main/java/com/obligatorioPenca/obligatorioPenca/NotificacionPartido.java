@@ -38,7 +38,7 @@ public class NotificacionPartido {
 
         for (PartidoDTO partidoDTO : partidos) {
             Duration duracion = Duration.between(fechaActual, partidoDTO.getFecha());
-            if (duracion.toHours() == 1 && duracion.toMinutes() <= 60) { // avisar una hora antes del partido
+            if (duracion.toHours() == 3 && duracion.toMinutes() <= 180) { // avisar una hora antes del partido
                 for (Estudiante estudiante : estudiantes) {
                     if (!tienePrediccion(estudiante, partidoDTO)) {
                         enviarCorreoNotificacion(partidoDTO, estudiante);
