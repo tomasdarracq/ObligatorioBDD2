@@ -50,47 +50,9 @@ public class EstudianteService {
 
     public List<Estudiante> obtenerTodosLosEstudiantes() {
         List<Estudiante> listaEstudiantes = estudianteRepository.obtenerEstudiante();
-        for (Estudiante estudiante : listaEstudiantes) {
-            {
-                int puntaje = obtenerPuntajeEstudiante(estudiante);
-                System.out.println(puntaje);
-                estudiante.setPuntajeTotal(puntaje);
-            }
-        }
         return listaEstudiantes;
     }
 
-    public int obtenerPuntajeEstudiante(Estudiante estudiante) {
-        int puntajeTotal = 0;
-        List<Prediccion> predicciones = prediccionRepository.findByIdEstudiante(estudiante.getIdEstudiante());
-        System.out.println(predicciones);
-        for (Prediccion prediccion : predicciones) {
-            puntajeTotal = puntajeTotal + prediccion.getPuntaje();
-        }
-        List<PrediccionCampeon> prediccionesCampeon = prediccionCampeonRepository.findByIdEstudiante(estudiante.getIdEstudiante());
-        puntajeTotal = puntajeTotal+ obtenerPuintajePrediccionCampeon(prediccionesCampeon);
-        return puntajeTotal;
-    }
-    public int obtenerPuintajePrediccionCampeon(List<PrediccionCampeon> prediccionesCampeon){
-        int puntajeTotal = 0;
-        List<Seleccion> selecciones = seleccionRepository.getSelecciones();
-        for (PrediccionCampeon prediccionCampeon : prediccionesCampeon) {
-            for (Seleccion seleccion : selecciones) {
-                if (prediccionCampeon.getSeleccion().getNombre().equals(seleccion.getNombre())) {
-                    if (prediccionCampeon.getEleccion().equals(seleccion.getEstado())) {
-                        if(prediccionCampeon.getEleccion().equals("Campeon")){
-                            puntajeTotal = puntajeTotal + 10;
-                        }
-                        if(prediccionCampeon.getEleccion().equals("Subcampeon")){
-                            puntajeTotal = puntajeTotal + 5;
-                        }
-
-                    }
-                }
-            }
-        }
-        return puntajeTotal;
-    }
 
 }
 
