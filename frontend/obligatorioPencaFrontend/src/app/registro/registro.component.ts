@@ -45,7 +45,7 @@ export class RegistroComponent {
         0
       );
 
-      console.log('New User:', estudiante);
+      console.log('Nuevo Usuario:', estudiante);
       console.log(this.registroForm.get('campeon')?.value);
       console.log(this.registroForm.get('subcampeon')?.value);
 

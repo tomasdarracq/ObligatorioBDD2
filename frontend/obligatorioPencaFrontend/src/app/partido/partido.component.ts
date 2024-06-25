@@ -57,7 +57,6 @@ export class PartidoComponent {
       console.log("Partido no encontrado.");
       return;
     }
-    //SE REALIZA LA PREDICCION CON ID 1 
     const resultado = new Partido(
       partido.seleccionLocalNombre,
       partido.seleccionVisitanteNombre,
@@ -69,9 +68,13 @@ export class PartidoComponent {
     console.log(resultado);
     this.partidoService.actualizarPartido(resultado).subscribe(
       (data: any) => {
-        console.log('Predicción guardada:', data)
+        console.log('Resultado guardado:', data),
+          this.mensajeModal = 'Resultado Actualizado con Éxito';
       },
-      error => console.log('Error al guardar la predicción:', error)
+      error => {
+        console.log('Error al guardar la predicción:', error),
+        this.mensajeModal = 'Error al Actualizar el Resultado';
+      }
     );
   }
 
@@ -97,13 +100,13 @@ export class PartidoComponent {
     this.partidoService.crearPartido(nuevoPartido).subscribe(
       (data: any) => {
         console.log('Predicción guardada:', data),
-          this.mensajeModal = 'Partido creado con exito',
+          this.mensajeModal = 'Partido Creado con Éxito',
           this.partidoService.obtenerPartidos();
         this.mostrarFormulario();
       },
       error => {
         console.log('Error al guardar la predicción:', error),
-          this.mensajeModal = 'Error al crear el partido';
+          this.mensajeModal = 'Error al Crear el Partido';
       }
     )
     console.log(nuevoPartido);

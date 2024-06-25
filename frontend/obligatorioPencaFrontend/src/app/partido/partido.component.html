@@ -21,7 +21,12 @@
                             alt="{{jugado.seleccionVisitanteNombre}}">
                     </div>
                     @if (resultadoForms[jugado.id].valid) {
-                    <button type="submit" class="btn btn-success">Guardar</button>
+                    <button type="submit" class="btn btn-success" data-bs-toggle="modal"
+                        data-bs-target="#partidoModal">Guardar</button>
+                    }
+                    @if (jugado.golesLocal != null && jugado.golesVisitante != null) {
+                    <h3>Resultado Actual</h3>
+                    <h3>{{jugado.golesLocal}} - {{jugado.golesVisitante}}</h3>
                     }
                 </form>
             </div>
@@ -29,7 +34,7 @@
             @if (jugados.length === 0) {
             <div class="fecha">
                 <div class="partido">
-                    <h3>No Hay Resultados Aún</h3>
+                    <h3>No se han Jugado Partidos Aún</h3>
                 </div>
                 <h3>Cuando sean ingresados se desplegarán aquí</h3>
             </div>
@@ -40,53 +45,11 @@
     <div class="columna">
         <h1>Próximos Partidos</h1>
         <div class="col-partidos">
-            <form class="fecha" [formGroup]="crearPartidoForm" (ngSubmit)="crearPartido()">
-                <div>
-                    <label for="fecha"></label>
-                    <input class="nuevaFecha" formControlName="fecha" type="datetime-local">
-                </div>
-                <div class="partido">
-                    <label for="seleccionLocalNombre"></label>
-                    <select formControlName="seleccionLocalNombre">
-                        <option value="" disabled selected>Selección Local</option>
-                        @for (s of selecciones; track s.nombre) {
-                        <option [value]="s.nombre"
-                            [disabled]="deshabilitarOpcion(s.nombre, 'seleccionVisitanteNombre')">{{ s.nombre }}
-                        </option>
-                        }
-                    </select>
-                    <label for="seleccionVisitanteNombre"></label>
-                    <select formControlName="seleccionVisitanteNombre">
-                        <option value="" disabled selected>Selección Visitante</option>
-                        @for (s of selecciones; track s.nombre) {
-                        <option [value]="s.nombre" [disabled]="deshabilitarOpcion(s.nombre, 'seleccionLocalNombre')">{{
-                            s.nombre }}
-                        </option>
-                        }
-                    </select>
-                </div>
-                @if (crearPartidoForm.valid) {
-                <button type="submit" class="btn btn-success" data-bs-toggle="modal"
-                    data-bs-target="#crearPartidoModal">Crear</button>
-                }
-            </form>
-            @for (partido of fixture; track partido.fecha) {
-            <div class="fecha">
-                <h3>{{ partido.dia }}</h3>
-                <h3>{{ partido.horario }}</h3>
-                <div class="partido">
-                    <img src="assets/banderas/{{partido.seleccionLocalNombre}}.png"
-                        alt="{{partido.seleccionLocalNombre}}">
-                    <span class="separador">vs</span>
-                    <img src="assets/banderas/{{partido.seleccionVisitanteNombre}}.png"
-                        alt="{{partido.seleccionVisitanteNombre}}">
-                </div>
+            @if (!mostrarForm) {
+            <div class="fecha"><button class="btn btn-warning crear" (click)="mostrarFormulario()">Añadir
+                    Partido</button>
             </div>
             }
-            @if (!mostrarForm) {
-            <div class="fecha"><button class="btn btn-warning" (click)="mostrarFormulario()">Añadir Partido</button></div>
-            }
-
             @if (mostrarForm) {
             <div class="fecha"><button class="btn btn-danger" (click)="mostrarFormulario()">Cancelar</button></div>
             <form class="fecha" [formGroup]="crearPartidoForm" (ngSubmit)="crearPartido()">
@@ -104,6 +67,7 @@
                         </option>
                         }
                     </select>
+                    <span class="separador">vs</span>
                     <label for="seleccionVisitanteNombre"></label>
                     <select formControlName="seleccionVisitanteNombre">
                         <option value="" disabled selected>Selección Visitante</option>
@@ -116,31 +80,39 @@
                 </div>
                 @if (crearPartidoForm.valid) {
                 <button type="submit" class="btn btn-success" data-bs-toggle="modal"
-                    data-bs-target="#crearPartidoModal">Crear</button>
+                    data-bs-target="#partidoModal">Crear</button>
                 }
             </form>
             }
-
+            @for (partido of fixture; track partido.fecha) {
+            <div class="fecha">
+                <h3>{{ partido.dia }}</h3>
+                <h3>{{ partido.horario }}</h3>
+                <div class="partido">
+                    <img src="assets/banderas/{{partido.seleccionLocalNombre}}.png"
+                        alt="{{partido.seleccionLocalNombre}}">
+                    <span class="separador">vs</span>
+                    <img src="assets/banderas/{{partido.seleccionVisitanteNombre}}.png"
+                        alt="{{partido.seleccionVisitanteNombre}}">
+                </div>
+            </div>
+            }
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="crearPartidoModal" tabindex="-1" aria-labelledby="crearPartidoModalLabel"
+<div class="modal fade bd-example-modal-sm" id="partidoModal" tabindex="-1" aria-labelledby="partidoModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="crearPartidoModalLabel">Crear Partido</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title" id="partidoModalLabel">Administración de Partidos</h5>
             </div>
             <div class="modal-body">
-                <div class="fecha">
-                    <div class="partido">asd</div>
-                </div>
-                <h4>{{ mensajeModal }}</h4>
+                {{mensajeModal}}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
         </div>
     </div>
