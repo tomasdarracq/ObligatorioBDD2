@@ -1,9 +1,7 @@
 package com.obligatorioPenca.obligatorioPenca.service;
 
-import com.obligatorioPenca.obligatorioPenca.model.Partido;
-import com.obligatorioPenca.obligatorioPenca.model.Prediccion;
-import com.obligatorioPenca.obligatorioPenca.model.PrediccionDTO;
-import com.obligatorioPenca.obligatorioPenca.repository.PrediccionRepository;
+import com.obligatorioPenca.obligatorioPenca.model.*;
+import com.obligatorioPenca.obligatorioPenca.repository.*;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -14,33 +12,98 @@ import java.util.Objects;
 @Service
 public class PrediccionService {
     private final PrediccionRepository prediccionRepository;
+    private final PartidoRepository partidoRepository;
+    private final EstudianteRepository estudianteRepository;
+    private final PrediccionCampeonRepository prediccionCampeonRepository;
+    private final SeleccionRepository seleccionRepository;
 
-    public PrediccionService(PrediccionRepository prediccionRepository) {
+    public PrediccionService(PrediccionRepository prediccionRepository, PartidoRepository partidoRepository,
+                             EstudianteRepository estudianteRepository, PrediccionCampeonRepository prediccionCampeonRepository,
+                             SeleccionRepository seleccionRepository) {
         this.prediccionRepository = prediccionRepository;
+        this.partidoRepository = partidoRepository;
+        this.estudianteRepository = estudianteRepository;
+        this.prediccionCampeonRepository = prediccionCampeonRepository;
+        this.seleccionRepository = seleccionRepository;
     }
 
-    public int revisarPuntaje(Partido partido, Prediccion prediccion) {
+    public void revisarPuntaje() {
         LocalDateTime fechaActual = LocalDateTime.now();
+        List<Partido> partidos = partidoRepository.findAllPartidos();
+        List<Prediccion> predicciones = prediccionRepository.getAllPredicciones();
 
-        if (partido.getId().getFecha().isBefore(fechaActual)) {
-            if (partido.getGolLocal() != null && partido.getGolVisitante() != null) {
-
-                if (Objects.equals(partido.getGolLocal(), prediccion.getGolLocal()) && Objects.equals(partido.getGolVisitante(), prediccion.getGolVisitante())) {
-                    return 4;
-                } else {
-                    int ganadorPartido = partido.getGolLocal() - partido.getGolVisitante();
-                    int ganadorPrediccion = prediccion.getGolLocal() - prediccion.getGolVisitante();
-                    if ((ganadorPartido < 0 && ganadorPrediccion < 0) || (ganadorPartido > 0 && ganadorPrediccion > 0) || (ganadorPartido == 0 && ganadorPrediccion == 0)) {
-                        return 2;
-                    } else {
-                        return 0;
+        for (Partido partido : partidos) {
+            if (partido.getId().getFecha().isBefore(fechaActual) && partido.getGolLocal() != null && partido.getGolVisitante() != null) {
+                for (Prediccion prediccion : predicciones) {
+                    if (prediccion.getPartido().getId().equals(partido.getId())) {
+                        int puntajePrediccion = calcularPuntaje(partido, prediccion);
+                        if (prediccion.getPuntaje() != puntajePrediccion) {
+                            prediccion.setPuntaje(puntajePrediccion);
+                            prediccionRepository.editarPrediccion(
+                                    prediccion.getId().getIdEstudiante(),
+                                    prediccion.getPartido().getSeleccionlocal().getNombre(),
+                                    prediccion.getPartido().getSeleccionvisitante().getNombre(),
+                                    prediccion.getPartido().getId().getFecha(),
+                                    prediccion.getGolLocal(),
+                                    prediccion.getGolVisitante(),
+                                    puntajePrediccion
+                            );
+                        }
                     }
                 }
-            } else {
-                return 0;
             }
         }
+    }
+
+    private int calcularPuntaje(Partido partido, Prediccion prediccion) {
+        int goalDifferencePartido = partido.getGolLocal() - partido.getGolVisitante();
+        int goalDifferencePrediccion = prediccion.getGolLocal() - prediccion.getGolVisitante();
+
+        if (Objects.equals(partido.getGolLocal(), prediccion.getGolLocal()) && Objects.equals(partido.getGolVisitante(), prediccion.getGolVisitante())) {
+            return 4;
+        } else if ((goalDifferencePartido < 0 && goalDifferencePrediccion < 0) || (goalDifferencePartido > 0 && goalDifferencePrediccion > 0) || (goalDifferencePartido == 0 && goalDifferencePrediccion == 0)) {
+            return 2;
+        }
         return 0;
+    }
+
+    public void actualizarPuntaje() {
+        revisarPuntaje();
+        for (Estudiante estudiante : estudianteRepository.obtenerEstudiante()) {
+            int puntaje = obtenerPuntajeEstudiante(estudiante);
+            estudianteRepository.actualizarEstudiante(estudiante.getIdEstudiante(), puntaje);
+        }
+    }
+
+    public int obtenerPuntajeEstudiante(Estudiante estudiante) {
+        int puntajeTotal = 0;
+        List<Prediccion> predicciones = prediccionRepository.findByIdEstudiante(estudiante.getIdEstudiante());
+        for (Prediccion prediccion : predicciones) {
+            puntajeTotal += prediccion.getPuntaje();
+        }
+        List<PrediccionCampeon> prediccionesCampeon = prediccionCampeonRepository.findByIdEstudiante(estudiante.getIdEstudiante());
+        puntajeTotal += obtenerPuntajePrediccionCampeon(prediccionesCampeon);
+        return puntajeTotal;
+    }
+
+    public int obtenerPuntajePrediccionCampeon(List<PrediccionCampeon> prediccionesCampeon) {
+        int puntajeTotal = 0;
+        List<Seleccion> selecciones = seleccionRepository.getSelecciones();
+        for (PrediccionCampeon prediccionCampeon : prediccionesCampeon) {
+            for (Seleccion seleccion : selecciones) {
+                if (prediccionCampeon.getSeleccion().getNombre().equals(seleccion.getNombre())) {
+                    if (prediccionCampeon.getEleccion().equals(seleccion.getEstado())) {
+                        if (prediccionCampeon.getEleccion().equals("Campeón")) {
+                            puntajeTotal += 10;
+                        }
+                        if (prediccionCampeon.getEleccion().equals("Subcampeón")) {
+                            puntajeTotal += 5;
+                        }
+                    }
+                }
+            }
+        }
+        return puntajeTotal;
     }
 
     public List<PrediccionDTO> getAllPredicciones() {
@@ -55,18 +118,6 @@ public class PrediccionService {
             Integer golLocal = prediccion.getGolLocal();
             Integer golVisitante = prediccion.getGolVisitante();
 
-            
-            Integer puntaje = revisarPuntaje(partido, prediccion);
-            prediccion.setPuntaje(puntaje);
-            prediccionRepository.editarPrediccion(
-                    idEstudiante,
-                    nombreSeleccionLocal,
-                    nombreSeleccionVisitante,
-                    fechaPartido,
-                    golLocal,
-                    golVisitante,
-                    puntaje);
-
             PrediccionDTO prediccionDTO = new PrediccionDTO(
                     idEstudiante,
                     nombreSeleccionLocal,
@@ -74,13 +125,12 @@ public class PrediccionService {
                     fechaPartido,
                     golLocal,
                     golVisitante,
-                    puntaje
+                    prediccion.getPuntaje()
             );
             prediccionDTOLista.add(prediccionDTO);
         }
         return prediccionDTOLista;
     }
-
 
     public List<PrediccionDTO> getPrediccionByIdEstudiante(Integer idEstudiante) {
         List<PrediccionDTO> prediccionDTOLista = new ArrayList<>();
@@ -92,17 +142,7 @@ public class PrediccionService {
             LocalDateTime fechaPartido = partido.getId().getFecha();
             Integer golLocal = prediccion.getGolLocal();
             Integer golVisitante = prediccion.getGolVisitante();
-            
-            Integer puntaje = revisarPuntaje(partido, prediccion);
-            prediccion.setPuntaje(puntaje);
-            prediccionRepository.editarPrediccion(
-                    idEstudiante,
-                    nombreSeleccionLocal,
-                    nombreSeleccionVisitante,
-                    fechaPartido,
-                    golLocal,
-                    golVisitante,
-                    puntaje);
+
             PrediccionDTO prediccionDTO = new PrediccionDTO(
                     idEstudiante,
                     nombreSeleccionLocal,
@@ -110,7 +150,7 @@ public class PrediccionService {
                     fechaPartido,
                     golLocal,
                     golVisitante,
-                    puntaje
+                    prediccion.getPuntaje()
             );
             prediccionDTOLista.add(prediccionDTO);
         }
@@ -126,7 +166,6 @@ public class PrediccionService {
                 prediccionDTO.getGolLocal(),
                 prediccionDTO.getGolVisitante(),
                 prediccionDTO.getPuntaje());
-
     }
 
     public void editarPrediccion(PrediccionDTO prediccionDTO) {
@@ -138,6 +177,6 @@ public class PrediccionService {
                 prediccionDTO.getGolLocal(),
                 prediccionDTO.getGolVisitante(),
                 prediccionDTO.getPuntaje());
-        System.out.println(prediccionDTO.getGolLocal());
+        revisarPuntaje();
     }
 }
