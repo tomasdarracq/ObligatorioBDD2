@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Seleccion } from '../core/models/seleccion';
 import { SeleccionService } from '../core/services/seleccion.service';
+import { AdminNavBarComponent } from '../nav-bar/admin-nav-bar/admin-nav-bar.component';
 
 @Component({
   selector: 'app-campeon',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, AdminNavBarComponent],
   templateUrl: './campeon.component.html',
   styleUrl: './campeon.component.css'
 })
