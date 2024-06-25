@@ -3,11 +3,7 @@ package com.obligatorioPenca.obligatorioPenca.controller;
 import com.obligatorioPenca.obligatorioPenca.model.Seleccion;
 import com.obligatorioPenca.obligatorioPenca.service.SeleccionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,5 +26,9 @@ public class SeleccionController {
     @GetMapping("/{nombre}")
     public Seleccion getSeleccionByNombre(@PathVariable String nombre) {
         return seleccionService.getSeleccionByNombre(nombre);
+    }
+    @PutMapping()
+    public void actualizarSeleccion(@RequestBody Seleccion seleccion) {
+        seleccionService.actualizarSeleccion(seleccion);
     }
 }

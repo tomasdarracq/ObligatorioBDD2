@@ -1,5 +1,5 @@
 DROP DATABASE IF EXISTS PencaUCU;
-CREATE DATABASE PencaUCU;
+CREATE DATABASE PencaUCU CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE PencaUCU;
 
 -- Crear tabla Estudiante
@@ -50,7 +50,7 @@ CREATE TABLE Estudiante_Realiza_Prediccion (
     golLocal INT,
     golVisitante INT,
     puntaje INT,
-    PRIMARY KEY (idEstudiante, nombreSeleccionLocal,nombreSeleccionVisitante,fecha),
+    PRIMARY KEY (idEstudiante, nombreSeleccionLocal, nombreSeleccionVisitante, fecha),
     FOREIGN KEY (idEstudiante) REFERENCES Estudiante(idEstudiante),
     FOREIGN KEY (nombreSeleccionLocal, nombreSeleccionVisitante, fecha) REFERENCES Partido(nombreSeleccionLocal, nombreSeleccionVisitante, fecha)
 );
@@ -59,7 +59,7 @@ CREATE TABLE Estudiante_Realiza_Prediccion (
 CREATE TABLE Estudiante_Elige_Seleccion (
     idEstudiante INT NOT NULL,
     nombreSeleccion VARCHAR(50) NOT NULL,
-    eleccion varchar(50) NOT NULL,
+    eleccion VARCHAR(50) NOT NULL,
     PRIMARY KEY (idEstudiante, nombreSeleccion),
     FOREIGN KEY (idEstudiante) REFERENCES Estudiante(idEstudiante),
     FOREIGN KEY (nombreSeleccion) REFERENCES Seleccion(nombre)
@@ -67,7 +67,7 @@ CREATE TABLE Estudiante_Elige_Seleccion (
 
 -- Insertar datos en la tabla Estudiante
 INSERT INTO Estudiante (idEstudiante, nombre, email, contrasena, carrera) VALUES
-(1, 'Maria', 'maria@madas.com', '1234', 'Ingeniería en Alimentos'),
+(1, 'María', 'maria@madas.com', '1234', 'Ingeniería en Alimentos'),
 (2, 'Diego', 'handalian.diego11@gmail.com', '4321', 'Ingeniería en Informática'),
 (3, 'Juan', 'juan@gmail.com', '1111', 'Ingeniería en Informática'),
 (4, 'Sebastián', 'sebamart12@gmail.com', '2222', 'Ingeniería en Informática');
@@ -123,9 +123,9 @@ INSERT INTO Partido (nombreSeleccionLocal, nombreSeleccionVisitante, fecha, golL
 ('Costa Rica', 'Paraguay', '2024-07-02 22:00:00', NULL, NULL);
 
 -- Insertar datos en la tabla Estudiante_Realiza_Prediccion
-INSERT INTO Estudiante_Realiza_Prediccion (idEstudiante, nombreSeleccionLocal, nombreSeleccionVisitante, fecha, golLocal, golVisitante,puntaje) VALUES
-(1, 'Argentina', 'Canadá', '2024-06-20 21:00:00', 1, 8,0),
-(1, 'Perú', 'Chile', '2024-06-21 21:00:00', 1, 6,0);
+INSERT INTO Estudiante_Realiza_Prediccion (idEstudiante, nombreSeleccionLocal, nombreSeleccionVisitante, fecha, golLocal, golVisitante, puntaje) VALUES
+(1, 'Argentina', 'Canadá', '2024-06-20 21:00:00', 1, 8, 0),
+(1, 'Perú', 'Chile', '2024-06-21 21:00:00', 1, 6, 0);
 
 -- Insertar datos en la tabla Estudiante_Elige_Seleccion
 INSERT INTO Estudiante_Elige_Seleccion (idEstudiante, nombreSeleccion, eleccion) VALUES

@@ -3,10 +3,15 @@ version: '3.1'
 services:
   db:
     image: mysql:latest
-    command: --default-authentication-plugin=mysql_native_password
+    command: [
+      "--default-authentication-plugin=mysql_native_password",
+      "--character-set-server=utf8mb4",
+      "--collation-server=utf8mb4_unicode_ci",
+      "--init-connect='SET NAMES utf8mb4'"
+    ]
     restart: always
     ports:
-    - "3306:3306"
+      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: PencaUCU  
@@ -14,4 +19,3 @@ services:
       MYSQL_PASSWORD: root
     volumes:
       - ./database/database.sql:/docker-entrypoint-initdb.d/database.sql
-

@@ -19,33 +19,6 @@ public class PrediccionService {
         this.prediccionRepository = prediccionRepository;
     }
 
-    public List<PrediccionDTO> mapPrediccionToDTO() {
-        List<PrediccionDTO> prediccionDTOLista = new ArrayList<>();
-        List<Prediccion> prediccionLista = prediccionRepository.getAllPredicciones();
-        for (Prediccion prediccion : prediccionLista) {
-            Partido partido = prediccion.getPartido();
-            String nombreSeleccionLocal = partido.getSeleccionlocal().getNombre();
-            String nombreSeleccionVisitante = partido.getSeleccionvisitante().getNombre();
-            LocalDateTime fechaPartido = partido.getId().getFecha();
-            Integer golLocal = prediccion.getGolLocal();
-            Integer golVisitante = prediccion.getGolVisitante();
-            Integer puntaje = prediccion.getPuntaje();
-            Integer idEstudiante = prediccion.getId().getIdEstudiante();
-
-            PrediccionDTO prediccionDTO = new PrediccionDTO(
-                    idEstudiante,
-                    nombreSeleccionLocal,
-                    nombreSeleccionVisitante,
-                    fechaPartido,
-                    golLocal,
-                    golVisitante,
-                    puntaje
-            );
-            prediccionDTOLista.add(prediccionDTO);
-        }
-        return prediccionDTOLista;
-    }
-
     public int revisarPuntaje(Partido partido, Prediccion prediccion) {
         LocalDateTime fechaActual = LocalDateTime.now();
 
