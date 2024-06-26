@@ -1,6 +1,7 @@
 DROP DATABASE IF EXISTS PencaUCU;
 CREATE DATABASE PencaUCU CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE PencaUCU;
+SET NAMES 'utf8mb4';
 
 -- Crear tabla Estudiante
 CREATE TABLE Estudiante (
