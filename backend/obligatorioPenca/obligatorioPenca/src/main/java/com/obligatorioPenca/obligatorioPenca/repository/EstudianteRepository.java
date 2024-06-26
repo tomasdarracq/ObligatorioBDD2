@@ -41,4 +41,9 @@ public interface EstudianteRepository extends JpaRepository<Estudiante,Integer> 
     @Query(value = "SELECT * FROM Estudiante WHERE email = :email AND contrasena = :contrasena", nativeQuery = true)
     Estudiante obtenerEstudiante(@Param("email") String email,
                                  @Param("contrasena") String contrasena);
+
+    @Query(value = "SELECT * FROM Estudiante WHERE email = :email", nativeQuery = true)
+    Estudiante obtenerEstudiantebymail(@Param("email") String email);
+
 }
+

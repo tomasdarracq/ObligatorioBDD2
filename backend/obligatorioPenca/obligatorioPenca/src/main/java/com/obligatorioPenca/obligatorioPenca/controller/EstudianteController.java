@@ -23,8 +23,13 @@ public class EstudianteController {
 
     @PostMapping
     public ResponseEntity<Integer> register(@RequestBody Estudiante estudiante){
-        int id = estudianteService.registrarEstudiante(estudiante);
-        return ResponseEntity.ok(id);
+        Integer id = estudianteService.registrarEstudiante(estudiante);
+        if (id==null){
+            return ResponseEntity.internalServerError().build();
+        }
+        else {
+            return ResponseEntity.ok(id);
+        }
     }
 
 
