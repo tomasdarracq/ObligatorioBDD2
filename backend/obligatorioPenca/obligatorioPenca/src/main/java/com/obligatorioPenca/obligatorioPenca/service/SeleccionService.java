@@ -10,10 +10,12 @@ import java.util.List;
 @Service
 public class SeleccionService {
     private final SeleccionRepository seleccionRepository;
+    private final PrediccionService prediccionesService;
 
     @Autowired
-    public SeleccionService(SeleccionRepository seleccionRepository) {
+    public SeleccionService(SeleccionRepository seleccionRepository, PrediccionService prediccionesService) {
         this.seleccionRepository = seleccionRepository;
+        this.prediccionesService = prediccionesService;
     }
 
     public List<Seleccion> getSelecciones() {
@@ -30,6 +32,7 @@ public class SeleccionService {
     }
 
     public void actualizarSeleccion(Seleccion seleccion) {
+        prediccionesService.actualizarPuntaje();
         seleccionRepository.actualizarSeleccion(seleccion.getNombre(),seleccion.getEstado());
     }
 }
