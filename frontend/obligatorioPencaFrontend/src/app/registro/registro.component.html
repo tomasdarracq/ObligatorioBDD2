@@ -84,14 +84,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="registroModalLabel">REGISTRO</h4>
-                @if (mensajeModal !== 'Cuenta Creada con Éxito';) {
+                @if (mensajeModal !== 'CUENTA CREADA CON ÉXITO';) {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 }
             </div>
             <div class="modal-body">
                 <p>{{mensajeModal}}</p>
             </div>
-            @if (mensajeModal === 'Cuenta Creada con Éxito';) {
+            @if (mensajeModal === 'CUENTA CREADA CON ÉXITO';) {
             <div class="modal-footer">
                 <button (click)="redirectToLogin()" type="button" class="crear" data-bs-dismiss="modal">Iniciar
                     Sesión</button>
