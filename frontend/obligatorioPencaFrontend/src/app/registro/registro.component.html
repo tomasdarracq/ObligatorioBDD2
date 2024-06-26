@@ -1,6 +1,5 @@
 <div class="form-container">
     <form [formGroup]="registroForm" (ngSubmit)="crearUsuario()">
-        <!-- Form header -->
         <h3>¡Regístrate!</h3>
 
         <div>
@@ -47,7 +46,8 @@
             <select formControlName="campeon">
                 <option value="" disabled selected>Seleccione un campeón</option>
                 @for (s of selecciones; track s.nombre) {
-                <option [value]="s.nombre" [disabled]="deshabilitarOpcion(s.nombre, 'subcampeon')">{{ s.nombre }}</option>
+                <option [value]="s.nombre" [disabled]="deshabilitarOpcion(s.nombre, 'subcampeon')">{{ s.nombre }}
+                </option>
                 }
             </select>
             @if (esValido('campeon')) {
@@ -68,8 +68,30 @@
             }
         </div>
 
-        <button type="submit">Crear Cuenta</button>
+        <button type="submit" data-bs-toggle="modal" data-bs-target="#registroModal" class="crear">Crear Cuenta</button>
 
-        <a routerLink="/login" class="login-link">¿Ya tienes una cuenta? Inicia sesión</a>
+        <a href="" class="login-link">¿Ya tienes una cuenta? Inicia sesión</a>
     </form>
+</div>
+
+<div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="registroModalLabel">REGISTRO</h4>
+                @if (mensajeModal !== 'Cuenta Creada con Éxito';) {
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                }
+            </div>
+            <div class="modal-body">
+                <p>{{mensajeModal}}</p>
+            </div>
+            @if (mensajeModal === 'Cuenta Creada con Éxito';) {
+            <div class="modal-footer">
+                <button (click)="redirectToLogin()" type="button" class="crear" data-bs-dismiss="modal">Iniciar
+                    Sesión</button>
+            </div>
+            }
+        </div>
+    </div>
 </div>

@@ -6,6 +6,7 @@ import { Estudiante } from '../core/models/estudiante';
 import { EstudianteService } from '../core/services/estudiante.service';
 import { Finalista } from '../core/models/finalista';
 import { FinalistaService } from '../core/services/finalista.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -18,8 +19,9 @@ export class RegistroComponent {
   registroForm !: FormGroup;
   selecciones: Seleccion[] = [];
   idEstudiante!: number;
+  mensajeModal: string = '';
 
-  constructor(private fb: FormBuilder, private seleccionService: SeleccionService, private estudianteService: EstudianteService, private finalistaService: FinalistaService) { }
+  constructor(private fb: FormBuilder, private seleccionService: SeleccionService, private estudianteService: EstudianteService, private finalistaService: FinalistaService, private router: Router) { }
 
   ngOnInit() {
     this.registroForm = this.fb.group({
@@ -57,21 +59,28 @@ export class RegistroComponent {
 
           this.finalistaService.elegirSeleccion(campeon).subscribe(
             (data: any) => console.log('Campeon elegido:', data),
-            error =>
+            error => {
               console.log('Error al guardar la predicción:', error),
+              this.mensajeModal = 'ERROR AL CREAR LA CUENTA'
+            }
           )
 
           this.finalistaService.elegirSeleccion(subcampeon).subscribe(
             (data: any) => console.log('Subcampeón elegido:', data),
-            error =>
+            error => {
               console.log('Error al guardar la predicción:', error),
+              this.mensajeModal = 'ERROR AL CREAR LA CUENTA'
+            }
           )
+          this.mensajeModal = 'CUENTA CREADA CON ÉXITO';
         },
         (error) => {
           console.error('Error al crear el estudiante:', error);
+          this.mensajeModal = 'ERROR AL CREAR LA CUENTA';
         });
     } else {
       this.registroForm.markAllAsTouched();
+      this.mensajeModal = 'ERROR AL CREAR LA CUENTA';
     }
   }
 
@@ -84,4 +93,9 @@ export class RegistroComponent {
     const eleccion = this.registroForm.get(otroControl)?.value;
     return eleccion === opcion;
   }
+
+  redirectToLogin() {
+    this.router.navigate(['']);
+  }
+
 }
