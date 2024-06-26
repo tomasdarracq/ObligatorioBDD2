@@ -68,10 +68,9 @@ CREATE TABLE Estudiante_Elige_Seleccion (
 
 -- Insertar datos en la tabla Estudiante
 INSERT INTO Estudiante (idEstudiante, nombre, email, contrasena, carrera) VALUES
-(1, 'María', 'maria@madas.com', '1234', 'Ingeniería en Alimentos'),
-(2, 'Diego', 'handalian.diego11@gmail.com', '4321', 'Ingeniería en Informática'),
-(3, 'Juan', 'juan@gmail.com', '1111', 'Ingeniería en Informática'),
-(4, 'Sebastián', 'sebamart12@gmail.com', '2222', 'Ingeniería en Informática');
+(1, 'Diego', 'handalian.diego11@gmail.com', '4321', 'Ingeniería en Informática'),
+(2, 'Juan', 'juan@gmail.com', '1111', 'Ingeniería en Informática'),
+(3, 'Sebastián', 'sebamart12@gmail.com', '2222', 'Ingeniería en Informática');
 
 -- Insertar datos en la tabla Administrador
 INSERT INTO Administrador (idAdmin, nombre, email, contrasena) VALUES
@@ -125,10 +124,18 @@ INSERT INTO Partido (nombreSeleccionLocal, nombreSeleccionVisitante, fecha, golL
 
 -- Insertar datos en la tabla Estudiante_Realiza_Prediccion
 INSERT INTO Estudiante_Realiza_Prediccion (idEstudiante, nombreSeleccionLocal, nombreSeleccionVisitante, fecha, golLocal, golVisitante, puntaje) VALUES
-(1, 'Argentina', 'Canadá', '2024-06-20 21:00:00', 1, 8, 0),
-(1, 'Perú', 'Chile', '2024-06-21 21:00:00', 1, 6, 0);
+(1, 'Argentina', 'Canadá', '2024-06-20 21:00:00', 2, 0, 4),
+(1, 'Perú', 'Chile', '2024-06-21 21:00:00', 0, 0, 4),
+(1, 'Ecuador', 'Venezuela', '2024-06-22 19:00:00', 1, 2, 4),
+(1, 'México', 'Jamaica', '2024-06-22 22:00:00', 1, 0, 0),
+(1, 'Estados Unidos', 'Bolivia', '2024-06-23 19:00:00', 2, 0, 4),
+(1, 'Uruguay', 'Panamá', '2024-06-23 22:00:00', 3, 1, 4),
+(1, 'Colombia', 'Paraguay', '2024-06-24 19:00:00', 1, 0, 4),
+(1, 'Brasil', 'Costa Rica', '2024-06-24 22:00:00', 0, 0, 4),
+(1, 'Perú', 'Canadá', '2024-06-25 19:00:00', 0, 1, 4),
+(1, 'Chile', 'Argentina', '2024-06-25 22:00:00', 0, 1, 4);
 
 -- Insertar datos en la tabla Estudiante_Elige_Seleccion
 INSERT INTO Estudiante_Elige_Seleccion (idEstudiante, nombreSeleccion, eleccion) VALUES
-(1, 'Argentina', 'Campeón'),
-(1, 'Brasil', 'Subcampeón');
+(1, 'Uruguay', 'Campeón'),
+(1, 'Argentina', 'Subcampeón');
