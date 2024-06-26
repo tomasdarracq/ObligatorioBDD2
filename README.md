@@ -15,14 +15,19 @@ Darle Run
 ![image](https://github.com/tomasdarracq/ObligatorioBDD2/assets/110825915/31688cdf-a596-4ef8-acc9-a9bbd082f810)
 
 ### Paso 4: Ejecutar Angular
-Abrir la carpeta frontend
-si no se tiene instalado el Cli de Angular ejecutar en la carpeta frontend
-npm install -g @angular/cli
-npm i 
-una vez instalado ejecutar
-ng serve -o
+Abrir la carpeta frontend <br />
 
-Se deberia abrir una pestaña a http://localhost:4200/ 
-si se desea ver la documentacion de los endpoints de backend localhost:8080/swagger-ui/index.html
+si no se tiene instalado el Cli de Angular ejecutar en la carpeta frontend <br />
 
-Gracias
+npm install -g @angular/cli <br />
+
+npm i  <br />
+
+una vez instalado ejecutar <br />
+
+ng serve -o <br />
+
+Se deberia abrir una pestaña a http://localhost:4200/  <br />
+si se desea ver la documentacion de los endpoints de backend localhost:8080/swagger-ui/index.html <br />
+
+Gracias<br />
