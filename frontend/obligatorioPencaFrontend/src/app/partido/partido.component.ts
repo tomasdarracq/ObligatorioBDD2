@@ -70,11 +70,12 @@ export class PartidoComponent {
     this.partidoService.actualizarPartido(resultado).subscribe(
       (data: any) => {
         console.log('Resultado guardado:', data),
-          this.mensajeModal = 'Resultado Actualizado con Éxito';
+          this.mensajeModal = 'Resultado Actualizado con Éxito',
+          window.location.reload();
       },
       error => {
         console.log('Error al guardar la predicción:', error),
-        this.mensajeModal = 'Error al Actualizar el Resultado';
+          this.mensajeModal = 'Error al Actualizar el Resultado';
       }
     );
   }
@@ -104,6 +105,8 @@ export class PartidoComponent {
           this.mensajeModal = 'Partido Creado con Éxito',
           this.partidoService.obtenerPartidos();
         this.mostrarFormulario();
+        window.location.reload();
+
       },
       error => {
         console.log('Error al guardar la predicción:', error),

@@ -34,12 +34,12 @@ export class CampeonComponent {
     if (this.finalistasForm.valid) {
       const campeon = new Seleccion(
         this.finalistasForm.get('campeon')?.value.trim(),
-        'Campeon'
+        'Campeón'
       );
 
       const subcampeon = new Seleccion(
         this.finalistasForm.get('subcampeon')?.value.trim(),
-        'Subcampeon'
+        'Subcampeón'
       );
 
       console.log('Campeón:', campeon);
@@ -53,6 +53,7 @@ export class CampeonComponent {
               (data: any) => {
                 console.log('Subcampeón elegido:', data),
                   this.guardado = true;
+                  this.recargar();
               },
               error =>
                 console.log('Error al guardar la predicción:', error),
@@ -63,9 +64,6 @@ export class CampeonComponent {
             this.guardado = false
         }
       )
-
-
-
     } else {
       this.finalistasForm.markAllAsTouched();
     }
@@ -86,13 +84,23 @@ export class CampeonComponent {
     this.selecciones.forEach(pais => {
       if (pais.estado != null) {
         actualizable = false;
-        if (pais.estado === 'Campeon') {
+        if (pais.estado === 'Campeón') {
           this.campeon = pais;
-        } else if (pais.estado === 'Subcampeon') {
+        } else if (pais.estado === 'Subcampeón') {
           this.subcampeon = pais;
         }
       }
     });
     return actualizable;
+  }
+
+  recargar() {
+    this.esperar(1500).then(() => {
+      window.location.reload();
+    })
+  }
+
+  esperar(ms: number) {
+    return new Promise(r => setTimeout(r, ms));
   }
 }
