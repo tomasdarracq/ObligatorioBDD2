@@ -29,15 +29,22 @@ public class EstudianteService {
         this.seleccionRepository = seleccionRepository;
     }
 
-    public int registrarEstudiante(Estudiante estudiante) {
-        estudianteRepository.insertarEstudiante(
-                estudiante.getNombre(),
-                estudiante.getEmail(),
-                estudiante.getContrasena(),
-                estudiante.getCarrera()
-        );
-        return estudianteRepository.obtenerEstudiante(estudiante.getEmail(), estudiante.getContrasena()).getIdEstudiante();
-    }
+    public Integer registrarEstudiante(Estudiante estudiante) {
+        if(estudianteRepository.obtenerEstudiantebymail(estudiante.getEmail())==null)
+        {
+            estudianteRepository.insertarEstudiante(
+                    estudiante.getNombre(),
+                    estudiante.getEmail(),
+                    estudiante.getContrasena(),
+                    estudiante.getCarrera()
+            );
+            return estudianteRepository.obtenerEstudiante(estudiante.getEmail(), estudiante.getContrasena()).getIdEstudiante();
+        }
+        else {
+            return null;
+        }
+        }
+
 
 
     public Estudiante iniciarSesion(String email, String contrasena) {
