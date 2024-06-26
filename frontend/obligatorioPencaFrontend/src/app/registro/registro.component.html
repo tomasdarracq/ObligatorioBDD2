@@ -27,7 +27,12 @@
 
         <div>
             <label for="carrera">Carrera</label>
-            <input type="text" formControlName="carrera">
+            <select formControlName="carrera">
+                <option value="" disabled selected>Seleccione una carrera</option>
+                @for (c of carreras; track c) {
+                <option [value]="c">{{ c }}</option>
+                }
+            </select>
             @if (esValido('carrera')) {
             <div class="error">La carrera es requerida.</div>
             }

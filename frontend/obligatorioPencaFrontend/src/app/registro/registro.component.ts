@@ -20,10 +20,11 @@ export class RegistroComponent {
   selecciones: Seleccion[] = [];
   idEstudiante!: number;
   mensajeModal: string = '';
-
+  carreras !: string[];
   constructor(private fb: FormBuilder, private seleccionService: SeleccionService, private estudianteService: EstudianteService, private finalistaService: FinalistaService, private router: Router) { }
 
   ngOnInit() {
+    this.carreras = this.estudianteService.carreras;
     this.registroForm = this.fb.group({
       nombre: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
