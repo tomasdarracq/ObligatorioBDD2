@@ -124,16 +124,16 @@ INSERT INTO Partido (nombreSeleccionLocal, nombreSeleccionVisitante, fecha, golL
 
 -- Insertar datos en la tabla Estudiante_Realiza_Prediccion
 INSERT INTO Estudiante_Realiza_Prediccion (idEstudiante, nombreSeleccionLocal, nombreSeleccionVisitante, fecha, golLocal, golVisitante, puntaje) VALUES
-(1, 'Argentina', 'Canadá', '2024-06-20 21:00:00', 2, 0, 4),
-(1, 'Perú', 'Chile', '2024-06-21 21:00:00', 0, 0, 4),
-(1, 'Ecuador', 'Venezuela', '2024-06-22 19:00:00', 1, 2, 4),
+(1, 'Argentina', 'Canadá', '2024-06-20 21:00:00', 2, 0, 0),
+(1, 'Perú', 'Chile', '2024-06-21 21:00:00', 0, 0, 0),
+(1, 'Ecuador', 'Venezuela', '2024-06-22 19:00:00', 1, 2, 0),
 (1, 'México', 'Jamaica', '2024-06-22 22:00:00', 1, 0, 0),
-(1, 'Estados Unidos', 'Bolivia', '2024-06-23 19:00:00', 2, 0, 4),
-(1, 'Uruguay', 'Panamá', '2024-06-23 22:00:00', 3, 1, 4),
-(1, 'Colombia', 'Paraguay', '2024-06-24 19:00:00', 1, 0, 4),
-(1, 'Brasil', 'Costa Rica', '2024-06-24 22:00:00', 0, 0, 4),
-(1, 'Perú', 'Canadá', '2024-06-25 19:00:00', 0, 1, 4),
-(1, 'Chile', 'Argentina', '2024-06-25 22:00:00', 0, 1, 4);
+(1, 'Estados Unidos', 'Bolivia', '2024-06-23 19:00:00', 2, 0, 0),
+(1, 'Uruguay', 'Panamá', '2024-06-23 22:00:00', 3, 1, 0),
+(1, 'Colombia', 'Paraguay', '2024-06-24 19:00:00', 1, 0, 0),
+(1, 'Brasil', 'Costa Rica', '2024-06-24 22:00:00', 0, 0, 0),
+(1, 'Perú', 'Canadá', '2024-06-25 19:00:00', 0, 1, 0),
+(1, 'Chile', 'Argentina', '2024-06-25 22:00:00', 0, 1, 0);
 
 -- Insertar datos en la tabla Estudiante_Elige_Seleccion
 INSERT INTO Estudiante_Elige_Seleccion (idEstudiante, nombreSeleccion, eleccion) VALUES
